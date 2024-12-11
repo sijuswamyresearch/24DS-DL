@@ -233,30 +233,7 @@ plt.ylim(-6, 6)
 
 # Show the plot
 plt.show()
-
 ```
-
-
-<!-- ### Visualization of Large vs. Small Margins
-
-The following diagrams illustrate the difference between datasets with large and small margins:
-
-```{mermaid}
-graph TD
-    A[Decision Boundary] ---|Large Margin| C((Positive Class))
-    A ---|Large Margin| D((Negative Class))
-    subgraph Large Margin
-        C & D
-    end
-
-    E[Decision Boundary] ---|Small Margin| G((Positive Class))
-    E ---|Small Margin| F((Negative Class))
-    subgraph Small Margin
-        G & F
-    end
-``` -->
-
-
 
 ### Simulating `OR` gate using Perceptron
 
@@ -482,73 +459,121 @@ for i in range(len(X)):
 ```
 
 
-### Simulating `NOR` gate using the Perceptron
+### Simulating all logic gates using the Perceptron
 
-Here is the Python code to simulate a perceptron for a `NOR` gate. The `NOR` gate is the negation of the `OR` gate, so it outputs 1 only when both inputs are 0.
+Here is the Python code to simulate all logic gates.
 
 ```{python}
 import numpy as np
 
-# Define the step function
-def step_function(x):
-    return 1 if x >= 0 else 0
-
-# Perceptron class to simulate the NOR gate
 class Perceptron:
-    def __init__(self, input_size, learning_rate=0.1):
-        # Initialize weights and bias to zero
-        self.weights = np.zeros(input_size)
-        self.bias = 0
+    def __init__(self, input_dim, learning_rate=0.01):
+        self.input_dim = input_dim
         self.learning_rate = learning_rate
+        # Include bias weight with size (input_dim + 1)
+        self.weights = np.random.randn(input_dim + 1) * 0.01  # +1 for the bias term
 
-    def predict(self, inputs):
-        # Calculate the weighted sum
-        weighted_sum = np.dot(inputs, self.weights) + self.bias
-        # Apply the step activation function
-        return step_function(weighted_sum)
+    def activation(self, net_input):
+        """
+        Apply the activation function (step function).
 
-    def train(self, inputs, targets, epochs=10):
-        # Train the perceptron using the input-output pairs
+        Parameters:
+        net_input (numpy.ndarray): Net input values.
+
+        Returns:
+        numpy.ndarray: Activated output (0 or 1).
+        """
+        return np.where(net_input > 0, 1, 0)
+
+    def predict(self, X):
+        """
+        Perform a forward pass to calculate the output of the perceptron.
+
+        Parameters:
+        X (numpy.ndarray): Input data of shape (n_samples, input_dim).
+
+        Returns:
+        numpy.ndarray: Predicted binary outputs (0 or 1), shape (n_samples,).
+        """
+        # Ensure X is a 2D array (n_samples, n_features)
+        if X.ndim == 1:
+            X = X.reshape(1, -1)  # Reshape if it's a single sample
+        # Add bias term to input before predicting
+        X_bias = np.c_[X, np.ones(X.shape[0])]  # Add bias column for prediction
+        net_input = np.dot(X_bias, self.weights)  # Dot product with weights
+        return self.activation(net_input)
+
+    def train(self, X, y, epochs=100):
+        """
+        Train the perceptron using the provided data.
+
+        Parameters:
+        X (numpy.ndarray): Input data of shape (n_samples, input_dim).
+        y (numpy.ndarray): Target labels of shape (n_samples,).
+        epochs (int): Number of iterations over the dataset.
+        """
         for epoch in range(epochs):
-            for i in range(len(inputs)):
-                input_data = inputs[i]
-                target = targets[i]
-                # Compute the prediction
-                prediction = self.predict(input_data)
-                # Calculate the error
-                error = target - prediction
-                # Update the weights and bias using the perceptron learning rule
-                self.weights += self.learning_rate * error * input_data
-                self.bias += self.learning_rate * error
+            for xi, yi in zip(X, y):
+                xi_bias = np.append(xi, 1)  # Add bias term manually for training
+                # Compute the weighted sum (net input) directly here
+                weighted_input = np.dot(xi_bias, self.weights)  # Dot product with weights
+                prediction = self.activation(weighted_input)  # Apply activation
+                error = yi - prediction  # Compute error
+                self.weights += self.learning_rate * error * xi_bias  # Update weights
 
-# Define the input-output pairs for a NOR gate
-inputs = np.array([
-    [0, 0],  # Input: (0, 0)
-    [0, 1],  # Input: (0, 1)
-    [1, 0],  # Input: (1, 0)
-    [1, 1],  # Input: (1, 1)
-])
+# Non-member function to simulate logic gates
+def simulate_logic_gate(gate_type):
+    """
+    Simulate a logic gate using the Perceptron.
 
-# Output of NOR gate
-targets = np.array([1, 0, 0, 0])
+    Parameters:
+    gate_type (str): The type of logic gate ('AND', 'OR', 'NAND', 'NOR', 'XOR').
 
-# Create and train the perceptron
-perceptron = Perceptron(input_size=2)
-perceptron.train(inputs, targets, epochs=10)
+    Prints the results of the simulation.
+    """
+    # Define input and target outputs for different gates
+    X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
+    gate_targets = {
+        'AND': np.array([0, 0, 0, 1]),
+        'OR': np.array([0, 1, 1, 1]),
+        'NAND': np.array([1, 1, 1, 0]),
+        'NOR': np.array([1, 0, 0, 0]),
+        'XOR': np.array([0, 1, 1, 0])
+    }
 
-# Test the trained perceptron on the inputs
-print("Trained weights:", perceptron.weights)
-print("Trained bias:", perceptron.bias)
+    if gate_type not in gate_targets:
+        print(f"Unsupported gate type: {gate_type}")
+        return
 
-# Test the perceptron for all input combinations
-for input_data in inputs:
-    prediction = perceptron.predict(input_data)
-    print(f"Input: {input_data}, Prediction: {prediction}")
+    #if gate_type == 'XOR':
+    #    print(f"Warning: XOR is not linearly separable and cannot be solved by a single perceptron!")
+    #    return
+
+    y = gate_targets[gate_type]
+
+    # Initialize perceptron
+    perceptron = Perceptron(input_dim=2, learning_rate=0.1)
+
+    # Train perceptron
+    perceptron.train(X, y, epochs=10)
+
+    # Test predictions
+    print(f"Simulating {gate_type} gate")
+    print("Trained weights:", perceptron.weights[:-1])  # Exclude bias term from display
+    print("Trained bias:", perceptron.weights[-1])  # Display bias term separately
+    for i in range(X.shape[0]):  # Iterate over the rows of X (4 samples)
+        input_data = X[i]  # Extract the i-th row as a 1D array
+        prediction = perceptron.predict(input_data)  # Make prediction
+        print(f"Input: {input_data}, Prediction: {prediction}")
+    # Simulate AND, OR, NAND, NOR, and XOR gates
 ```
 
-This code will train the perceptron to simulate the `NOR` gate and test it for all possible input combinations. The weights and bias will be adjusted during training to ensure the perceptron correctly implements the `NOR` gate behavior.
+The simulation program is executed below:
+```{python}
+for gate in ['AND', 'OR', 'NAND', 'NOR', 'XOR']:
+    simulate_logic_gate(gate)
+```
 
-### Perceptron fails!
 
 whether the perceptron win on XOR gate? No, the perceptron cannot learn the XOR gate. This is a well-known limitation of the perceptron model, and it's related to the fact that the XOR function is non-linearly separable.
 
@@ -560,11 +585,15 @@ A perceptron can only solve problems that are linearly separable, meaning that t
 If you try to plot these points, you’ll see that you can't separate the positive examples (output 1) from the negative examples (output 0) with a single straight line.
 :::
 
+As solution to this problem, we need the cocept of Multi-layer perceptron.
 
+
+:::{.callout-note}
 ### Perceptron neuron- the foundation of modern Machine Learning
 
 The Perceptron model, introduced by Frank Rosenblatt in 1958, marked one of the earliest developments in artificial intelligence and neural networks. Initially conceived as a model for pattern recognition and early neural computation, the Perceptron was designed to simulate a biological neuron, learning to classify inputs into two categories through a simple linear decision boundary. Despite its early promise, the limitations of the basic Perceptron were exposed in the 1960s, particularly its inability to solve non-linearly separable problems, famously highlighted in Marvin Minsky and Seymour Papert's book Perceptrons (1969). However, with the advent of more sophisticated algorithms and architectures, such as multi-layer perceptrons (MLPs) and the backpropagation algorithm in the 1980s, the Perceptron concept was revitalized. Today, it forms the foundational concept for deep learning models and modern neural networks, which are widely applied in various fields, including image and speech recognition, natural language processing, and autonomous systems, demonstrating its enduring relevance and adaptability in tackling complex, non-linear real-world problems.
----
+:::
+
 
 ### Introduction to the Sigmoid Activation Function
 
@@ -600,6 +629,7 @@ While alternatives like **ReLU** are often used in deeper layers due to the vani
 
 
 ### Sigmoid Neuron
+
 The sigmoid neuron replaces the step function with the sigmoid function:
 $$
 \sigma(z) = \frac{1}{1 + e^{-z}}
@@ -659,57 +689,113 @@ digraph NeuralNetwork {
 
 ```
 
-Following python code demonstrate the effective use of the sigmoid activation function in the simulation of an `AND` gate.
+
+
+
+Following python code demonstrate the effective use of the sigmoid activation function in the simulation of  logic gates.
 
 ```{python}
 import numpy as np
 
-# Sigmoid activation function
-def sigmoid(x):
-    return 1 / (1 + np.exp(-x))
+class Perceptron:
+    def __init__(self, input_dim, learning_rate=0.01):
+        self.input_dim = input_dim
+        self.learning_rate = learning_rate
+        # Initialize weights including bias term (input_dim + 1)
+        self.weights = np.random.randn(input_dim + 1) * 0.01  # +1 for bias
 
-# Derivative of sigmoid for gradient calculation
-def sigmoid_derivative(x):
-    return x * (1 - x)
+    def sigmoid(self, x):
+        """
+        Sigmoid activation function.
+        """
+        return 1 / (1 + np.exp(-x))
 
-# Define the training inputs and outputs (AND gate)
-X = np.array([[0, 0],
-              [0, 1],
-              [1, 0],
-              [1, 1]])
+    def sigmoid_derivative(self, x):
+        """
+        Derivative of sigmoid function.
+        """
+        return x * (1 - x)
 
-y = np.array([[0], [0], [0], [1]])  # Expected output for AND gate
+    def activation(self, net_input):
+        """
+        Apply sigmoid activation function to net input.
+        """
+        return self.sigmoid(net_input)
 
-# Initialize weights and bias randomly
-weights = np.random.rand(2, 1)  # Random weights for 2 inputs
-bias = np.random.rand(1)  # Random bias
+    def predict(self, X):
+        """
+        Predict the output for given input data using the perceptron.
+        """
+        if X.ndim == 1:
+            X = X.reshape(1, -1)  # Reshape if it's a single sample
+        # Add bias term for prediction
+        X_bias = np.c_[X, np.ones(X.shape[0])]
+        net_input = np.dot(X_bias, self.weights)  # Calculate net input
+        output = self.activation(net_input)  # Apply sigmoid activation
+        # Apply threshold: if output > 0.5, interpret as 1; else 0
+        return np.where(output > 0.5, 1, 0)
 
-# Learning rate
-learning_rate = 0.1
+    def train(self, X, y, epochs=100):
+        """
+        Train the perceptron using the provided data.
+        """
+        for epoch in range(epochs):
+            for xi, yi in zip(X, y):
+                xi_bias = np.append(xi, 1)  # Add bias term to input
+                net_input = np.dot(xi_bias, self.weights)  # Calculate net input
+                prediction = self.activation(net_input)  # Get the prediction
+                error = yi - prediction  # Calculate error
+                # Update weights using the gradient of the sigmoid function
+                self.weights += self.learning_rate * error * prediction * (1 - prediction) * xi_bias
 
-# Training the perceptron
-for epoch in range(10000):  # Number of iterations
-    # Forward pass
-    weighted_sum = np.dot(X, weights) + bias
-    output = sigmoid(weighted_sum)
+# Non-member function to simulate logic gates
+def simulate_logic_gate(gate_type):
+    """
+    Simulate a logic gate using the Perceptron.
+    """
+    # Define input and target outputs for different gates
+    X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
+    gate_targets = {
+        'AND': np.array([0, 0, 0, 1]),
+        'OR': np.array([0, 1, 1, 1]),
+        'NAND': np.array([1, 1, 1, 0]),
+        'NOR': np.array([1, 0, 0, 0]),
+        'XOR': np.array([0, 1, 1, 0])
+    }
 
-    # Compute error
-    error = y - output
-    
-    # Backpropagation (Gradient Descent)
-    adjustment = error * sigmoid_derivative(output)
-    weights += np.dot(X.T, adjustment) * learning_rate
-    bias += np.sum(adjustment) * learning_rate
+    if gate_type not in gate_targets:
+        print(f"Unsupported gate type: {gate_type}")
+        return
 
-    # Optional: Print the error at intervals
-    if epoch % 1000 == 0:
-        print(f"Epoch {epoch}, Error: {np.mean(np.abs(error))}")
+    y = gate_targets[gate_type]
 
-# Testing the perceptron
-print("\nFinal Output After Training:")
-for i in range(len(X)):
-    print(f"Input: {X[i]} => Predicted Output: {round(output[i][0])}")
+    # Initialize perceptron
+    perceptron = Perceptron(input_dim=2, learning_rate=0.1)
 
+    # Train perceptron
+    perceptron.train(X, y, epochs=1000)
+
+    # Test predictions
+    print(f"Simulating {gate_type} gate")
+    print("Trained weights:", perceptron.weights[:-1])  # Exclude bias term from display
+    print("Trained bias:", perceptron.weights[-1])  # Display bias term separately
+    for i in range(X.shape[0]):  # Iterate over the rows of X (4 samples)
+        input_data = X[i]  # Extract the i-th row as a 1D array
+        prediction = perceptron.predict(input_data)  # Make prediction
+        print(f"Input: {input_data}, Prediction: {prediction}")
+
+if __name__ == "__main__":
+    # Simulate AND, OR, NAND, NOR, and XOR gates
+    for gate in ['AND', 'OR', 'NAND', 'NOR', 'XOR']:
+        simulate_logic_gate(gate)
+
+```
+
+Simulation code is here:
+
+```{python}
+for gate in ['AND', 'OR', 'NAND', 'NOR', 'XOR']:
+    simulate_logic_gate(gate)
 ```
 
 ## Important Theorems and Results
@@ -749,3 +835,142 @@ for epoch in range(10):  # 10 epochs
 
 print(f"Trained Weights: {weights}, Bias: {bias}")
 ```
+
+## The Perceptron and the XOR Problem
+
+In the early stages of neural network research, the **perceptron** was introduced as a simple model to classify linearly separable patterns. A perceptron consists of a single neuron, which receives input, applies weights, sums them up, and passes the result through an activation function to produce an output. For problems that can be linearly separated, a perceptron performs exceptionally well.
+
+However, the perceptron faced a significant limitation: it cannot solve problems that are not linearly separable. A classic example is the **XOR (exclusive OR) gate**. The XOR gate outputs `1` only when the inputs are different (i.e., for inputs `(0,1)` or `(1,0)`), and outputs `0` when the inputs are the same (i.e., for inputs `(0,0)` or `(1,1)`). This pattern is not linearly separable, meaning it cannot be solved by a single perceptron, as the data cannot be separated with a straight line.
+
+### Why the Perceptron Fails at XOR
+
+For the XOR gate, the following input-output pairs exist:
+
+- (0, 0) → 0
+- (0, 1) → 1
+- (1, 0) → 1
+- (1, 1) → 0
+
+If you try to plot these points on a 2D plane, you'll notice that no straight line can separate the `1` outputs from the `0` outputs, making the XOR problem an example of a **non-linearly separable** problem. This is where the perceptron fails.
+
+## Multi-Layer Perceptron (MLP)
+
+To overcome the limitations of the perceptron, we need a more powerful model that can learn non-linear decision boundaries. The **Multi-Layer Perceptron (MLP)** addresses this limitation by introducing multiple layers of neurons. Unlike a single perceptron, an MLP has:
+
+1. **Input Layer**: Receives the input features (in this case, the two binary inputs of the XOR gate).
+2. **Hidden Layers**: One or more layers of neurons that allow the network to learn complex, non-linear mappings from input to output.
+3. **Output Layer**: Produces the final prediction (in this case, the XOR output).
+
+The addition of hidden layers and the use of non-linear activation functions (such as **sigmoid** or **ReLU**) enables the MLP to learn and model non-linear relationships. This makes MLPs capable of solving the XOR problem, as the network can form non-linear decision boundaries.
+
+### Why MLP Can Solve XOR
+
+The MLP can learn the XOR function by introducing **hidden layers** that allow it to combine the inputs in non-linear ways. A network with just one hidden layer is sufficient to approximate the XOR gate. The hidden layer transforms the inputs into a higher-dimensional space where the problem becomes linearly separable, allowing the output layer to make correct predictions.
+
+## Implementing XOR with MLP
+
+With the MLP's ability to model non-linearly separable data, we can now implement the XOR gate. The MLP will consist of:
+
+- An **input layer** that takes in two binary values.
+- A **hidden layer** that helps in learning the non-linear relationship.
+- An **output layer** that produces the binary XOR result.
+
+We will train the MLP on the four possible inputs for the XOR gate and use backpropagation to update the weights in the network, eventually enabling the MLP to predict the XOR output correctly.
+
+In the next code implementation, we will implement the XOR gate using an MLP, demonstrating how the network can learn the XOR function through training.
+
+```{python}
+import numpy as np
+
+class Perceptron:
+    def __init__(self, input_dim, output_dim, activation="sigmoid"):
+        self.input_dim = input_dim
+        self.output_dim = output_dim
+        self.activation = activation
+        self.weights = np.random.randn(input_dim, output_dim)
+        self.biases = np.zeros((1, output_dim))
+
+    def forward(self, inputs):
+        self.inputs = inputs  # Store inputs for later use in backpropagation
+        z = np.dot(inputs, self.weights) + self.biases
+        if self.activation == "sigmoid":
+            self.output = 1 / (1 + np.exp(-z))  # Store output for backpropagation
+            return self.output
+        elif self.activation == "relu":
+            self.output = np.maximum(0, z)
+            return self.output
+        else:  # Linear activation by default
+            self.output = z
+            return self.output
+
+    def backward(self, output_error, learning_rate):
+        if self.activation == "sigmoid":
+            activation_derivative = self.output * (1 - self.output)
+        elif self.activation == "relu":
+            activation_derivative = np.where(self.output > 0, 1, 0)
+        else:  # Linear activation
+            activation_derivative = 1
+
+        delta = output_error * activation_derivative
+        input_error = np.dot(delta, self.weights.T)
+
+        # Update weights and biases
+        self.weights += learning_rate * np.dot(self.inputs.T, delta)
+        self.biases += learning_rate * np.sum(delta, axis=0, keepdims=True)
+
+        return input_error
+
+class MLP:
+    def __init__(self, input_dim, hidden_dim, output_dim, learning_rate=0.1):
+        self.layers = [
+            Perceptron(input_dim, hidden_dim, activation="sigmoid"),
+            Perceptron(hidden_dim, output_dim, activation="sigmoid")
+        ]
+        self.learning_rate = learning_rate
+
+    def forward(self, X):
+        output = X
+        for layer in self.layers:
+            output = layer.forward(output)
+        return output
+
+    def train(self, X, y, epochs=10000):
+        for epoch in range(epochs):
+            # Forward pass
+            output = self.forward(X)
+
+            # Backward pass (backpropagation)
+            error = y - output
+            for layer in reversed(self.layers):
+                error = layer.backward(error, self.learning_rate)
+
+            if epoch % 1000 == 0:
+                loss = np.mean(np.square(y - self.forward(X)))
+                print(f'Epoch {epoch}, Loss: {loss}')
+
+    def predict(self, X):
+        return np.round(self.forward(X))
+
+        
+def simulate_logic_gate(gate_type):
+    X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
+    gate_targets = {
+        'XOR': np.array([[0], [1], [1], [0]])  # XOR output
+    }
+
+    if gate_type not in gate_targets:
+        print(f"Unsupported gate type: {gate_type}")
+        return
+
+    y = gate_targets[gate_type]
+
+    mlp = MLP(input_dim=2, hidden_dim=2, output_dim=1, learning_rate=0.1)
+    mlp.train(X, y, epochs=10000)
+
+    print(f"Simulating {gate_type} gate")
+    for input_data, prediction in zip(X, mlp.predict(X)):
+        print(f"Input: {input_data}, Prediction: {prediction}")
+
+simulate_logic_gate('XOR')
+``` 
+

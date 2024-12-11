@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
-<head>
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
 
-<meta charset="utf-8" />
-<meta name="generator" content="quarto-1.5.56" />
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1  Basics of Artificial Neural Network – 24DS-DL</title>
+<title>1&nbsp; Basics of Artificial Neural Network – 24DS-DL</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -78,7 +76,25 @@ div.csl-indent {
   margin-left: 2em;
 }</style>
 
-<!-- htmldependencies:E3FAD763 -->
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./summary.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -106,9 +122,9 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
-<script  src="site_libs/quarto-diagram/mermaid.min.js"></script>
-<script  src="site_libs/quarto-diagram/mermaid-init.js"></script>
-<link  href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet" />
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -142,22 +158,17 @@ window.Quarto = {
 
 </head>
 
-<body>
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn"
-      data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" 
-      aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
-      onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <h1 class="quarto-secondary-nav-title no-breadcrumbs"></h1>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" role="link"
-        aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
-        onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Basics of Artificial Neural Network</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -171,9 +182,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="/">
-      24DS-DL
-      </a> 
+      <a href="./">24DS-DL</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -185,42 +194,86 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/index.html" class="sidebar-item-text sidebar-link">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/intro.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class='chapter-number'>1</span>  <span class='chapter-title'>Basics of Artificial Neural Network</span></span></a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Basics of Artificial Neural Network</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span></span></a>
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/references.html" class="sidebar-item-text sidebar-link">
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" ></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <div id="quarto-toc-target"></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction-to-artificial-neural-networks-anns" id="toc-introduction-to-artificial-neural-networks-anns" class="nav-link active" data-scroll-target="#introduction-to-artificial-neural-networks-anns"><span class="header-section-number">1.1</span> Introduction to Artificial Neural Networks (ANNs)</a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">1.1.1</span> Introduction</a></li>
+  <li><a href="#historical-development-and-evolution" id="toc-historical-development-and-evolution" class="nav-link" data-scroll-target="#historical-development-and-evolution"><span class="header-section-number">1.1.2</span> Historical Development and Evolution</a></li>
+  <li><a href="#modern-applications-of-artificial-neural-networks" id="toc-modern-applications-of-artificial-neural-networks" class="nav-link" data-scroll-target="#modern-applications-of-artificial-neural-networks"><span class="header-section-number">1.1.3</span> Modern Applications of Artificial Neural Networks</a></li>
+  <li><a href="#challenges-and-future-directions" id="toc-challenges-and-future-directions" class="nav-link" data-scroll-target="#challenges-and-future-directions"><span class="header-section-number">1.1.4</span> Challenges and Future Directions</a></li>
+  </ul></li>
+  <li><a href="#perceptron" id="toc-perceptron" class="nav-link" data-scroll-target="#perceptron"><span class="header-section-number">1.2</span> Perceptron</a>
+  <ul class="collapse">
+  <li><a href="#perceptron-model" id="toc-perceptron-model" class="nav-link" data-scroll-target="#perceptron-model"><span class="header-section-number">1.2.1</span> Perceptron Model</a></li>
+  <li><a href="#perceptron-learning-rule" id="toc-perceptron-learning-rule" class="nav-link" data-scroll-target="#perceptron-learning-rule"><span class="header-section-number">1.2.2</span> Perceptron Learning Rule</a></li>
+  <li><a href="#perceptron-algorithm" id="toc-perceptron-algorithm" class="nav-link" data-scroll-target="#perceptron-algorithm"><span class="header-section-number">1.2.3</span> Perceptron Algorithm</a></li>
+  <li><a href="#perceptron-theorem-and-margin" id="toc-perceptron-theorem-and-margin" class="nav-link" data-scroll-target="#perceptron-theorem-and-margin"><span class="header-section-number">1.2.4</span> Perceptron Theorem and Margin</a></li>
+  <li><a href="#implications-of-the-theorem" id="toc-implications-of-the-theorem" class="nav-link" data-scroll-target="#implications-of-the-theorem"><span class="header-section-number">1.2.5</span> Implications of the Theorem</a></li>
+  <li><a href="#characterizing-data-sets-for-fast-convergence" id="toc-characterizing-data-sets-for-fast-convergence" class="nav-link" data-scroll-target="#characterizing-data-sets-for-fast-convergence"><span class="header-section-number">1.2.6</span> Characterizing Data Sets for Fast Convergence</a></li>
+  <li><a href="#example-of-a-dataset-with-large-margin" id="toc-example-of-a-dataset-with-large-margin" class="nav-link" data-scroll-target="#example-of-a-dataset-with-large-margin"><span class="header-section-number">1.2.7</span> Example of a Dataset with Large Margin</a></li>
+  <li><a href="#simulating-or-gate-using-perceptron" id="toc-simulating-or-gate-using-perceptron" class="nav-link" data-scroll-target="#simulating-or-gate-using-perceptron"><span class="header-section-number">1.2.8</span> Simulating <code>OR</code> gate using Perceptron</a></li>
+  <li><a href="#simulating-and-gate-using-a-perceptron" id="toc-simulating-and-gate-using-a-perceptron" class="nav-link" data-scroll-target="#simulating-and-gate-using-a-perceptron"><span class="header-section-number">1.2.9</span> Simulating <code>AND</code> gate using a perceptron</a></li>
+  <li><a href="#simulating-all-logic-gates-using-the-perceptron" id="toc-simulating-all-logic-gates-using-the-perceptron" class="nav-link" data-scroll-target="#simulating-all-logic-gates-using-the-perceptron"><span class="header-section-number">1.2.10</span> Simulating all logic gates using the Perceptron</a></li>
+  <li><a href="#introduction-to-the-sigmoid-activation-function" id="toc-introduction-to-the-sigmoid-activation-function" class="nav-link" data-scroll-target="#introduction-to-the-sigmoid-activation-function"><span class="header-section-number">1.2.11</span> Introduction to the Sigmoid Activation Function</a></li>
+  <li><a href="#historical-context" id="toc-historical-context" class="nav-link" data-scroll-target="#historical-context"><span class="header-section-number">1.2.12</span> Historical Context</a></li>
+  <li><a href="#relevance-to-modern-neural-networks" id="toc-relevance-to-modern-neural-networks" class="nav-link" data-scroll-target="#relevance-to-modern-neural-networks"><span class="header-section-number">1.2.13</span> Relevance to Modern Neural Networks</a></li>
+  <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications"><span class="header-section-number">1.2.14</span> Applications</a></li>
+  <li><a href="#sigmoid-neuron" id="toc-sigmoid-neuron" class="nav-link" data-scroll-target="#sigmoid-neuron"><span class="header-section-number">1.2.15</span> Sigmoid Neuron</a></li>
+  </ul></li>
+  <li><a href="#important-theorems-and-results" id="toc-important-theorems-and-results" class="nav-link" data-scroll-target="#important-theorems-and-results"><span class="header-section-number">1.3</span> Important Theorems and Results</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples"><span class="header-section-number">1.4</span> Examples</a>
+  <ul class="collapse">
+  <li><a href="#simple-example-perceptron-for-and-gate" id="toc-simple-example-perceptron-for-and-gate" class="nav-link" data-scroll-target="#simple-example-perceptron-for-and-gate"><span class="header-section-number">1.4.1</span> Simple Example: Perceptron for AND Gate</a></li>
+  </ul></li>
+  <li><a href="#the-perceptron-and-the-xor-problem" id="toc-the-perceptron-and-the-xor-problem" class="nav-link" data-scroll-target="#the-perceptron-and-the-xor-problem"><span class="header-section-number">1.5</span> The Perceptron and the XOR Problem</a>
+  <ul class="collapse">
+  <li><a href="#why-the-perceptron-fails-at-xor" id="toc-why-the-perceptron-fails-at-xor" class="nav-link" data-scroll-target="#why-the-perceptron-fails-at-xor"><span class="header-section-number">1.5.1</span> Why the Perceptron Fails at XOR</a></li>
+  </ul></li>
+  <li><a href="#multi-layer-perceptron-mlp" id="toc-multi-layer-perceptron-mlp" class="nav-link" data-scroll-target="#multi-layer-perceptron-mlp"><span class="header-section-number">1.6</span> Multi-Layer Perceptron (MLP)</a>
+  <ul class="collapse">
+  <li><a href="#why-mlp-can-solve-xor" id="toc-why-mlp-can-solve-xor" class="nav-link" data-scroll-target="#why-mlp-can-solve-xor"><span class="header-section-number">1.6.1</span> Why MLP Can Solve XOR</a></li>
+  </ul></li>
+  <li><a href="#implementing-xor-with-mlp" id="toc-implementing-xor-with-mlp" class="nav-link" data-scroll-target="#implementing-xor-with-mlp"><span class="header-section-number">1.7</span> Implementing XOR with MLP</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>  <span class="chapter-title">Basics of Artificial Neural Network</span></h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Basics of Artificial Neural Network</span></h1>
 </div>
 
 
@@ -236,55 +289,20 @@ window.Quarto = {
 
 </header>
 
-<nav id="TOC" role="doc-toc">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#introduction-to-artificial-neural-networks-anns" id="toc-introduction-to-artificial-neural-networks-anns"><span class="header-section-number">1.1</span> Introduction to Artificial Neural Networks (ANNs)</a>
-  <ul>
-  <li><a href="#introduction" id="toc-introduction"><span class="header-section-number">1.1.1</span> Introduction</a></li>
-  <li><a href="#historical-development-and-evolution" id="toc-historical-development-and-evolution"><span class="header-section-number">1.1.2</span> Historical Development and Evolution</a></li>
-  <li><a href="#modern-applications-of-artificial-neural-networks" id="toc-modern-applications-of-artificial-neural-networks"><span class="header-section-number">1.1.3</span> Modern Applications of Artificial Neural Networks</a></li>
-  <li><a href="#challenges-and-future-directions" id="toc-challenges-and-future-directions"><span class="header-section-number">1.1.4</span> Challenges and Future Directions</a></li>
-  </ul></li>
-  <li><a href="#perceptron" id="toc-perceptron"><span class="header-section-number">1.2</span> Perceptron</a>
-  <ul>
-  <li><a href="#perceptron-model" id="toc-perceptron-model"><span class="header-section-number">1.2.1</span> Perceptron Model</a></li>
-  <li><a href="#perceptron-learning-rule" id="toc-perceptron-learning-rule"><span class="header-section-number">1.2.2</span> Perceptron Learning Rule</a></li>
-  <li><a href="#perceptron-algorithm" id="toc-perceptron-algorithm"><span class="header-section-number">1.2.3</span> Perceptron Algorithm</a></li>
-  <li><a href="#perceptron-theorem-and-margin" id="toc-perceptron-theorem-and-margin"><span class="header-section-number">1.2.4</span> Perceptron Theorem and Margin</a></li>
-  <li><a href="#implications-of-the-theorem" id="toc-implications-of-the-theorem"><span class="header-section-number">1.2.5</span> Implications of the Theorem</a></li>
-  <li><a href="#characterizing-data-sets-for-fast-convergence" id="toc-characterizing-data-sets-for-fast-convergence"><span class="header-section-number">1.2.6</span> Characterizing Data Sets for Fast Convergence</a></li>
-  <li><a href="#example-of-a-dataset-with-large-margin" id="toc-example-of-a-dataset-with-large-margin"><span class="header-section-number">1.2.7</span> Example of a Dataset with Large Margin</a></li>
-  <li><a href="#simulating-nor-gate-using-the-perceptron" id="toc-simulating-nor-gate-using-the-perceptron"><span class="header-section-number">1.2.8</span> Simulating <code>NOR</code> gate using the Perceptron</a></li>
-  <li><a href="#perceptron-fails" id="toc-perceptron-fails"><span class="header-section-number">1.2.9</span> Perceptron fails!</a></li>
-  <li><a href="#perceptron-neuron--the-foundation-of-modern-machine-learning" id="toc-perceptron-neuron--the-foundation-of-modern-machine-learning"><span class="header-section-number">1.2.10</span> Perceptron neuron- the foundation of modern Machine Learning</a></li>
-  <li><a href="#introduction-to-the-sigmoid-activation-function" id="toc-introduction-to-the-sigmoid-activation-function"><span class="header-section-number">1.2.11</span> Introduction to the Sigmoid Activation Function</a></li>
-  <li><a href="#historical-context" id="toc-historical-context"><span class="header-section-number">1.2.12</span> Historical Context</a></li>
-  <li><a href="#relevance-to-modern-neural-networks" id="toc-relevance-to-modern-neural-networks"><span class="header-section-number">1.2.13</span> Relevance to Modern Neural Networks</a></li>
-  <li><a href="#applications" id="toc-applications"><span class="header-section-number">1.2.14</span> Applications</a></li>
-  <li><a href="#sigmoid-neuron" id="toc-sigmoid-neuron"><span class="header-section-number">1.2.15</span> Sigmoid Neuron</a></li>
-  </ul></li>
-  <li><a href="#important-theorems-and-results" id="toc-important-theorems-and-results"><span class="header-section-number">1.3</span> Important Theorems and Results</a></li>
-  <li><a href="#examples" id="toc-examples"><span class="header-section-number">1.4</span> Examples</a>
-  <ul>
-  <li><a href="#simple-example-perceptron-for-and-gate" id="toc-simple-example-perceptron-for-and-gate"><span class="header-section-number">1.4.1</span> Simple Example: Perceptron for AND Gate</a></li>
-  </ul></li>
-  </ul>
-</nav>
+
 <section id="introduction-to-artificial-neural-networks-anns" class="level2" data-number="1.1">
-<h2 data-number="1.1"><span class="header-section-number">1.1</span> Introduction to Artificial Neural Networks (ANNs)</h2>
+<h2 data-number="1.1" class="anchored" data-anchor-id="introduction-to-artificial-neural-networks-anns"><span class="header-section-number">1.1</span> Introduction to Artificial Neural Networks (ANNs)</h2>
 <p>Machine learning has undeniably become a prominent and dynamic field, with its vast array of algorithms sometimes making it challenging to discern key concepts. To gain a clearer understanding, it is valuable to explore various machine learning algorithms in greater detail, focusing not only on their theoretical foundations but also on their step-by-step implementation.</p>
 <p>In brief, machine learning is defined as a field that enables computers to learn from data without explicit programming (Arthur Samuel, 1959). It involves the development of algorithms capable of recognizing patterns in data and making decisions based on statistical analysis, probability theory, combinatorics, and optimization techniques.</p>
 <p>This discussion begins with an exploration of perceptrons and ADALINE (Adaptive Linear Neuron), which are part of single-layer neural networks. The perceptron is the first algorithmically defined learning algorithm and serves as an intuitive, easy-to-implement introduction to modern machine learning algorithms, particularly artificial neural networks (or “deep learning”). ADALINE, an improvement on the perceptron, provides an excellent opportunity to understand gradient descent, a widely-used optimization method in machine learning.</p>
 <section id="introduction" class="level3" data-number="1.1.1">
-<h3 data-number="1.1.1"><span class="header-section-number">1.1.1</span> Introduction</h3>
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1.1.1</span> Introduction</h3>
 <p><strong>Artificial Neural Networks (ANNs)</strong> are a class of computational models inspired by the biological neural networks in the human brain. These models have revolutionized numerous fields, including machine learning, computer vision, natural language processing, and data analytics, by mimicking the complex processing power of the human brain in a simplified computational framework. ANNs are at the core of deep learning algorithms, enabling machines to learn from vast amounts of data, recognize patterns, and make decisions with little to no human intervention.</p>
 <p>The concept of ANNs can be traced back to the 1940s when pioneers like Warren McCulloch and Walter Pitts introduced the first simplified model of the neuron. In more intuitive terms, neurons can be understood as the subunits of a neural network in a biological brain. Here, the signals of variable magnitudes arrive at the dendrites. Those input signals are then accumulated in the cell body of the neuron, and if the accumulated signal exceeds a certain threshold, a output signal is generated that which will be passed on by the axon. This model, known as the <strong>McCulloch-Pitts neuron</strong>, was a logical abstraction that represented a binary decision-making process based on weighted inputs. However, it wasn’t until the 1980s, with the development of the backpropagation algorithm by Geoffrey Hinton and others, that ANNs began to demonstrate significant potential for learning complex patterns and tasks.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class='callout-icon'></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Key Concepts in Artificial Neural Networks
@@ -314,11 +332,11 @@ Key Concepts in Artificial Neural Networks
 </div>
 </section>
 <section id="historical-development-and-evolution" class="level3" data-number="1.1.2">
-<h3 data-number="1.1.2"><span class="header-section-number">1.1.2</span> Historical Development and Evolution</h3>
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="historical-development-and-evolution"><span class="header-section-number">1.1.2</span> Historical Development and Evolution</h3>
 <p>The origins of neural networks lie in the early 20th century, with key milestones such as the <strong>Perceptron</strong> (developed by Frank Rosenblatt in 1958) and the <strong>Backpropagation Algorithm</strong> (1986), which was a breakthrough in training multilayer networks. The development of the <strong>Deep Learning</strong> paradigm in the 2000s, fueled by advances in computing power, large datasets, and efficient algorithms, further accelerated the application of ANNs. Notable examples include <strong>Convolutional Neural Networks (CNNs)</strong> for image recognition and <strong>Recurrent Neural Networks (RNNs)</strong> for sequence modeling, such as speech and language processing.</p>
 </section>
 <section id="modern-applications-of-artificial-neural-networks" class="level3" data-number="1.1.3">
-<h3 data-number="1.1.3"><span class="header-section-number">1.1.3</span> Modern Applications of Artificial Neural Networks</h3>
+<h3 data-number="1.1.3" class="anchored" data-anchor-id="modern-applications-of-artificial-neural-networks"><span class="header-section-number">1.1.3</span> Modern Applications of Artificial Neural Networks</h3>
 <p>In recent years, the ability of ANNs to perform high-level tasks has grown substantially. Some of the transformative applications include:</p>
 <ul>
 <li><strong>Computer Vision</strong>: ANNs are used in image classification, object detection, facial recognition, and medical image analysis.</li>
@@ -329,7 +347,7 @@ Key Concepts in Artificial Neural Networks
 </ul>
 </section>
 <section id="challenges-and-future-directions" class="level3" data-number="1.1.4">
-<h3 data-number="1.1.4"><span class="header-section-number">1.1.4</span> Challenges and Future Directions</h3>
+<h3 data-number="1.1.4" class="anchored" data-anchor-id="challenges-and-future-directions"><span class="header-section-number">1.1.4</span> Challenges and Future Directions</h3>
 <p>Despite their powerful capabilities, ANNs face several challenges:</p>
 <ul>
 <li><strong>Overfitting</strong>: Neural networks can become too specialized to the training data, losing the ability to generalize to new, unseen data.</li>
@@ -340,12 +358,12 @@ Key Concepts in Artificial Neural Networks
 </section>
 </section>
 <section id="perceptron" class="level2" data-number="1.2">
-<h2 data-number="1.2"><span class="header-section-number">1.2</span> Perceptron</h2>
-<p>To continue with the story, a few years after McCulloch and Walter Pitt, Frank Rosenblatt published the first concept of the Perceptron learning rule. The perceptron is one of the earliest neural network models <span class="citation" data-cites="rosenblatt1957perceptron">(<a href="#ref-rosenblatt1957perceptron" role="doc-biblioref">Rosenblatt 1957</a>)</span>.</p>
+<h2 data-number="1.2" class="anchored" data-anchor-id="perceptron"><span class="header-section-number">1.2</span> Perceptron</h2>
+<p>To continue with the story, a few years after McCulloch and Walter Pitt, Frank Rosenblatt published the first concept of the Perceptron learning rule. The perceptron is one of the earliest neural network models <span class="citation" data-cites="rosenblatt1957perceptron">(<a href="references.html#ref-rosenblatt1957perceptron" role="doc-biblioref">Rosenblatt 1957</a>)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class='callout-icon'></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Frank Rosenblatt’s Perceptron
@@ -357,11 +375,11 @@ Frank Rosenblatt’s Perceptron
 </div>
 <p>It models a single artificial neuron capable of binary classification for linearly separable data. Despite its limitations, the perceptron laid the foundation for more complex architectures like Multilayer Perceptrons (MLPs) and deep neural networks, which use sigmoid neurons for non-linear decision boundaries.</p>
 <section id="perceptron-model" class="level3" data-number="1.2.1">
-<h3 data-number="1.2.1"><span class="header-section-number">1.2.1</span> Perceptron Model</h3>
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="perceptron-model"><span class="header-section-number">1.2.1</span> Perceptron Model</h3>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
-<p><figure class=''></p>
+<p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph TD
     X1(Input X1) --&gt; W1(Weight W1)
@@ -384,7 +402,7 @@ Frank Rosenblatt’s Perceptron
     class W1,W2,Wn weight;
 </pre>
 </div>
-<p></figure></p>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -398,14 +416,14 @@ z = \sum_{i=1}^n w_i x_i + b
 \]</span></p>
 </section>
 <section id="perceptron-learning-rule" class="level3" data-number="1.2.2">
-<h3 data-number="1.2.2"><span class="header-section-number">1.2.2</span> Perceptron Learning Rule</h3>
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="perceptron-learning-rule"><span class="header-section-number">1.2.2</span> Perceptron Learning Rule</h3>
 <p>Weights are updated iteratively based on the error: <span class="math display">\[
 w_i \gets w_i + \eta (y - \hat{y}) x_i
 \]</span> where <span class="math inline">\(\eta\)</span> is the learning rate.</p>
 </section>
 <section id="perceptron-algorithm" class="level3" data-number="1.2.3">
-<h3 data-number="1.2.3"><span class="header-section-number">1.2.3</span> Perceptron Algorithm</h3>
-<p><strong>Input:</strong> A dataset <span class="math inline">\(D = \{(x_i, y_i)\}\)</span>, where <span class="math inline">\(x_i\)</span> is the feature vector and <span class="math inline">\(y_i\in \{+1,-1\}\)</span> is the label.<br />
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="perceptron-algorithm"><span class="header-section-number">1.2.3</span> Perceptron Algorithm</h3>
+<p><strong>Input:</strong> A dataset <span class="math inline">\(D = \{(x_i, y_i)\}\)</span>, where <span class="math inline">\(x_i\)</span> is the feature vector and <span class="math inline">\(y_i\in \{+1,-1\}\)</span> is the label.<br>
 <strong>Output:</strong> A weight vector <span class="math inline">\(\mathbf{w}\)</span>.</p>
 <ol type="1">
 <li>Initialize <span class="math inline">\(\mathbf{w} = \mathbf{0}\)</span>.</li>
@@ -426,7 +444,7 @@ w_i \gets w_i + \eta (y - \hat{y}) x_i
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class='callout-icon'></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Perceptron Convergence
@@ -438,13 +456,13 @@ Perceptron Convergence
 </div>
 </section>
 <section id="perceptron-theorem-and-margin" class="level3" data-number="1.2.4">
-<h3 data-number="1.2.4"><span class="header-section-number">1.2.4</span> Perceptron Theorem and Margin</h3>
+<h3 data-number="1.2.4" class="anchored" data-anchor-id="perceptron-theorem-and-margin"><span class="header-section-number">1.2.4</span> Perceptron Theorem and Margin</h3>
 <p>The <strong>Perceptron Mistake Bound Theorem</strong> states that the Perceptron algorithm makes at most <span class="math inline">\(\frac{1}{\gamma^2}\)</span> updates (mistakes), where <span class="math inline">\(\gamma\)</span> is the margin of separability of the data. The <strong>margin</strong> is defined as the smallest distance between any data point and the decision boundary, normalized by the magnitude of the weight vector: <span class="math display">\[
 \gamma = \frac{\min_{i} y_i (\mathbf{w}^T \mathbf{x_i})}{\|\mathbf{w}\|}
 \]</span> where: - <span class="math inline">\(\mathbf{w}\)</span> is the weight vector. - <span class="math inline">\(\mathbf{x_i}\)</span> is a data point. - <span class="math inline">\(y_i\)</span> is the corresponding label ((+1) or (-1)).</p>
 </section>
 <section id="implications-of-the-theorem" class="level3" data-number="1.2.5">
-<h3 data-number="1.2.5"><span class="header-section-number">1.2.5</span> Implications of the Theorem</h3>
+<h3 data-number="1.2.5" class="anchored" data-anchor-id="implications-of-the-theorem"><span class="header-section-number">1.2.5</span> Implications of the Theorem</h3>
 <ol type="1">
 <li><p><strong>Large Margin is Desirable</strong>:</p>
 <ul>
@@ -459,7 +477,7 @@ Perceptron Convergence
 </ol>
 </section>
 <section id="characterizing-data-sets-for-fast-convergence" class="level3" data-number="1.2.6">
-<h3 data-number="1.2.6"><span class="header-section-number">1.2.6</span> Characterizing Data Sets for Fast Convergence</h3>
+<h3 data-number="1.2.6" class="anchored" data-anchor-id="characterizing-data-sets-for-fast-convergence"><span class="header-section-number">1.2.6</span> Characterizing Data Sets for Fast Convergence</h3>
 <p>Datasets for which the Perceptron algorithm converges quickly share the following properties:</p>
 <ol type="1">
 <li><p><strong>Large Margin</strong>:</p>
@@ -475,15 +493,15 @@ Perceptron Convergence
 </ol>
 </section>
 <section id="example-of-a-dataset-with-large-margin" class="level3" data-number="1.2.7">
-<h3 data-number="1.2.7"><span class="header-section-number">1.2.7</span> Example of a Dataset with Large Margin</h3>
+<h3 data-number="1.2.7" class="anchored" data-anchor-id="example-of-a-dataset-with-large-margin"><span class="header-section-number">1.2.7</span> Example of a Dataset with Large Margin</h3>
 <p>Consider the following dataset in two-dimensional space:</p>
 <ul>
 <li>Positive class (<span class="math inline">\(y_i = +1\)</span>): Points <span class="math inline">\((3, 3), (4, 4), (5, 5)\)</span>.</li>
 <li>Negative class (<span class="math inline">\(y_i = -1\)</span>): Points <span class="math inline">\((-3, -3), (-4, -4), (-5, -5)\)</span>.</li>
 </ul>
 <p>The data is linearly separable with a large margin (distance between closest points and the decision boundary).</p>
-<div id="e32ce116" class="cell" data-execution_count="1">
-<div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<div id="7dfa2940" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Dataset</span></span>
@@ -502,381 +520,221 @@ Perceptron Convergence
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> <span class="op">-</span>(w[<span class="dv">0</span>] <span class="op">*</span> x1 <span class="op">+</span> b) <span class="op">/</span> w[<span class="dv">1</span>]</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the dataset</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>plt.scatter(positive_points[:, <span class="dv">0</span>], positive_points[:, <span class="dv">1</span>], color<span class="op">=</span><span class="st">&#39;blue&#39;</span>, label<span class="op">=</span><span class="st">&#39;Positive Class ($y=+1$)&#39;</span>, s<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>plt.scatter(negative_points[:, <span class="dv">0</span>], negative_points[:, <span class="dv">1</span>], color<span class="op">=</span><span class="st">&#39;red&#39;</span>, label<span class="op">=</span><span class="st">&#39;Negative Class ($y=-1$)&#39;</span>, s<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>plt.scatter(positive_points[:, <span class="dv">0</span>], positive_points[:, <span class="dv">1</span>], color<span class="op">=</span><span class="st">'blue'</span>, label<span class="op">=</span><span class="st">'Positive Class ($y=+1$)'</span>, s<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>plt.scatter(negative_points[:, <span class="dv">0</span>], negative_points[:, <span class="dv">1</span>], color<span class="op">=</span><span class="st">'red'</span>, label<span class="op">=</span><span class="st">'Negative Class ($y=-1$)'</span>, s<span class="op">=</span><span class="dv">100</span>)</span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the decision boundary (hyperplane)</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>plt.plot(x1, x2, color<span class="op">=</span><span class="st">&#39;black&#39;</span>, linestyle<span class="op">=</span><span class="st">&#39;--&#39;</span>, label<span class="op">=</span><span class="st">&#39;Decision Boundary ($w^T x = 0$)&#39;</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>plt.plot(x1, x2, color<span class="op">=</span><span class="st">'black'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, label<span class="op">=</span><span class="st">'Decision Boundary ($w^T x = 0$)'</span>)</span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Formatting the plot</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">&#39;black&#39;</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>, linestyle<span class="op">=</span><span class="st">&#39;-&#39;</span>)</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>plt.axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">&#39;black&#39;</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>, linestyle<span class="op">=</span><span class="st">&#39;-&#39;</span>)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>plt.axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>plt.grid(alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&#39;Linearly Separable Dataset with Perceptron Decision Boundary&#39;</span>)</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;$x_1$&#39;</span>)</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;$x_2$&#39;</span>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Linearly Separable Dataset with Perceptron Decision Boundary'</span>)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'$x_1$'</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'$x_2$'</span>)</span>
 <span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="op">-</span><span class="dv">6</span>, <span class="dv">6</span>)</span>
 <span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="dv">6</span>, <span class="dv">6</span>)</span>
 <span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
-<figure>
-<p><img src="intro_files/figure-html/cell-2-output-1.png" width="592" height="449" /></p>
+<figure class="figure">
+<p><img src="intro_files/figure-html/cell-2-output-1.png" width="592" height="449" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<!-- ### Visualization of Large vs. Small Margins
-
-The following diagrams illustrate the difference between datasets with large and small margins:
-
-
-
-
-
-
-
-::::::{.cell layout-align="default"}
-
-:::::{.cell-output-display}
-
-::::{}
-`<figure class=''>`{=html}
-
-:::{}
-
-<pre class="mermaid mermaid-js">graph TD
-    A[Decision Boundary] ---|Large Margin| C((Positive Class))
-    A ---|Large Margin| D((Negative Class))
-    subgraph Large Margin
-        C &amp; D
-    end
-
-    E[Decision Boundary] ---|Small Margin| G((Positive Class))
-    E ---|Small Margin| F((Negative Class))
-    subgraph Small Margin
-        G &amp; F
-    end
-``` --&gt;
-
-
-
-### Simulating `OR` gate using Perceptron
-
-```gukdy
-digraph perceptron {
-    // Nodes for the inputs
-    node [shape=ellipse, style=filled, fillcolor=lightblue];
-    input1 [label=&quot;x1&quot; width=0.5];
-    input2 [label=&quot;x2&quot; width=0.5];
-    bias [label=&quot;Bias (b)&quot; width=0.5, shape=ellipse, fillcolor=lightgreen];
-
-    // Nodes for the weights
-    weight1 [label=&quot;w1&quot; width=0.5];
-    weight2 [label=&quot;w2&quot; width=0.5];
-
-    // Node for the weighted sum
-    weighted_sum [label=&quot;w1 * x1 + w2 * x2 + b&quot; shape=rect width=1.5];
-
-    // Node for the activation step function
-    activation [label=&quot;Activation Step Function: f(x) = 1 if x &gt;= 0 else 0&quot; shape=rect width=2];
-
-    // Node for the output
-    output [label=&quot;y (Output)&quot; shape=ellipse, fillcolor=lightyellow];
-
-    // Connecting inputs to weights and weighted sum
-    input1 -&gt; weight1 [label=&quot;w1&quot;];
-    input2 -&gt; weight2 [label=&quot;w2&quot;];
-    weight1 -&gt; weighted_sum [label=&quot;* x1&quot;];
-    weight2 -&gt; weighted_sum [label=&quot;* x2&quot;];
-    bias -&gt; weighted_sum [label=&quot; + b&quot;];
-
-    // Weighted sum to activation step function
-    weighted_sum -&gt; activation [label=&quot;pass to&quot;];
-
-    // Activation function to output
-    activation -&gt; output [label=&quot;step function&quot;];
-
-    // Output label
-    output -&gt; output [label=&quot;y&quot;, color=black];
-}
-
-</pre>
-:::
-`</figure>`{=html}
-::::
-:::::
-::::::
-
-
-
-
-
-
-
-The following python code  will simulate the OR gate using the logic of perceptron.
-
-::: {#a2a7535e .cell execution_count=2}
-``` {.python .cell-code}
-import numpy as np
-
-# Step function (activation function)
-def step_function(x):
-    return 1 if x >= 0 else 0
-
-# Perceptron training algorithm
-def perceptron(X, y, learning_rate=0.1, epochs=10):
-    # Initialize weights and bias
-    weights = np.zeros(X.shape[1])
-    bias = 0
-    
-    # Training process
-    for epoch in range(epochs):
-        total_error = 0
-        for i in range(len(X)):
-            # Calculate weighted sum (z)
-            z = np.dot(X[i], weights) + bias
-            # Apply step function to get prediction
-            prediction = step_function(z)
-            
-            # Calculate error
-            error = y[i] - prediction
-            total_error += abs(error)
-            
-            # Update weights and bias based on the error
-            weights += learning_rate * error * X[i]
-            bias += learning_rate * error
-        
-        # Optionally, print the error for each epoch
-        print(f'Epoch {epoch + 1}: Total Error = {total_error}')
-    
-    return weights, bias
-
-# Perceptron test function
-def predict(X, weights, bias):
-    predictions = []
-    for i in range(len(X)):
-        z = np.dot(X[i], weights) + bias
-        prediction = step_function(z)
-        predictions.append(prediction)
-    return predictions
-
-# OR Gate Inputs and Outputs
-# Input X: [A, B] where A and B are the inputs
-# Output y: The corresponding OR operation output
-X = np.array([[0, 0],
-              [0, 1],
-              [1, 0],
-              [1, 1]])
-
-y = np.array([0, 1, 1, 1])  # OR gate outputs
-
-# Train the perceptron
-weights, bias = perceptron(X, y, learning_rate=0.1, epochs=10)
-
-# Test the perceptron
-predictions = predict(X, weights, bias)
-
-# Print predictions
-print("\nPredictions:")
-for i in range(len(X)):
-    print(f'Input: {X[i]}, Predicted Output: {predictions[i]}')
-```
-
-::: {.cell-output .cell-output-stdout}
-```
-Epoch 1: Total Error = 2
-Epoch 2: Total Error = 2
-Epoch 3: Total Error = 1
-Epoch 4: Total Error = 0
-Epoch 5: Total Error = 0
-Epoch 6: Total Error = 0
-Epoch 7: Total Error = 0
-Epoch 8: Total Error = 0
-Epoch 9: Total Error = 0
-Epoch 10: Total Error = 0
-
-Predictions:
-Input: [0 0], Predicted Output: 0
-Input: [0 1], Predicted Output: 1
-Input: [1 0], Predicted Output: 1
-Input: [1 1], Predicted Output: 1
-```
-:::
-:::
-
-
-### Simulating `AND` gate using a perceptron
-
-The perceptron model for an AND gate is shown below.
-
-
-
-
-
-
-
-::::::{.cell layout-align="default"}
-
-:::::{.cell-output-display}
-
-::::{}
-`<figure class=''>`{=html}
-
-:::{}
-```{=html}
+</section>
+<section id="simulating-or-gate-using-perceptron" class="level3" data-number="1.2.8">
+<h3 data-number="1.2.8" class="anchored" data-anchor-id="simulating-or-gate-using-perceptron"><span class="header-section-number">1.2.8</span> Simulating <code>OR</code> gate using Perceptron</h3>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
 <svg width="672" height="480" viewbox="0.00 0.00 303.15 399.20" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 395.2)">
 <title>perceptron</title>
 <polygon fill="white" stroke="transparent" points="-4,4 -4,-395.2 299.15,-395.2 299.15,4 -4,4"></polygon>
 <!-- input1 -->
 <g id="node1" class="node">
-<title>
-input1
-</title>
-<ellipse fill="lightblue" stroke="black" cx="64.57" cy="-373.2" rx="20.89" ry="18"></ellipse> <text text-anchor="middle" x="64.57" y="-369" font-family="Times,serif" font-size="14.00">x1</text> </g> <!-- weight1 --> <g id="node4" class="node">
-<title>
-weight1
-</title>
-<ellipse fill="lightblue" stroke="black" cx="64.57" cy="-284.4" rx="22.68" ry="18"></ellipse> <text text-anchor="middle" x="64.57" y="-280.2" font-family="Times,serif" font-size="14.00">w1</text> </g> <!-- input1&#45;&gt;weight1 --> <g id="edge1" class="edge">
-<title>
-input1-&gt;weight1
-</title>
-<path fill="none" stroke="black" d="M64.57,-355.05C64.57,-342.92 64.57,-326.42 64.57,-312.52"></path> <polygon fill="black" stroke="black" points="68.07,-312.51 64.57,-302.51 61.07,-312.51 68.07,-312.51"></polygon> <text text-anchor="middle" x="73.13" y="-324.6" font-family="Times,serif" font-size="14.00">w1</text> </g> <!-- input2 --> <g id="node2" class="node">
-<title>
-input2
-</title>
-<ellipse fill="lightblue" stroke="black" cx="230.57" cy="-373.2" rx="20.89" ry="18"></ellipse> <text text-anchor="middle" x="230.57" y="-369" font-family="Times,serif" font-size="14.00">x2</text> </g> <!-- weight2 --> <g id="node5" class="node">
-<title>
-weight2
-</title>
-<ellipse fill="lightblue" stroke="black" cx="230.57" cy="-284.4" rx="22.68" ry="18"></ellipse> <text text-anchor="middle" x="230.57" y="-280.2" font-family="Times,serif" font-size="14.00">w2</text> </g> <!-- input2&#45;&gt;weight2 --> <g id="edge2" class="edge">
-<title>
-input2-&gt;weight2
-</title>
-<path fill="none" stroke="black" d="M230.57,-355.05C230.57,-342.92 230.57,-326.42 230.57,-312.52"></path> <polygon fill="black" stroke="black" points="234.07,-312.51 230.57,-302.51 227.07,-312.51 234.07,-312.51"></polygon> <text text-anchor="middle" x="239.13" y="-324.6" font-family="Times,serif" font-size="14.00">w2</text> </g> <!-- bias --> <g id="node3" class="node">
-<title>
-bias
-</title>
-<ellipse fill="lightgreen" stroke="black" cx="147.57" cy="-284.4" rx="41.76" ry="18"></ellipse> <text text-anchor="middle" x="147.57" y="-280.2" font-family="Times,serif" font-size="14.00">Bias (b)</text> </g> <!-- weighted_sum --> <g id="node6" class="node">
-<title>
-weighted_sum
-</title>
-<polygon fill="lightblue" stroke="black" points="219.08,-213.6 76.06,-213.6 76.06,-177.6 219.08,-177.6 219.08,-213.6"></polygon> <text text-anchor="middle" x="147.57" y="-191.4" font-family="Times,serif" font-size="14.00">w1 * x1 + w2 * x2 + b</text> </g> <!-- bias&#45;&gt;weighted_sum --> <g id="edge5" class="edge">
-<title>
-bias-&gt;weighted_sum
-</title>
-<path fill="none" stroke="black" d="M147.57,-266.25C147.57,-254.12 147.57,-237.62 147.57,-223.72"></path> <polygon fill="black" stroke="black" points="151.07,-223.71 147.57,-213.71 144.07,-223.71 151.07,-223.71"></polygon> <text text-anchor="middle" x="158.52" y="-235.8" font-family="Times,serif" font-size="14.00"> + b</text> </g> <!-- weight1&#45;&gt;weighted_sum --> <g id="edge3" class="edge">
-<title>
-weight1-&gt;weighted_sum
-</title>
-<path fill="none" stroke="black" d="M77.91,-269.45C90.35,-256.44 109.19,-236.74 124.15,-221.1"></path> <polygon fill="black" stroke="black" points="126.75,-223.44 131.13,-213.8 121.69,-218.61 126.75,-223.44"></polygon> <text text-anchor="middle" x="125.82" y="-235.8" font-family="Times,serif" font-size="14.00">* x1</text> </g> <!-- weight2&#45;&gt;weighted_sum --> <g id="edge4" class="edge">
-<title>
-weight2-&gt;weighted_sum
-</title>
-<path fill="none" stroke="black" d="M217.24,-269.45C204.79,-256.44 185.95,-236.74 171,-221.1"></path> <polygon fill="black" stroke="black" points="173.46,-218.61 164.02,-213.8 168.4,-223.44 173.46,-218.61"></polygon> <text text-anchor="middle" x="208.82" y="-235.8" font-family="Times,serif" font-size="14.00">* x2</text> </g> <!-- activation --> <g id="node7" class="node">
-<title>
-activation
-</title>
-<polygon fill="lightblue" stroke="black" points="295.22,-124.8 -0.07,-124.8 -0.07,-88.8 295.22,-88.8 295.22,-124.8"></polygon> <text text-anchor="middle" x="147.57" y="-102.6" font-family="Times,serif" font-size="14.00">Activation Step Function: f(x) = 1 if x &gt;= 0 else 0</text> </g> <!-- weighted_sum&#45;&gt;activation --> <g id="edge6" class="edge">
-<title>
-weighted_sum-&gt;activation
-</title>
-<path fill="none" stroke="black" d="M147.57,-177.45C147.57,-165.32 147.57,-148.82 147.57,-134.92"></path> <polygon fill="black" stroke="black" points="151.07,-134.91 147.57,-124.91 144.07,-134.91 151.07,-134.91"></polygon> <text text-anchor="middle" x="166.82" y="-147" font-family="Times,serif" font-size="14.00">pass to</text> </g> <!-- output --> <g id="node8" class="node">
-<title>
-output
-</title>
-<ellipse fill="lightyellow" stroke="black" cx="147.57" cy="-18" rx="51.57" ry="18"></ellipse> <text text-anchor="middle" x="147.57" y="-13.8" font-family="Times,serif" font-size="14.00">y (Output)</text> </g> <!-- activation&#45;&gt;output --> <g id="edge7" class="edge">
-<title>
-activation-&gt;output
-</title>
-<path fill="none" stroke="black" d="M147.57,-88.65C147.57,-76.52 147.57,-60.02 147.57,-46.12"></path> <polygon fill="black" stroke="black" points="151.07,-46.11 147.57,-36.11 144.07,-46.11 151.07,-46.11"></polygon> <text text-anchor="middle" x="183.93" y="-58.2" font-family="Times,serif" font-size="14.00">step function</text> </g> <!-- output&#45;&gt;output --> <g id="edge8" class="edge">
-<title>
-output-&gt;output
-</title>
-<p><path fill="none" stroke="black" d="M193.71,-26.22C206.92,-25.9 217.11,-23.16 217.11,-18 217.11,-14.25 211.73,-11.78 203.72,-10.59"></path> <polygon fill="black" stroke="black" points="203.96,-7.1 193.71,-9.78 203.4,-14.07 203.96,-7.1"></polygon> <text text-anchor="middle" x="220.61" y="-13.8" font-family="Times,serif" font-size="14.00">y</text> </g> </g> </svg></p>
-<pre><code>:::
-`&lt;/figure&gt;`{=html}
-::::
-:::::
-::::::
-
-
-
-
-
-
-
-The python code for simulating the `AND` gate using the perceptron is shown below.
-
-::: {#768888b0 .cell execution_count=3}
-``` {.python .cell-code}
-import numpy as np
-
-# Step function (activation function)
-def step_function(x):
-    return 1 if x &gt;= 0 else 0
-
-# Perceptron training algorithm
-def perceptron(X, y, learning_rate=0.1, epochs=10):
-    # Initialize weights and bias
-    weights = np.zeros(X.shape[1])
-    bias = 0
-    
-    # Training process
-    for epoch in range(epochs):
-        total_error = 0
-        for i in range(len(X)):
-            # Calculate weighted sum (z)
-            z = np.dot(X[i], weights) + bias
-            # Apply step function to get prediction
-            prediction = step_function(z)
-            
-            # Calculate error
-            error = y[i] - prediction
-            total_error += abs(error)
-            
-            # Update weights and bias based on the error
-            weights += learning_rate * error * X[i]
-            bias += learning_rate * error
-        
-        # Optionally, print the error for each epoch
-        print(f&#39;Epoch {epoch + 1}: Total Error = {total_error}&#39;)
-    
-    return weights, bias
-
-# Perceptron test function
-def predict(X, weights, bias):
-    predictions = []
-    for i in range(len(X)):
-        z = np.dot(X[i], weights) + bias
-        prediction = step_function(z)
-        predictions.append(prediction)
-    return predictions
-
-# OR Gate Inputs and Outputs
-# Input X: [A, B] where A and B are the inputs
-# Output y: The corresponding OR operation output
-X = np.array([[0, 0],
-              [0, 1],
-              [1, 0],
-              [1, 1]])
-
-y = np.array([0, 1, 1, 1])  # OR gate outputs
-
-# Train the perceptron
-weights, bias = perceptron(X, y, learning_rate=0.1, epochs=10)
-
-# Test the perceptron
-predictions = predict(X, weights, bias)
-
-# Print predictions
-print(&quot;\nPredictions:&quot;)
-for i in range(len(X)):
-    print(f&#39;Input: {X[i]}, Predicted Output: {predictions[i]}&#39;)</code></pre>
+<title>input1</title>
+<ellipse fill="lightblue" stroke="black" cx="64.57" cy="-373.2" rx="20.89" ry="18"></ellipse>
+<text text-anchor="middle" x="64.57" y="-369" font-family="Times,serif" font-size="14.00">x1</text>
+</g>
+<!-- weight1 -->
+<g id="node4" class="node">
+<title>weight1</title>
+<ellipse fill="lightblue" stroke="black" cx="64.57" cy="-284.4" rx="22.68" ry="18"></ellipse>
+<text text-anchor="middle" x="64.57" y="-280.2" font-family="Times,serif" font-size="14.00">w1</text>
+</g>
+<!-- input1&#45;&gt;weight1 -->
+<g id="edge1" class="edge">
+<title>input1-&gt;weight1</title>
+<path fill="none" stroke="black" d="M64.57,-355.05C64.57,-342.92 64.57,-326.42 64.57,-312.52"></path>
+<polygon fill="black" stroke="black" points="68.07,-312.51 64.57,-302.51 61.07,-312.51 68.07,-312.51"></polygon>
+<text text-anchor="middle" x="73.13" y="-324.6" font-family="Times,serif" font-size="14.00">w1</text>
+</g>
+<!-- input2 -->
+<g id="node2" class="node">
+<title>input2</title>
+<ellipse fill="lightblue" stroke="black" cx="230.57" cy="-373.2" rx="20.89" ry="18"></ellipse>
+<text text-anchor="middle" x="230.57" y="-369" font-family="Times,serif" font-size="14.00">x2</text>
+</g>
+<!-- weight2 -->
+<g id="node5" class="node">
+<title>weight2</title>
+<ellipse fill="lightblue" stroke="black" cx="230.57" cy="-284.4" rx="22.68" ry="18"></ellipse>
+<text text-anchor="middle" x="230.57" y="-280.2" font-family="Times,serif" font-size="14.00">w2</text>
+</g>
+<!-- input2&#45;&gt;weight2 -->
+<g id="edge2" class="edge">
+<title>input2-&gt;weight2</title>
+<path fill="none" stroke="black" d="M230.57,-355.05C230.57,-342.92 230.57,-326.42 230.57,-312.52"></path>
+<polygon fill="black" stroke="black" points="234.07,-312.51 230.57,-302.51 227.07,-312.51 234.07,-312.51"></polygon>
+<text text-anchor="middle" x="239.13" y="-324.6" font-family="Times,serif" font-size="14.00">w2</text>
+</g>
+<!-- bias -->
+<g id="node3" class="node">
+<title>bias</title>
+<ellipse fill="lightgreen" stroke="black" cx="147.57" cy="-284.4" rx="41.76" ry="18"></ellipse>
+<text text-anchor="middle" x="147.57" y="-280.2" font-family="Times,serif" font-size="14.00">Bias (b)</text>
+</g>
+<!-- weighted_sum -->
+<g id="node6" class="node">
+<title>weighted_sum</title>
+<polygon fill="lightblue" stroke="black" points="219.08,-213.6 76.06,-213.6 76.06,-177.6 219.08,-177.6 219.08,-213.6"></polygon>
+<text text-anchor="middle" x="147.57" y="-191.4" font-family="Times,serif" font-size="14.00">w1 * x1 + w2 * x2 + b</text>
+</g>
+<!-- bias&#45;&gt;weighted_sum -->
+<g id="edge5" class="edge">
+<title>bias-&gt;weighted_sum</title>
+<path fill="none" stroke="black" d="M147.57,-266.25C147.57,-254.12 147.57,-237.62 147.57,-223.72"></path>
+<polygon fill="black" stroke="black" points="151.07,-223.71 147.57,-213.71 144.07,-223.71 151.07,-223.71"></polygon>
+<text text-anchor="middle" x="158.52" y="-235.8" font-family="Times,serif" font-size="14.00"> + b</text>
+</g>
+<!-- weight1&#45;&gt;weighted_sum -->
+<g id="edge3" class="edge">
+<title>weight1-&gt;weighted_sum</title>
+<path fill="none" stroke="black" d="M77.91,-269.45C90.35,-256.44 109.19,-236.74 124.15,-221.1"></path>
+<polygon fill="black" stroke="black" points="126.75,-223.44 131.13,-213.8 121.69,-218.61 126.75,-223.44"></polygon>
+<text text-anchor="middle" x="125.82" y="-235.8" font-family="Times,serif" font-size="14.00">* x1</text>
+</g>
+<!-- weight2&#45;&gt;weighted_sum -->
+<g id="edge4" class="edge">
+<title>weight2-&gt;weighted_sum</title>
+<path fill="none" stroke="black" d="M217.24,-269.45C204.79,-256.44 185.95,-236.74 171,-221.1"></path>
+<polygon fill="black" stroke="black" points="173.46,-218.61 164.02,-213.8 168.4,-223.44 173.46,-218.61"></polygon>
+<text text-anchor="middle" x="208.82" y="-235.8" font-family="Times,serif" font-size="14.00">* x2</text>
+</g>
+<!-- activation -->
+<g id="node7" class="node">
+<title>activation</title>
+<polygon fill="lightblue" stroke="black" points="295.22,-124.8 -0.07,-124.8 -0.07,-88.8 295.22,-88.8 295.22,-124.8"></polygon>
+<text text-anchor="middle" x="147.57" y="-102.6" font-family="Times,serif" font-size="14.00">Activation Step Function: f(x) = 1 if x &gt;= 0 else 0</text>
+</g>
+<!-- weighted_sum&#45;&gt;activation -->
+<g id="edge6" class="edge">
+<title>weighted_sum-&gt;activation</title>
+<path fill="none" stroke="black" d="M147.57,-177.45C147.57,-165.32 147.57,-148.82 147.57,-134.92"></path>
+<polygon fill="black" stroke="black" points="151.07,-134.91 147.57,-124.91 144.07,-134.91 151.07,-134.91"></polygon>
+<text text-anchor="middle" x="166.82" y="-147" font-family="Times,serif" font-size="14.00">pass to</text>
+</g>
+<!-- output -->
+<g id="node8" class="node">
+<title>output</title>
+<ellipse fill="lightyellow" stroke="black" cx="147.57" cy="-18" rx="51.57" ry="18"></ellipse>
+<text text-anchor="middle" x="147.57" y="-13.8" font-family="Times,serif" font-size="14.00">y (Output)</text>
+</g>
+<!-- activation&#45;&gt;output -->
+<g id="edge7" class="edge">
+<title>activation-&gt;output</title>
+<path fill="none" stroke="black" d="M147.57,-88.65C147.57,-76.52 147.57,-60.02 147.57,-46.12"></path>
+<polygon fill="black" stroke="black" points="151.07,-46.11 147.57,-36.11 144.07,-46.11 151.07,-46.11"></polygon>
+<text text-anchor="middle" x="183.93" y="-58.2" font-family="Times,serif" font-size="14.00">step function</text>
+</g>
+<!-- output&#45;&gt;output -->
+<g id="edge8" class="edge">
+<title>output-&gt;output</title>
+<path fill="none" stroke="black" d="M193.71,-26.22C206.92,-25.9 217.11,-23.16 217.11,-18 217.11,-14.25 211.73,-11.78 203.72,-10.59"></path>
+<polygon fill="black" stroke="black" points="203.96,-7.1 193.71,-9.78 203.4,-14.07 203.96,-7.1"></polygon>
+<text text-anchor="middle" x="220.61" y="-13.8" font-family="Times,serif" font-size="14.00">y</text>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>The following python code will simulate the OR gate using the logic of perceptron.</p>
+<div id="bee81480" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Step function (activation function)</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> step_function(x):</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="cf">if</span> x <span class="op">&gt;=</span> <span class="dv">0</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Perceptron training algorithm</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> perceptron(X, y, learning_rate<span class="op">=</span><span class="fl">0.1</span>, epochs<span class="op">=</span><span class="dv">10</span>):</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialize weights and bias</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    weights <span class="op">=</span> np.zeros(X.shape[<span class="dv">1</span>])</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    bias <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Training process</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(epochs):</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        total_error <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X)):</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Calculate weighted sum (z)</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>            z <span class="op">=</span> np.dot(X[i], weights) <span class="op">+</span> bias</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Apply step function to get prediction</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>            prediction <span class="op">=</span> step_function(z)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Calculate error</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>            error <span class="op">=</span> y[i] <span class="op">-</span> prediction</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>            total_error <span class="op">+=</span> <span class="bu">abs</span>(error)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Update weights and bias based on the error</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>            weights <span class="op">+=</span> learning_rate <span class="op">*</span> error <span class="op">*</span> X[i]</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>            bias <span class="op">+=</span> learning_rate <span class="op">*</span> error</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Optionally, print the error for each epoch</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'Epoch </span><span class="sc">{</span>epoch <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss">: Total Error = </span><span class="sc">{</span>total_error<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> weights, bias</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Perceptron test function</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> predict(X, weights, bias):</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    predictions <span class="op">=</span> []</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X)):</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>        z <span class="op">=</span> np.dot(X[i], weights) <span class="op">+</span> bias</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>        prediction <span class="op">=</span> step_function(z)</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>        predictions.append(prediction)</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> predictions</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="co"># OR Gate Inputs and Outputs</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Input X: [A, B] where A and B are the inputs</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Output y: The corresponding OR operation output</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">0</span>, <span class="dv">1</span>],</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">1</span>, <span class="dv">0</span>],</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">1</span>, <span class="dv">1</span>]])</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>])  <span class="co"># OR gate outputs</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Train the perceptron</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>weights, bias <span class="op">=</span> perceptron(X, y, learning_rate<span class="op">=</span><span class="fl">0.1</span>, epochs<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="co"># Test the perceptron</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>predictions <span class="op">=</span> predict(X, weights, bias)</span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="co"># Print predictions</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Predictions:"</span>)</span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X)):</span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Input: </span><span class="sc">{</span>X[i]<span class="sc">}</span><span class="ss">, Predicted Output: </span><span class="sc">{</span>predictions[i]<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Epoch 1: Total Error = 2
 Epoch 2: Total Error = 2
@@ -895,87 +753,370 @@ Input: [0 1], Predicted Output: 1
 Input: [1 0], Predicted Output: 1
 Input: [1 1], Predicted Output: 1</code></pre>
 </div>
-<p>:::</p>
+</div>
 </section>
-<section id="simulating-nor-gate-using-the-perceptron" class="level3" data-number="1.2.8">
-<h3 data-number="1.2.8"><span class="header-section-number">1.2.8</span> Simulating <code>NOR</code> gate using the Perceptron</h3>
-<p>Here is the Python code to simulate a perceptron for a <code>NOR</code> gate. The <code>NOR</code> gate is the negation of the <code>OR</code> gate, so it outputs 1 only when both inputs are 0.</p>
-<div id="40f7f8bd" class="cell" data-execution_count="4">
-<div class="sourceCode" id="cb4"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<section id="simulating-and-gate-using-a-perceptron" class="level3" data-number="1.2.9">
+<h3 data-number="1.2.9" class="anchored" data-anchor-id="simulating-and-gate-using-a-perceptron"><span class="header-section-number">1.2.9</span> Simulating <code>AND</code> gate using a perceptron</h3>
+<p>The perceptron model for an AND gate is shown below.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<svg width="672" height="480" viewbox="0.00 0.00 303.15 399.20" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 395.2)">
+<title>perceptron</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-395.2 299.15,-395.2 299.15,4 -4,4"></polygon>
+<!-- input1 -->
+<g id="node1" class="node">
+<title>input1</title>
+<ellipse fill="lightblue" stroke="black" cx="64.57" cy="-373.2" rx="20.89" ry="18"></ellipse>
+<text text-anchor="middle" x="64.57" y="-369" font-family="Times,serif" font-size="14.00">x1</text>
+</g>
+<!-- weight1 -->
+<g id="node4" class="node">
+<title>weight1</title>
+<ellipse fill="lightblue" stroke="black" cx="64.57" cy="-284.4" rx="22.68" ry="18"></ellipse>
+<text text-anchor="middle" x="64.57" y="-280.2" font-family="Times,serif" font-size="14.00">w1</text>
+</g>
+<!-- input1&#45;&gt;weight1 -->
+<g id="edge1" class="edge">
+<title>input1-&gt;weight1</title>
+<path fill="none" stroke="black" d="M64.57,-355.05C64.57,-342.92 64.57,-326.42 64.57,-312.52"></path>
+<polygon fill="black" stroke="black" points="68.07,-312.51 64.57,-302.51 61.07,-312.51 68.07,-312.51"></polygon>
+<text text-anchor="middle" x="73.13" y="-324.6" font-family="Times,serif" font-size="14.00">w1</text>
+</g>
+<!-- input2 -->
+<g id="node2" class="node">
+<title>input2</title>
+<ellipse fill="lightblue" stroke="black" cx="230.57" cy="-373.2" rx="20.89" ry="18"></ellipse>
+<text text-anchor="middle" x="230.57" y="-369" font-family="Times,serif" font-size="14.00">x2</text>
+</g>
+<!-- weight2 -->
+<g id="node5" class="node">
+<title>weight2</title>
+<ellipse fill="lightblue" stroke="black" cx="230.57" cy="-284.4" rx="22.68" ry="18"></ellipse>
+<text text-anchor="middle" x="230.57" y="-280.2" font-family="Times,serif" font-size="14.00">w2</text>
+</g>
+<!-- input2&#45;&gt;weight2 -->
+<g id="edge2" class="edge">
+<title>input2-&gt;weight2</title>
+<path fill="none" stroke="black" d="M230.57,-355.05C230.57,-342.92 230.57,-326.42 230.57,-312.52"></path>
+<polygon fill="black" stroke="black" points="234.07,-312.51 230.57,-302.51 227.07,-312.51 234.07,-312.51"></polygon>
+<text text-anchor="middle" x="239.13" y="-324.6" font-family="Times,serif" font-size="14.00">w2</text>
+</g>
+<!-- bias -->
+<g id="node3" class="node">
+<title>bias</title>
+<ellipse fill="lightgreen" stroke="black" cx="147.57" cy="-284.4" rx="41.76" ry="18"></ellipse>
+<text text-anchor="middle" x="147.57" y="-280.2" font-family="Times,serif" font-size="14.00">Bias (b)</text>
+</g>
+<!-- weighted_sum -->
+<g id="node6" class="node">
+<title>weighted_sum</title>
+<polygon fill="lightblue" stroke="black" points="219.08,-213.6 76.06,-213.6 76.06,-177.6 219.08,-177.6 219.08,-213.6"></polygon>
+<text text-anchor="middle" x="147.57" y="-191.4" font-family="Times,serif" font-size="14.00">w1 * x1 + w2 * x2 + b</text>
+</g>
+<!-- bias&#45;&gt;weighted_sum -->
+<g id="edge5" class="edge">
+<title>bias-&gt;weighted_sum</title>
+<path fill="none" stroke="black" d="M147.57,-266.25C147.57,-254.12 147.57,-237.62 147.57,-223.72"></path>
+<polygon fill="black" stroke="black" points="151.07,-223.71 147.57,-213.71 144.07,-223.71 151.07,-223.71"></polygon>
+<text text-anchor="middle" x="158.52" y="-235.8" font-family="Times,serif" font-size="14.00"> + b</text>
+</g>
+<!-- weight1&#45;&gt;weighted_sum -->
+<g id="edge3" class="edge">
+<title>weight1-&gt;weighted_sum</title>
+<path fill="none" stroke="black" d="M77.91,-269.45C90.35,-256.44 109.19,-236.74 124.15,-221.1"></path>
+<polygon fill="black" stroke="black" points="126.75,-223.44 131.13,-213.8 121.69,-218.61 126.75,-223.44"></polygon>
+<text text-anchor="middle" x="125.82" y="-235.8" font-family="Times,serif" font-size="14.00">* x1</text>
+</g>
+<!-- weight2&#45;&gt;weighted_sum -->
+<g id="edge4" class="edge">
+<title>weight2-&gt;weighted_sum</title>
+<path fill="none" stroke="black" d="M217.24,-269.45C204.79,-256.44 185.95,-236.74 171,-221.1"></path>
+<polygon fill="black" stroke="black" points="173.46,-218.61 164.02,-213.8 168.4,-223.44 173.46,-218.61"></polygon>
+<text text-anchor="middle" x="208.82" y="-235.8" font-family="Times,serif" font-size="14.00">* x2</text>
+</g>
+<!-- activation -->
+<g id="node7" class="node">
+<title>activation</title>
+<polygon fill="lightblue" stroke="black" points="295.22,-124.8 -0.07,-124.8 -0.07,-88.8 295.22,-88.8 295.22,-124.8"></polygon>
+<text text-anchor="middle" x="147.57" y="-102.6" font-family="Times,serif" font-size="14.00">Activation Step Function: f(x) = 1 if x &gt;= 0 else 0</text>
+</g>
+<!-- weighted_sum&#45;&gt;activation -->
+<g id="edge6" class="edge">
+<title>weighted_sum-&gt;activation</title>
+<path fill="none" stroke="black" d="M147.57,-177.45C147.57,-165.32 147.57,-148.82 147.57,-134.92"></path>
+<polygon fill="black" stroke="black" points="151.07,-134.91 147.57,-124.91 144.07,-134.91 151.07,-134.91"></polygon>
+<text text-anchor="middle" x="166.82" y="-147" font-family="Times,serif" font-size="14.00">pass to</text>
+</g>
+<!-- output -->
+<g id="node8" class="node">
+<title>output</title>
+<ellipse fill="lightyellow" stroke="black" cx="147.57" cy="-18" rx="51.57" ry="18"></ellipse>
+<text text-anchor="middle" x="147.57" y="-13.8" font-family="Times,serif" font-size="14.00">y (Output)</text>
+</g>
+<!-- activation&#45;&gt;output -->
+<g id="edge7" class="edge">
+<title>activation-&gt;output</title>
+<path fill="none" stroke="black" d="M147.57,-88.65C147.57,-76.52 147.57,-60.02 147.57,-46.12"></path>
+<polygon fill="black" stroke="black" points="151.07,-46.11 147.57,-36.11 144.07,-46.11 151.07,-46.11"></polygon>
+<text text-anchor="middle" x="183.93" y="-58.2" font-family="Times,serif" font-size="14.00">step function</text>
+</g>
+<!-- output&#45;&gt;output -->
+<g id="edge8" class="edge">
+<title>output-&gt;output</title>
+<path fill="none" stroke="black" d="M193.71,-26.22C206.92,-25.9 217.11,-23.16 217.11,-18 217.11,-14.25 211.73,-11.78 203.72,-10.59"></path>
+<polygon fill="black" stroke="black" points="203.96,-7.1 193.71,-9.78 203.4,-14.07 203.96,-7.1"></polygon>
+<text text-anchor="middle" x="220.61" y="-13.8" font-family="Times,serif" font-size="14.00">y</text>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>The python code for simulating the <code>AND</code> gate using the perceptron is shown below.</p>
+<div id="b64e4952" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the step function</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Step function (activation function)</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> step_function(x):</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="cf">if</span> x <span class="op">&gt;=</span> <span class="dv">0</span> <span class="cf">else</span> <span class="dv">0</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Perceptron class to simulate the NOR gate</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Perceptron:</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, input_size, learning_rate<span class="op">=</span><span class="fl">0.1</span>):</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Initialize weights and bias to zero</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.weights <span class="op">=</span> np.zeros(input_size)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.bias <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.learning_rate <span class="op">=</span> learning_rate</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> predict(<span class="va">self</span>, inputs):</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Calculate the weighted sum</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        weighted_sum <span class="op">=</span> np.dot(inputs, <span class="va">self</span>.weights) <span class="op">+</span> <span class="va">self</span>.bias</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Apply the step activation function</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> step_function(weighted_sum)</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> train(<span class="va">self</span>, inputs, targets, epochs<span class="op">=</span><span class="dv">10</span>):</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Train the perceptron using the input-output pairs</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(epochs):</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(inputs)):</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>                input_data <span class="op">=</span> inputs[i]</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>                target <span class="op">=</span> targets[i]</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Compute the prediction</span></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>                prediction <span class="op">=</span> <span class="va">self</span>.predict(input_data)</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Calculate the error</span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>                error <span class="op">=</span> target <span class="op">-</span> prediction</span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Update the weights and bias using the perceptron learning rule</span></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>                <span class="va">self</span>.weights <span class="op">+=</span> <span class="va">self</span>.learning_rate <span class="op">*</span> error <span class="op">*</span> input_data</span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>                <span class="va">self</span>.bias <span class="op">+=</span> <span class="va">self</span>.learning_rate <span class="op">*</span> error</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Perceptron training algorithm</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> perceptron(X, y, learning_rate<span class="op">=</span><span class="fl">0.1</span>, epochs<span class="op">=</span><span class="dv">10</span>):</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialize weights and bias</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    weights <span class="op">=</span> np.zeros(X.shape[<span class="dv">1</span>])</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    bias <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Training process</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(epochs):</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        total_error <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X)):</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Calculate weighted sum (z)</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>            z <span class="op">=</span> np.dot(X[i], weights) <span class="op">+</span> bias</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Apply step function to get prediction</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>            prediction <span class="op">=</span> step_function(z)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Calculate error</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>            error <span class="op">=</span> y[i] <span class="op">-</span> prediction</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>            total_error <span class="op">+=</span> <span class="bu">abs</span>(error)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Update weights and bias based on the error</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>            weights <span class="op">+=</span> learning_rate <span class="op">*</span> error <span class="op">*</span> X[i]</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>            bias <span class="op">+=</span> learning_rate <span class="op">*</span> error</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Optionally, print the error for each epoch</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'Epoch </span><span class="sc">{</span>epoch <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss">: Total Error = </span><span class="sc">{</span>total_error<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> weights, bias</span>
 <span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the input-output pairs for a NOR gate</span></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>inputs <span class="op">=</span> np.array([</span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>],  <span class="co"># Input: (0, 0)</span></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>],  <span class="co"># Input: (0, 1)</span></span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">0</span>],  <span class="co"># Input: (1, 0)</span></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">1</span>],  <span class="co"># Input: (1, 1)</span></span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Output of NOR gate</span></span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>targets <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>])</span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Create and train the perceptron</span></span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>perceptron <span class="op">=</span> Perceptron(input_size<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>perceptron.train(inputs, targets, epochs<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a><span class="co"># Test the trained perceptron on the inputs</span></span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Trained weights:&quot;</span>, perceptron.weights)</span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Trained bias:&quot;</span>, perceptron.bias)</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Perceptron test function</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> predict(X, weights, bias):</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    predictions <span class="op">=</span> []</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X)):</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>        z <span class="op">=</span> np.dot(X[i], weights) <span class="op">+</span> bias</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>        prediction <span class="op">=</span> step_function(z)</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>        predictions.append(prediction)</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> predictions</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="co"># OR Gate Inputs and Outputs</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Input X: [A, B] where A and B are the inputs</span></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Output y: The corresponding OR operation output</span></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">0</span>, <span class="dv">1</span>],</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">1</span>, <span class="dv">0</span>],</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">1</span>, <span class="dv">1</span>]])</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>])  <span class="co"># OR gate outputs</span></span>
 <span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Test the perceptron for all input combinations</span></span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> input_data <span class="kw">in</span> inputs:</span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>    prediction <span class="op">=</span> perceptron.predict(input_data)</span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;Input: </span><span class="sc">{</span>input_data<span class="sc">}</span><span class="ss">, Prediction: </span><span class="sc">{</span>prediction<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Train the perceptron</span></span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>weights, bias <span class="op">=</span> perceptron(X, y, learning_rate<span class="op">=</span><span class="fl">0.1</span>, epochs<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="co"># Test the perceptron</span></span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>predictions <span class="op">=</span> predict(X, weights, bias)</span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a><span class="co"># Print predictions</span></span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Predictions:"</span>)</span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X)):</span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Input: </span><span class="sc">{</span>X[i]<span class="sc">}</span><span class="ss">, Predicted Output: </span><span class="sc">{</span>predictions[i]<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Trained weights: [-0.1 -0.1]
-Trained bias: 0.0
-Input: [0 0], Prediction: 1
-Input: [0 1], Prediction: 0
-Input: [1 0], Prediction: 0
-Input: [1 1], Prediction: 0</code></pre>
+<pre><code>Epoch 1: Total Error = 2
+Epoch 2: Total Error = 2
+Epoch 3: Total Error = 1
+Epoch 4: Total Error = 0
+Epoch 5: Total Error = 0
+Epoch 6: Total Error = 0
+Epoch 7: Total Error = 0
+Epoch 8: Total Error = 0
+Epoch 9: Total Error = 0
+Epoch 10: Total Error = 0
+
+Predictions:
+Input: [0 0], Predicted Output: 0
+Input: [0 1], Predicted Output: 1
+Input: [1 0], Predicted Output: 1
+Input: [1 1], Predicted Output: 1</code></pre>
 </div>
 </div>
-<p>This code will train the perceptron to simulate the <code>NOR</code> gate and test it for all possible input combinations. The weights and bias will be adjusted during training to ensure the perceptron correctly implements the <code>NOR</code> gate behavior.</p>
 </section>
-<section id="perceptron-fails" class="level3" data-number="1.2.9">
-<h3 data-number="1.2.9"><span class="header-section-number">1.2.9</span> Perceptron fails!</h3>
+<section id="simulating-all-logic-gates-using-the-perceptron" class="level3" data-number="1.2.10">
+<h3 data-number="1.2.10" class="anchored" data-anchor-id="simulating-all-logic-gates-using-the-perceptron"><span class="header-section-number">1.2.10</span> Simulating all logic gates using the Perceptron</h3>
+<p>Here is the Python code to simulate all logic gates.</p>
+<div id="2cfb7322" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Perceptron:</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, input_dim, learning_rate<span class="op">=</span><span class="fl">0.01</span>):</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.input_dim <span class="op">=</span> input_dim</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.learning_rate <span class="op">=</span> learning_rate</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Include bias weight with size (input_dim + 1)</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.weights <span class="op">=</span> np.random.randn(input_dim <span class="op">+</span> <span class="dv">1</span>) <span class="op">*</span> <span class="fl">0.01</span>  <span class="co"># +1 for the bias term</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> activation(<span class="va">self</span>, net_input):</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">        Apply the activation function (step function).</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">        Parameters:</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">        net_input (numpy.ndarray): Net input values.</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co">        Returns:</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co">        numpy.ndarray: Activated output (0 or 1).</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.where(net_input <span class="op">&gt;</span> <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> predict(<span class="va">self</span>, X):</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co">        Perform a forward pass to calculate the output of the perceptron.</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="co">        Parameters:</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="co">        X (numpy.ndarray): Input data of shape (n_samples, input_dim).</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="co">        Returns:</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="co">        numpy.ndarray: Predicted binary outputs (0 or 1), shape (n_samples,).</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Ensure X is a 2D array (n_samples, n_features)</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> X.ndim <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>            X <span class="op">=</span> X.reshape(<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>)  <span class="co"># Reshape if it's a single sample</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Add bias term to input before predicting</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>        X_bias <span class="op">=</span> np.c_[X, np.ones(X.shape[<span class="dv">0</span>])]  <span class="co"># Add bias column for prediction</span></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>        net_input <span class="op">=</span> np.dot(X_bias, <span class="va">self</span>.weights)  <span class="co"># Dot product with weights</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.activation(net_input)</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> train(<span class="va">self</span>, X, y, epochs<span class="op">=</span><span class="dv">100</span>):</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a><span class="co">        Train the perceptron using the provided data.</span></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="co">        Parameters:</span></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="co">        X (numpy.ndarray): Input data of shape (n_samples, input_dim).</span></span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a><span class="co">        y (numpy.ndarray): Target labels of shape (n_samples,).</span></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="co">        epochs (int): Number of iterations over the dataset.</span></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(epochs):</span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> xi, yi <span class="kw">in</span> <span class="bu">zip</span>(X, y):</span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>                xi_bias <span class="op">=</span> np.append(xi, <span class="dv">1</span>)  <span class="co"># Add bias term manually for training</span></span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Compute the weighted sum (net input) directly here</span></span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>                weighted_input <span class="op">=</span> np.dot(xi_bias, <span class="va">self</span>.weights)  <span class="co"># Dot product with weights</span></span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>                prediction <span class="op">=</span> <span class="va">self</span>.activation(weighted_input)  <span class="co"># Apply activation</span></span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>                error <span class="op">=</span> yi <span class="op">-</span> prediction  <span class="co"># Compute error</span></span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>                <span class="va">self</span>.weights <span class="op">+=</span> <span class="va">self</span>.learning_rate <span class="op">*</span> error <span class="op">*</span> xi_bias  <span class="co"># Update weights</span></span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Non-member function to simulate logic gates</span></span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> simulate_logic_gate(gate_type):</span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a><span class="co">    Simulate a logic gate using the Perceptron.</span></span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters:</span></span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a><span class="co">    gate_type (str): The type of logic gate ('AND', 'OR', 'NAND', 'NOR', 'XOR').</span></span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a><span class="co">    Prints the results of the simulation.</span></span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define input and target outputs for different gates</span></span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">1</span>, <span class="dv">1</span>]])</span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a>    gate_targets <span class="op">=</span> {</span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a>        <span class="st">'AND'</span>: np.array([<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>]),</span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a>        <span class="st">'OR'</span>: np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>]),</span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a>        <span class="st">'NAND'</span>: np.array([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>]),</span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>        <span class="st">'NOR'</span>: np.array([<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>]),</span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>        <span class="st">'XOR'</span>: np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>])</span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> gate_type <span class="kw">not</span> <span class="kw">in</span> gate_targets:</span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Unsupported gate type: </span><span class="sc">{</span>gate_type<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span></span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a>    <span class="co">#if gate_type == 'XOR':</span></span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a>    <span class="co">#    print(f"Warning: XOR is not linearly separable and cannot be solved by a single perceptron!")</span></span>
+<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a>    <span class="co">#    return</span></span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> gate_targets[gate_type]</span>
+<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialize perceptron</span></span>
+<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a>    perceptron <span class="op">=</span> Perceptron(input_dim<span class="op">=</span><span class="dv">2</span>, learning_rate<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Train perceptron</span></span>
+<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a>    perceptron.train(X, y, epochs<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Test predictions</span></span>
+<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Simulating </span><span class="sc">{</span>gate_type<span class="sc">}</span><span class="ss"> gate"</span>)</span>
+<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Trained weights:"</span>, perceptron.weights[:<span class="op">-</span><span class="dv">1</span>])  <span class="co"># Exclude bias term from display</span></span>
+<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Trained bias:"</span>, perceptron.weights[<span class="op">-</span><span class="dv">1</span>])  <span class="co"># Display bias term separately</span></span>
+<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(X.shape[<span class="dv">0</span>]):  <span class="co"># Iterate over the rows of X (4 samples)</span></span>
+<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a>        input_data <span class="op">=</span> X[i]  <span class="co"># Extract the i-th row as a 1D array</span></span>
+<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a>        prediction <span class="op">=</span> perceptron.predict(input_data)  <span class="co"># Make prediction</span></span>
+<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Input: </span><span class="sc">{</span>input_data<span class="sc">}</span><span class="ss">, Prediction: </span><span class="sc">{</span>prediction<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Simulate AND, OR, NAND, NOR, and XOR gates</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The simulation program is executed below:</p>
+<div id="007e2b09" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> gate <span class="kw">in</span> [<span class="st">'AND'</span>, <span class="st">'OR'</span>, <span class="st">'NAND'</span>, <span class="st">'NOR'</span>, <span class="st">'XOR'</span>]:</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    simulate_logic_gate(gate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simulating AND gate
+Trained weights: [0.11262198 0.09298842]
+Trained bias: -0.19887294528878693
+Input: [0 0], Prediction: [0]
+Input: [0 1], Prediction: [0]
+Input: [1 0], Prediction: [0]
+Input: [1 1], Prediction: [1]
+Simulating OR gate
+Trained weights: [0.10369566 0.02418294]
+Trained bias: -0.007659814941975762
+Input: [0 0], Prediction: [0]
+Input: [0 1], Prediction: [1]
+Input: [1 0], Prediction: [1]
+Input: [1 1], Prediction: [1]
+Simulating NAND gate
+Trained weights: [-0.21646565 -0.08162443]
+Trained bias: 0.2176378629239772
+Input: [0 0], Prediction: [1]
+Input: [0 1], Prediction: [1]
+Input: [1 0], Prediction: [1]
+Input: [1 1], Prediction: [0]
+Simulating NOR gate
+Trained weights: [-0.18683978 -0.19066502]
+Trained bias: 0.09576565500747368
+Input: [0 0], Prediction: [1]
+Input: [0 1], Prediction: [0]
+Input: [1 0], Prediction: [0]
+Input: [1 1], Prediction: [0]
+Simulating XOR gate
+Trained weights: [-0.093218    0.00658952]
+Trained bias: 0.004269994653485071
+Input: [0 0], Prediction: [1]
+Input: [0 1], Prediction: [1]
+Input: [1 0], Prediction: [0]
+Input: [1 1], Prediction: [0]</code></pre>
+</div>
+</div>
 <p>whether the perceptron win on XOR gate? No, the perceptron cannot learn the XOR gate. This is a well-known limitation of the perceptron model, and it’s related to the fact that the XOR function is non-linearly separable.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class='callout-icon'></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Perceptron fails!
@@ -986,14 +1127,23 @@ Perceptron fails!
 <p>If you try to plot these points, you’ll see that you can’t separate the positive examples (output 1) from the negative examples (output 0) with a single straight line.</p>
 </div>
 </div>
-</section>
-<section id="perceptron-neuron--the-foundation-of-modern-machine-learning" class="level3" data-number="1.2.10">
-<h3 data-number="1.2.10"><span class="header-section-number">1.2.10</span> Perceptron neuron- the foundation of modern Machine Learning</h3>
+<p>As solution to this problem, we need the cocept of Multi-layer perceptron.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Perceptron neuron- the foundation of modern Machine Learning
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>The Perceptron model, introduced by Frank Rosenblatt in 1958, marked one of the earliest developments in artificial intelligence and neural networks. Initially conceived as a model for pattern recognition and early neural computation, the Perceptron was designed to simulate a biological neuron, learning to classify inputs into two categories through a simple linear decision boundary. Despite its early promise, the limitations of the basic Perceptron were exposed in the 1960s, particularly its inability to solve non-linearly separable problems, famously highlighted in Marvin Minsky and Seymour Papert’s book Perceptrons (1969). However, with the advent of more sophisticated algorithms and architectures, such as multi-layer perceptrons (MLPs) and the backpropagation algorithm in the 1980s, the Perceptron concept was revitalized. Today, it forms the foundational concept for deep learning models and modern neural networks, which are widely applied in various fields, including image and speech recognition, natural language processing, and autonomous systems, demonstrating its enduring relevance and adaptability in tackling complex, non-linear real-world problems.</p>
-<hr />
+</div>
+</div>
 </section>
 <section id="introduction-to-the-sigmoid-activation-function" class="level3" data-number="1.2.11">
-<h3 data-number="1.2.11"><span class="header-section-number">1.2.11</span> Introduction to the Sigmoid Activation Function</h3>
+<h3 data-number="1.2.11" class="anchored" data-anchor-id="introduction-to-the-sigmoid-activation-function"><span class="header-section-number">1.2.11</span> Introduction to the Sigmoid Activation Function</h3>
 <p>The <strong>sigmoid function</strong>, defined as</p>
 <p><span class="math display">\[
 \sigma(x) = \frac{1}{1 + e^{-x}},
@@ -1001,19 +1151,19 @@ Perceptron fails!
 <p>maps any real-valued input to an output between 0 and 1, making it ideal for binary classification tasks. It has played a pivotal role in the development of neural networks, especially in overcoming the limitations of the <strong>step function</strong> used in early perceptrons.</p>
 </section>
 <section id="historical-context" class="level3" data-number="1.2.12">
-<h3 data-number="1.2.12"><span class="header-section-number">1.2.12</span> Historical Context</h3>
+<h3 data-number="1.2.12" class="anchored" data-anchor-id="historical-context"><span class="header-section-number">1.2.12</span> Historical Context</h3>
 <p>In the 1950s, <strong>Frank Rosenblatt’s perceptron</strong> used the step function, which works well for linearly separable problems but fails with more complex datasets, like the XOR problem. The introduction of the <strong>sigmoid activation function</strong> in the 1980s addressed this by enabling smooth decision boundaries and facilitating the <strong>backpropagation</strong> algorithm, allowing neural networks to learn from data effectively.</p>
 </section>
 <section id="relevance-to-modern-neural-networks" class="level3" data-number="1.2.13">
-<h3 data-number="1.2.13"><span class="header-section-number">1.2.13</span> Relevance to Modern Neural Networks</h3>
+<h3 data-number="1.2.13" class="anchored" data-anchor-id="relevance-to-modern-neural-networks"><span class="header-section-number">1.2.13</span> Relevance to Modern Neural Networks</h3>
 <p>The sigmoid function’s differentiability makes it ideal for <strong>gradient-based optimization</strong>, which is essential for training deep neural networks. Its output is a <strong>probability</strong>, making it suitable for <strong>binary classification</strong> problems. Additionally, the derivative of the sigmoid is easy to compute:</p>
 <p><span class="math display">\[
-\sigma&#39;(x) = \sigma(x)(1 - \sigma(x)),
+\sigma'(x) = \sigma(x)(1 - \sigma(x)),
 \]</span></p>
 <p>which aids in <strong>backpropagation</strong> by allowing efficient weight updates. Despite some limitations, such as the <strong>vanishing gradient problem</strong>, the sigmoid function is widely used in the output layers of networks for tasks requiring probabilistic outputs.</p>
 </section>
 <section id="applications" class="level3" data-number="1.2.14">
-<h3 data-number="1.2.14"><span class="header-section-number">1.2.14</span> Applications</h3>
+<h3 data-number="1.2.14" class="anchored" data-anchor-id="applications"><span class="header-section-number">1.2.14</span> Applications</h3>
 <ul>
 <li><strong>Binary classification</strong> (e.g., logistic regression).</li>
 <li><strong>Output layer</strong> in neural networks for binary classification.</li>
@@ -1022,14 +1172,14 @@ Perceptron fails!
 <p>While alternatives like <strong>ReLU</strong> are often used in deeper layers due to the vanishing gradient problem, sigmoid remains a powerful tool for <strong>probabilistic predictions</strong>.</p>
 </section>
 <section id="sigmoid-neuron" class="level3" data-number="1.2.15">
-<h3 data-number="1.2.15"><span class="header-section-number">1.2.15</span> Sigmoid Neuron</h3>
+<h3 data-number="1.2.15" class="anchored" data-anchor-id="sigmoid-neuron"><span class="header-section-number">1.2.15</span> Sigmoid Neuron</h3>
 <p>The sigmoid neuron replaces the step function with the sigmoid function: <span class="math display">\[
 \sigma(z) = \frac{1}{1 + e^{-z}}
 \]</span> This allows for smooth gradients, enabling the use of backpropagation for training MLPs.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
-<p><figure class=''></p>
+<p></p><figure class="figure"><p></p>
 <div>
 <svg width="672" height="480" viewbox="0.00 0.00 640.98 279.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 275)">
@@ -1040,15 +1190,15 @@ Perceptron fails!
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="109.21,-46 109.21,-263 171.97,-263 171.97,-46 109.21,-46"></polygon>
 <text text-anchor="middle" x="140.59" y="-246.4" font-family="Times,serif" font-size="14.00">Weights</text>
 </g>
-<g id="clust4" class="cluster">
-<title>cluster_output</title>
-<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="541.98,-83 541.98,-160 632.98,-160 632.98,-83 541.98,-83"></polygon>
-<text text-anchor="middle" x="587.48" y="-143.4" font-family="Times,serif" font-size="14.00">Output Layer</text>
-</g>
 <g id="clust3" class="cluster">
 <title>cluster_neuron</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="200.71,-83 200.71,-160 521.98,-160 521.98,-83 200.71,-83"></polygon>
 <text text-anchor="middle" x="361.34" y="-143.4" font-family="Times,serif" font-size="14.00">Sigmoid Neuron</text>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_output</title>
+<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="541.98,-83 541.98,-160 632.98,-160 632.98,-83 541.98,-83"></polygon>
+<text text-anchor="middle" x="587.48" y="-143.4" font-family="Times,serif" font-size="14.00">Output Layer</text>
 </g>
 <g id="clust1" class="cluster">
 <title>cluster_input</title>
@@ -1172,138 +1322,393 @@ Perceptron fails!
 </g>
 </svg>
 </div>
-<p></figure></p>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
-<p>Following python code demonstrate the effective use of the sigmoid activation function in the simulation of an <code>AND</code> gate.</p>
-<div id="58d4d137" class="cell" data-execution_count="5">
-<div class="sourceCode" id="cb6"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Sigmoid activation function</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sigmoid(x):</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>x))</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Derivative of sigmoid for gradient calculation</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sigmoid_derivative(x):</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> x)</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the training inputs and outputs (AND gate)</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">0</span>, <span class="dv">1</span>],</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">1</span>, <span class="dv">0</span>],</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">1</span>, <span class="dv">1</span>]])</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([[<span class="dv">0</span>], [<span class="dv">0</span>], [<span class="dv">0</span>], [<span class="dv">1</span>]])  <span class="co"># Expected output for AND gate</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize weights and bias randomly</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>weights <span class="op">=</span> np.random.rand(<span class="dv">2</span>, <span class="dv">1</span>)  <span class="co"># Random weights for 2 inputs</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>bias <span class="op">=</span> np.random.rand(<span class="dv">1</span>)  <span class="co"># Random bias</span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Learning rate</span></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>learning_rate <span class="op">=</span> <span class="fl">0.1</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Training the perceptron</span></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10000</span>):  <span class="co"># Number of iterations</span></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Forward pass</span></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    weighted_sum <span class="op">=</span> np.dot(X, weights) <span class="op">+</span> bias</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    output <span class="op">=</span> sigmoid(weighted_sum)</span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compute error</span></span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>    error <span class="op">=</span> y <span class="op">-</span> output</span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Backpropagation (Gradient Descent)</span></span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    adjustment <span class="op">=</span> error <span class="op">*</span> sigmoid_derivative(output)</span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    weights <span class="op">+=</span> np.dot(X.T, adjustment) <span class="op">*</span> learning_rate</span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>    bias <span class="op">+=</span> np.<span class="bu">sum</span>(adjustment) <span class="op">*</span> learning_rate</span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Optional: Print the error at intervals</span></span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> epoch <span class="op">%</span> <span class="dv">1000</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f&quot;Epoch </span><span class="sc">{</span>epoch<span class="sc">}</span><span class="ss">, Error: </span><span class="sc">{</span>np<span class="sc">.</span>mean(np.<span class="bu">abs</span>(error))<span class="sc">}</span><span class="ss">&quot;</span>)</span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Testing the perceptron</span></span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">Final Output After Training:&quot;</span>)</span>
-<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X)):</span>
-<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;Input: </span><span class="sc">{</span>X[i]<span class="sc">}</span><span class="ss"> =&gt; Predicted Output: </span><span class="sc">{</span><span class="bu">round</span>(output[i][<span class="dv">0</span>])<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<p>Following python code demonstrate the effective use of the sigmoid activation function in the simulation of logic gates.</p>
+<div id="58ef4f02" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Perceptron:</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, input_dim, learning_rate<span class="op">=</span><span class="fl">0.01</span>):</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.input_dim <span class="op">=</span> input_dim</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.learning_rate <span class="op">=</span> learning_rate</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Initialize weights including bias term (input_dim + 1)</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.weights <span class="op">=</span> np.random.randn(input_dim <span class="op">+</span> <span class="dv">1</span>) <span class="op">*</span> <span class="fl">0.01</span>  <span class="co"># +1 for bias</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> sigmoid(<span class="va">self</span>, x):</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">        Sigmoid activation function.</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>x))</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> sigmoid_derivative(<span class="va">self</span>, x):</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co">        Derivative of sigmoid function.</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> x <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> x)</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> activation(<span class="va">self</span>, net_input):</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="co">        Apply sigmoid activation function to net input.</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.sigmoid(net_input)</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> predict(<span class="va">self</span>, X):</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="co">        Predict the output for given input data using the perceptron.</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> X.ndim <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>            X <span class="op">=</span> X.reshape(<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>)  <span class="co"># Reshape if it's a single sample</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Add bias term for prediction</span></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>        X_bias <span class="op">=</span> np.c_[X, np.ones(X.shape[<span class="dv">0</span>])]</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>        net_input <span class="op">=</span> np.dot(X_bias, <span class="va">self</span>.weights)  <span class="co"># Calculate net input</span></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>        output <span class="op">=</span> <span class="va">self</span>.activation(net_input)  <span class="co"># Apply sigmoid activation</span></span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Apply threshold: if output &gt; 0.5, interpret as 1; else 0</span></span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.where(output <span class="op">&gt;</span> <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> train(<span class="va">self</span>, X, y, epochs<span class="op">=</span><span class="dv">100</span>):</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a><span class="co">        Train the perceptron using the provided data.</span></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(epochs):</span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> xi, yi <span class="kw">in</span> <span class="bu">zip</span>(X, y):</span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>                xi_bias <span class="op">=</span> np.append(xi, <span class="dv">1</span>)  <span class="co"># Add bias term to input</span></span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>                net_input <span class="op">=</span> np.dot(xi_bias, <span class="va">self</span>.weights)  <span class="co"># Calculate net input</span></span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>                prediction <span class="op">=</span> <span class="va">self</span>.activation(net_input)  <span class="co"># Get the prediction</span></span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>                error <span class="op">=</span> yi <span class="op">-</span> prediction  <span class="co"># Calculate error</span></span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Update weights using the gradient of the sigmoid function</span></span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>                <span class="va">self</span>.weights <span class="op">+=</span> <span class="va">self</span>.learning_rate <span class="op">*</span> error <span class="op">*</span> prediction <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> prediction) <span class="op">*</span> xi_bias</span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Non-member function to simulate logic gates</span></span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> simulate_logic_gate(gate_type):</span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a><span class="co">    Simulate a logic gate using the Perceptron.</span></span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define input and target outputs for different gates</span></span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">1</span>, <span class="dv">1</span>]])</span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a>    gate_targets <span class="op">=</span> {</span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a>        <span class="st">'AND'</span>: np.array([<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>]),</span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a>        <span class="st">'OR'</span>: np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>]),</span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a>        <span class="st">'NAND'</span>: np.array([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>]),</span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a>        <span class="st">'NOR'</span>: np.array([<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>]),</span>
+<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a>        <span class="st">'XOR'</span>: np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>])</span>
+<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> gate_type <span class="kw">not</span> <span class="kw">in</span> gate_targets:</span>
+<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Unsupported gate type: </span><span class="sc">{</span>gate_type<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span></span>
+<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> gate_targets[gate_type]</span>
+<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialize perceptron</span></span>
+<span id="cb9-76"><a href="#cb9-76" aria-hidden="true" tabindex="-1"></a>    perceptron <span class="op">=</span> Perceptron(input_dim<span class="op">=</span><span class="dv">2</span>, learning_rate<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Train perceptron</span></span>
+<span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a>    perceptron.train(X, y, epochs<span class="op">=</span><span class="dv">1000</span>)</span>
+<span id="cb9-80"><a href="#cb9-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Test predictions</span></span>
+<span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Simulating </span><span class="sc">{</span>gate_type<span class="sc">}</span><span class="ss"> gate"</span>)</span>
+<span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Trained weights:"</span>, perceptron.weights[:<span class="op">-</span><span class="dv">1</span>])  <span class="co"># Exclude bias term from display</span></span>
+<span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Trained bias:"</span>, perceptron.weights[<span class="op">-</span><span class="dv">1</span>])  <span class="co"># Display bias term separately</span></span>
+<span id="cb9-85"><a href="#cb9-85" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(X.shape[<span class="dv">0</span>]):  <span class="co"># Iterate over the rows of X (4 samples)</span></span>
+<span id="cb9-86"><a href="#cb9-86" aria-hidden="true" tabindex="-1"></a>        input_data <span class="op">=</span> X[i]  <span class="co"># Extract the i-th row as a 1D array</span></span>
+<span id="cb9-87"><a href="#cb9-87" aria-hidden="true" tabindex="-1"></a>        prediction <span class="op">=</span> perceptron.predict(input_data)  <span class="co"># Make prediction</span></span>
+<span id="cb9-88"><a href="#cb9-88" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Input: </span><span class="sc">{</span>input_data<span class="sc">}</span><span class="ss">, Prediction: </span><span class="sc">{</span>prediction<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-89"><a href="#cb9-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-90"><a href="#cb9-90" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb9-91"><a href="#cb9-91" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Simulate AND, OR, NAND, NOR, and XOR gates</span></span>
+<span id="cb9-92"><a href="#cb9-92" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> gate <span class="kw">in</span> [<span class="st">'AND'</span>, <span class="st">'OR'</span>, <span class="st">'NAND'</span>, <span class="st">'NOR'</span>, <span class="st">'XOR'</span>]:</span>
+<span id="cb9-93"><a href="#cb9-93" aria-hidden="true" tabindex="-1"></a>        simulate_logic_gate(gate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Epoch 0, Error: 0.5923234502365134
-Epoch 1000, Error: 0.16130954986149626
-Epoch 2000, Error: 0.11045897479574096
-Epoch 3000, Error: 0.08776530096590449
-Epoch 4000, Error: 0.07450655892916584
-Epoch 5000, Error: 0.06564525258676851
-Epoch 6000, Error: 0.05922317766312858
-Epoch 7000, Error: 0.054309987622387694
-Epoch 8000, Error: 0.050402833046618495
-Epoch 9000, Error: 0.04720420004038013
-
-Final Output After Training:
-Input: [0 0] =&gt; Predicted Output: 0
-Input: [0 1] =&gt; Predicted Output: 0
-Input: [1 0] =&gt; Predicted Output: 0
-Input: [1 1] =&gt; Predicted Output: 1</code></pre>
+<pre><code>Simulating AND gate
+Trained weights: [2.62309388 2.6194227 ]
+Trained bias: -4.050791211775599
+Input: [0 0], Prediction: [0]
+Input: [0 1], Prediction: [0]
+Input: [1 0], Prediction: [0]
+Input: [1 1], Prediction: [1]
+Simulating OR gate
+Trained weights: [3.31012503 3.3123277 ]
+Trained bias: -1.344992276739625
+Input: [0 0], Prediction: [0]
+Input: [0 1], Prediction: [1]
+Input: [1 0], Prediction: [1]
+Input: [1 1], Prediction: [1]
+Simulating NAND gate
+Trained weights: [-2.62395284 -2.62025949]
+Trained bias: 4.052044483013805
+Input: [0 0], Prediction: [1]
+Input: [0 1], Prediction: [1]
+Input: [1 0], Prediction: [1]
+Input: [1 1], Prediction: [0]
+Simulating NOR gate
+Trained weights: [-3.31104963 -3.31291529]
+Trained bias: 1.3454067756039982
+Input: [0 0], Prediction: [1]
+Input: [0 1], Prediction: [0]
+Input: [1 0], Prediction: [0]
+Input: [1 1], Prediction: [0]
+Simulating XOR gate
+Trained weights: [-0.02471927 -0.0121694 ]
+Trained bias: 0.012072798575764522
+Input: [0 0], Prediction: [1]
+Input: [0 1], Prediction: [0]
+Input: [1 0], Prediction: [0]
+Input: [1 1], Prediction: [0]</code></pre>
+</div>
+</div>
+<p>Simulation code is here:</p>
+<div id="fb2d82a4" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> gate <span class="kw">in</span> [<span class="st">'AND'</span>, <span class="st">'OR'</span>, <span class="st">'NAND'</span>, <span class="st">'NOR'</span>, <span class="st">'XOR'</span>]:</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    simulate_logic_gate(gate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simulating AND gate
+Trained weights: [2.62428146 2.62061396]
+Trained bias: -4.0525493022492824
+Input: [0 0], Prediction: [0]
+Input: [0 1], Prediction: [0]
+Input: [1 0], Prediction: [0]
+Input: [1 1], Prediction: [1]
+Simulating OR gate
+Trained weights: [3.30876877 3.31082381]
+Trained bias: -1.3442087086967496
+Input: [0 0], Prediction: [0]
+Input: [0 1], Prediction: [1]
+Input: [1 0], Prediction: [1]
+Input: [1 1], Prediction: [1]
+Simulating NAND gate
+Trained weights: [-2.62492669 -2.62125415]
+Trained bias: 4.053499310453409
+Input: [0 0], Prediction: [1]
+Input: [0 1], Prediction: [1]
+Input: [1 0], Prediction: [1]
+Input: [1 1], Prediction: [0]
+Simulating NOR gate
+Trained weights: [-3.306929  -3.3087901]
+Trained bias: 1.3431474046058611
+Input: [0 0], Prediction: [1]
+Input: [0 1], Prediction: [0]
+Input: [1 0], Prediction: [0]
+Input: [1 1], Prediction: [0]
+Simulating XOR gate
+Trained weights: [-0.02466203 -0.01212047]
+Trained bias: 0.012009358730162501
+Input: [0 0], Prediction: [1]
+Input: [0 1], Prediction: [0]
+Input: [1 0], Prediction: [0]
+Input: [1 1], Prediction: [0]</code></pre>
 </div>
 </div>
 </section>
 </section>
 <section id="important-theorems-and-results" class="level2" data-number="1.3">
-<h2 data-number="1.3"><span class="header-section-number">1.3</span> Important Theorems and Results</h2>
+<h2 data-number="1.3" class="anchored" data-anchor-id="important-theorems-and-results"><span class="header-section-number">1.3</span> Important Theorems and Results</h2>
 <ol type="1">
 <li><strong>Perceptron Convergence Theorem</strong>: If the data is linearly separable, the perceptron will converge to a solution in a finite number of steps.</li>
 <li><strong>Universal Approximation Theorem</strong>: An MLP with a single hidden layer and non-linear activation functions can approximate any continuous function.</li>
 </ol>
-<hr />
+<hr>
 </section>
 <section id="examples" class="level2" data-number="1.4">
-<h2 data-number="1.4"><span class="header-section-number">1.4</span> Examples</h2>
+<h2 data-number="1.4" class="anchored" data-anchor-id="examples"><span class="header-section-number">1.4</span> Examples</h2>
 <section id="simple-example-perceptron-for-and-gate" class="level3" data-number="1.4.1">
-<h3 data-number="1.4.1"><span class="header-section-number">1.4.1</span> Simple Example: Perceptron for AND Gate</h3>
-<div id="19df6141" class="cell" data-execution_count="6">
-<div class="sourceCode" id="cb8"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Inputs (x1, x2) and outputs (y)</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">1</span>, <span class="dv">1</span>]])</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>])  <span class="co"># AND Gate Output</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize weights and bias</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>weights <span class="op">=</span> np.random.rand(<span class="dv">2</span>)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>bias <span class="op">=</span> np.random.rand(<span class="dv">1</span>)</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>learning_rate <span class="op">=</span> <span class="fl">0.1</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Activation function</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> step_function(z):</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="cf">if</span> z <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="dv">0</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Training loop</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):  <span class="co"># 10 epochs</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X)):</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>        z <span class="op">=</span> np.dot(X[i], weights) <span class="op">+</span> bias</span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>        y_pred <span class="op">=</span> step_function(z)</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>        error <span class="op">=</span> y[i] <span class="op">-</span> y_pred</span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>        weights <span class="op">+=</span> learning_rate <span class="op">*</span> error <span class="op">*</span> X[i]</span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>        bias <span class="op">+=</span> learning_rate <span class="op">*</span> error</span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Trained Weights: </span><span class="sc">{</span>weights<span class="sc">}</span><span class="ss">, Bias: </span><span class="sc">{</span>bias<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="simple-example-perceptron-for-and-gate"><span class="header-section-number">1.4.1</span> Simple Example: Perceptron for AND Gate</h3>
+<div id="096f33fd" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Inputs (x1, x2) and outputs (y)</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">1</span>, <span class="dv">1</span>]])</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>])  <span class="co"># AND Gate Output</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize weights and bias</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>weights <span class="op">=</span> np.random.rand(<span class="dv">2</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>bias <span class="op">=</span> np.random.rand(<span class="dv">1</span>)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>learning_rate <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Activation function</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> step_function(z):</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="cf">if</span> z <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Training loop</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):  <span class="co"># 10 epochs</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X)):</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>        z <span class="op">=</span> np.dot(X[i], weights) <span class="op">+</span> bias</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>        y_pred <span class="op">=</span> step_function(z)</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>        error <span class="op">=</span> y[i] <span class="op">-</span> y_pred</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>        weights <span class="op">+=</span> learning_rate <span class="op">*</span> error <span class="op">*</span> X[i]</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>        bias <span class="op">+=</span> learning_rate <span class="op">*</span> error</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Trained Weights: </span><span class="sc">{</span>weights<span class="sc">}</span><span class="ss">, Bias: </span><span class="sc">{</span>bias<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Trained Weights: [0.42205191 0.25619644], Bias: [-0.61774719]</code></pre>
+<pre><code>Trained Weights: [0.25284271 0.26625436], Bias: [-0.44964703]</code></pre>
 </div>
 </div>
-<div id="quarto-navigation-envelope" class="hidden">
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="quarto-int-sidebar-title">24DS-DL</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="quarto-int-navbar-title">24DS-DL</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="quarto-int-next"><span class="chapter-number">2</span>  <span class="chapter-title">Summary</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="quarto-int-prev">Preface</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="quarto-int-sidebar:/index.htmlPreface">Preface</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="quarto-int-sidebar:/intro.html&lt;span-class=&#39;chapter-number&#39;&gt;1&lt;/span&gt;--&lt;span-class=&#39;chapter-title&#39;&gt;Basics-of-Artificial-Neural-Network&lt;/span&gt;"><span class="chapter-number">1</span>  <span class="chapter-title">Basics of Artificial Neural Network</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="quarto-int-sidebar:/summary.html&lt;span-class=&#39;chapter-number&#39;&gt;2&lt;/span&gt;--&lt;span-class=&#39;chapter-title&#39;&gt;Summary&lt;/span&gt;"><span class="chapter-number">2</span>  <span class="chapter-title">Summary</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="quarto-int-sidebar:/references.htmlReferences">References</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="quarto-breadcrumbs-&lt;span-class=&#39;chapter-number&#39;&gt;1&lt;/span&gt;--&lt;span-class=&#39;chapter-title&#39;&gt;Basics-of-Artificial-Neural-Network&lt;/span&gt;"><span class="chapter-number">1</span>  <span class="chapter-title">Basics of Artificial Neural Network</span></span></p>
+</section>
+</section>
+<section id="the-perceptron-and-the-xor-problem" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="the-perceptron-and-the-xor-problem"><span class="header-section-number">1.5</span> The Perceptron and the XOR Problem</h2>
+<p>In the early stages of neural network research, the <strong>perceptron</strong> was introduced as a simple model to classify linearly separable patterns. A perceptron consists of a single neuron, which receives input, applies weights, sums them up, and passes the result through an activation function to produce an output. For problems that can be linearly separated, a perceptron performs exceptionally well.</p>
+<p>However, the perceptron faced a significant limitation: it cannot solve problems that are not linearly separable. A classic example is the <strong>XOR (exclusive OR) gate</strong>. The XOR gate outputs <code>1</code> only when the inputs are different (i.e., for inputs <code>(0,1)</code> or <code>(1,0)</code>), and outputs <code>0</code> when the inputs are the same (i.e., for inputs <code>(0,0)</code> or <code>(1,1)</code>). This pattern is not linearly separable, meaning it cannot be solved by a single perceptron, as the data cannot be separated with a straight line.</p>
+<section id="why-the-perceptron-fails-at-xor" class="level3" data-number="1.5.1">
+<h3 data-number="1.5.1" class="anchored" data-anchor-id="why-the-perceptron-fails-at-xor"><span class="header-section-number">1.5.1</span> Why the Perceptron Fails at XOR</h3>
+<p>For the XOR gate, the following input-output pairs exist:</p>
+<ul>
+<li>(0, 0) → 0</li>
+<li>(0, 1) → 1</li>
+<li>(1, 0) → 1</li>
+<li>(1, 1) → 0</li>
+</ul>
+<p>If you try to plot these points on a 2D plane, you’ll notice that no straight line can separate the <code>1</code> outputs from the <code>0</code> outputs, making the XOR problem an example of a <strong>non-linearly separable</strong> problem. This is where the perceptron fails.</p>
+</section>
+</section>
+<section id="multi-layer-perceptron-mlp" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="multi-layer-perceptron-mlp"><span class="header-section-number">1.6</span> Multi-Layer Perceptron (MLP)</h2>
+<p>To overcome the limitations of the perceptron, we need a more powerful model that can learn non-linear decision boundaries. The <strong>Multi-Layer Perceptron (MLP)</strong> addresses this limitation by introducing multiple layers of neurons. Unlike a single perceptron, an MLP has:</p>
+<ol type="1">
+<li><strong>Input Layer</strong>: Receives the input features (in this case, the two binary inputs of the XOR gate).</li>
+<li><strong>Hidden Layers</strong>: One or more layers of neurons that allow the network to learn complex, non-linear mappings from input to output.</li>
+<li><strong>Output Layer</strong>: Produces the final prediction (in this case, the XOR output).</li>
+</ol>
+<p>The addition of hidden layers and the use of non-linear activation functions (such as <strong>sigmoid</strong> or <strong>ReLU</strong>) enables the MLP to learn and model non-linear relationships. This makes MLPs capable of solving the XOR problem, as the network can form non-linear decision boundaries.</p>
+<section id="why-mlp-can-solve-xor" class="level3" data-number="1.6.1">
+<h3 data-number="1.6.1" class="anchored" data-anchor-id="why-mlp-can-solve-xor"><span class="header-section-number">1.6.1</span> Why MLP Can Solve XOR</h3>
+<p>The MLP can learn the XOR function by introducing <strong>hidden layers</strong> that allow it to combine the inputs in non-linear ways. A network with just one hidden layer is sufficient to approximate the XOR gate. The hidden layer transforms the inputs into a higher-dimensional space where the problem becomes linearly separable, allowing the output layer to make correct predictions.</p>
+</section>
+</section>
+<section id="implementing-xor-with-mlp" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="implementing-xor-with-mlp"><span class="header-section-number">1.7</span> Implementing XOR with MLP</h2>
+<p>With the MLP’s ability to model non-linearly separable data, we can now implement the XOR gate. The MLP will consist of:</p>
+<ul>
+<li>An <strong>input layer</strong> that takes in two binary values.</li>
+<li>A <strong>hidden layer</strong> that helps in learning the non-linear relationship.</li>
+<li>An <strong>output layer</strong> that produces the binary XOR result.</li>
+</ul>
+<p>We will train the MLP on the four possible inputs for the XOR gate and use backpropagation to update the weights in the network, eventually enabling the MLP to predict the XOR output correctly.</p>
+<p>In the next code implementation, we will implement the XOR gate using an MLP, demonstrating how the network can learn the XOR function through training.</p>
+<div id="511f96ca" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Perceptron:</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, input_dim, output_dim, activation<span class="op">=</span><span class="st">"sigmoid"</span>):</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.input_dim <span class="op">=</span> input_dim</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.output_dim <span class="op">=</span> output_dim</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.activation <span class="op">=</span> activation</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.weights <span class="op">=</span> np.random.randn(input_dim, output_dim)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.biases <span class="op">=</span> np.zeros((<span class="dv">1</span>, output_dim))</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, inputs):</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.inputs <span class="op">=</span> inputs  <span class="co"># Store inputs for later use in backpropagation</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>        z <span class="op">=</span> np.dot(inputs, <span class="va">self</span>.weights) <span class="op">+</span> <span class="va">self</span>.biases</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.activation <span class="op">==</span> <span class="st">"sigmoid"</span>:</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.output <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>z))  <span class="co"># Store output for backpropagation</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">self</span>.output</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.activation <span class="op">==</span> <span class="st">"relu"</span>:</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.output <span class="op">=</span> np.maximum(<span class="dv">0</span>, z)</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">self</span>.output</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:  <span class="co"># Linear activation by default</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.output <span class="op">=</span> z</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">self</span>.output</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> backward(<span class="va">self</span>, output_error, learning_rate):</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.activation <span class="op">==</span> <span class="st">"sigmoid"</span>:</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>            activation_derivative <span class="op">=</span> <span class="va">self</span>.output <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> <span class="va">self</span>.output)</span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.activation <span class="op">==</span> <span class="st">"relu"</span>:</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>            activation_derivative <span class="op">=</span> np.where(<span class="va">self</span>.output <span class="op">&gt;</span> <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:  <span class="co"># Linear activation</span></span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>            activation_derivative <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>        delta <span class="op">=</span> output_error <span class="op">*</span> activation_derivative</span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>        input_error <span class="op">=</span> np.dot(delta, <span class="va">self</span>.weights.T)</span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Update weights and biases</span></span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.weights <span class="op">+=</span> learning_rate <span class="op">*</span> np.dot(<span class="va">self</span>.inputs.T, delta)</span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.biases <span class="op">+=</span> learning_rate <span class="op">*</span> np.<span class="bu">sum</span>(delta, axis<span class="op">=</span><span class="dv">0</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> input_error</span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MLP:</span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, input_dim, hidden_dim, output_dim, learning_rate<span class="op">=</span><span class="fl">0.1</span>):</span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.layers <span class="op">=</span> [</span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a>            Perceptron(input_dim, hidden_dim, activation<span class="op">=</span><span class="st">"sigmoid"</span>),</span>
+<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a>            Perceptron(hidden_dim, output_dim, activation<span class="op">=</span><span class="st">"sigmoid"</span>)</span>
+<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.learning_rate <span class="op">=</span> learning_rate</span>
+<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, X):</span>
+<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a>        output <span class="op">=</span> X</span>
+<span id="cb15-51"><a href="#cb15-51" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> layer <span class="kw">in</span> <span class="va">self</span>.layers:</span>
+<span id="cb15-52"><a href="#cb15-52" aria-hidden="true" tabindex="-1"></a>            output <span class="op">=</span> layer.forward(output)</span>
+<span id="cb15-53"><a href="#cb15-53" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> output</span>
+<span id="cb15-54"><a href="#cb15-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-55"><a href="#cb15-55" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> train(<span class="va">self</span>, X, y, epochs<span class="op">=</span><span class="dv">10000</span>):</span>
+<span id="cb15-56"><a href="#cb15-56" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(epochs):</span>
+<span id="cb15-57"><a href="#cb15-57" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Forward pass</span></span>
+<span id="cb15-58"><a href="#cb15-58" aria-hidden="true" tabindex="-1"></a>            output <span class="op">=</span> <span class="va">self</span>.forward(X)</span>
+<span id="cb15-59"><a href="#cb15-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-60"><a href="#cb15-60" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Backward pass (backpropagation)</span></span>
+<span id="cb15-61"><a href="#cb15-61" aria-hidden="true" tabindex="-1"></a>            error <span class="op">=</span> y <span class="op">-</span> output</span>
+<span id="cb15-62"><a href="#cb15-62" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> layer <span class="kw">in</span> <span class="bu">reversed</span>(<span class="va">self</span>.layers):</span>
+<span id="cb15-63"><a href="#cb15-63" aria-hidden="true" tabindex="-1"></a>                error <span class="op">=</span> layer.backward(error, <span class="va">self</span>.learning_rate)</span>
+<span id="cb15-64"><a href="#cb15-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-65"><a href="#cb15-65" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> epoch <span class="op">%</span> <span class="dv">1000</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb15-66"><a href="#cb15-66" aria-hidden="true" tabindex="-1"></a>                loss <span class="op">=</span> np.mean(np.square(y <span class="op">-</span> <span class="va">self</span>.forward(X)))</span>
+<span id="cb15-67"><a href="#cb15-67" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f'Epoch </span><span class="sc">{</span>epoch<span class="sc">}</span><span class="ss">, Loss: </span><span class="sc">{</span>loss<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb15-68"><a href="#cb15-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-69"><a href="#cb15-69" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> predict(<span class="va">self</span>, X):</span>
+<span id="cb15-70"><a href="#cb15-70" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.<span class="bu">round</span>(<span class="va">self</span>.forward(X))</span>
+<span id="cb15-71"><a href="#cb15-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-72"><a href="#cb15-72" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb15-73"><a href="#cb15-73" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> simulate_logic_gate(gate_type):</span>
+<span id="cb15-74"><a href="#cb15-74" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">1</span>, <span class="dv">1</span>]])</span>
+<span id="cb15-75"><a href="#cb15-75" aria-hidden="true" tabindex="-1"></a>    gate_targets <span class="op">=</span> {</span>
+<span id="cb15-76"><a href="#cb15-76" aria-hidden="true" tabindex="-1"></a>        <span class="st">'XOR'</span>: np.array([[<span class="dv">0</span>], [<span class="dv">1</span>], [<span class="dv">1</span>], [<span class="dv">0</span>]])  <span class="co"># XOR output</span></span>
+<span id="cb15-77"><a href="#cb15-77" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb15-78"><a href="#cb15-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-79"><a href="#cb15-79" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> gate_type <span class="kw">not</span> <span class="kw">in</span> gate_targets:</span>
+<span id="cb15-80"><a href="#cb15-80" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Unsupported gate type: </span><span class="sc">{</span>gate_type<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb15-81"><a href="#cb15-81" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span></span>
+<span id="cb15-82"><a href="#cb15-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-83"><a href="#cb15-83" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> gate_targets[gate_type]</span>
+<span id="cb15-84"><a href="#cb15-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-85"><a href="#cb15-85" aria-hidden="true" tabindex="-1"></a>    mlp <span class="op">=</span> MLP(input_dim<span class="op">=</span><span class="dv">2</span>, hidden_dim<span class="op">=</span><span class="dv">2</span>, output_dim<span class="op">=</span><span class="dv">1</span>, learning_rate<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb15-86"><a href="#cb15-86" aria-hidden="true" tabindex="-1"></a>    mlp.train(X, y, epochs<span class="op">=</span><span class="dv">10000</span>)</span>
+<span id="cb15-87"><a href="#cb15-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-88"><a href="#cb15-88" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Simulating </span><span class="sc">{</span>gate_type<span class="sc">}</span><span class="ss"> gate"</span>)</span>
+<span id="cb15-89"><a href="#cb15-89" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> input_data, prediction <span class="kw">in</span> <span class="bu">zip</span>(X, mlp.predict(X)):</span>
+<span id="cb15-90"><a href="#cb15-90" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Input: </span><span class="sc">{</span>input_data<span class="sc">}</span><span class="ss">, Prediction: </span><span class="sc">{</span>prediction<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb15-91"><a href="#cb15-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-92"><a href="#cb15-92" aria-hidden="true" tabindex="-1"></a>simulate_logic_gate(<span class="st">'XOR'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epoch 0, Loss: 0.30194681328147444
+Epoch 1000, Loss: 0.17389535986415205
+Epoch 2000, Loss: 0.03450050778762662
+Epoch 3000, Loss: 0.013043259751530981
+Epoch 4000, Loss: 0.00745217434563571
+Epoch 5000, Loss: 0.005084619440224751
+Epoch 6000, Loss: 0.0038135829123092176
+Epoch 7000, Loss: 0.0030312731085966266
+Epoch 8000, Loss: 0.0025053284874784077
+Epoch 9000, Loss: 0.0021292945901728024
+Simulating XOR gate
+Input: [0 0], Prediction: [0.]
+Input: [0 1], Prediction: [1.]
+Input: [1 0], Prediction: [1.]
+Input: [1 1], Prediction: [0.]</code></pre>
 </div>
-<div id="quarto-meta-markdown" class="hidden">
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="quarto-metatitle"><span class="chapter-number">1</span>  <span class="chapter-title">Basics of Artificial Neural Network</span> – 24DS-DL</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="quarto-twittercardtitle"><span class="chapter-number">1</span>  <span class="chapter-title">Basics of Artificial Neural Network</span> – 24DS-DL</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="quarto-ogcardtitle"><span class="chapter-number">1</span>  <span class="chapter-title">Basics of Artificial Neural Network</span> – 24DS-DL</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="quarto-metasitename">24DS-DL</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="quarto-twittercarddesc"></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="quarto-ogcardddesc"></span></p>
 </div>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-rosenblatt1957perceptron" class="csl-entry" role="listitem">
 Rosenblatt, Frank. 1957. <em>The Perceptron, a Perceiving and Recognizing Automaton Project Para</em>. Cornell Aeronautical Laboratory.
 </div>
 </div>
 </section>
-</section>
 
 </main> <!-- /main -->
-<script id = "quarto-html-after-body" type="application/javascript">
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1725,18 +2130,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a  href="/index.html" class="pagination-link" aria-label="Preface">
+      <a href="./index.html" class="pagination-link" aria-label="Preface">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a  href="/summary.html" class="pagination-link" aria-label="Summary">
-        <span class="nav-page-text"><span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./summary.html" class="pagination-link" aria-label="Summary">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
 
-</body>
 
-</html>
+
+
+</body></html>
