@@ -8,6 +8,8 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
+    - benchmarkDL.qmd
+    - microprojectsMLP.qmd
     - summary.qmd
     - references.qmd
 

@@ -1,0 +1,257 @@
+
+---
+title: "Micro Projects using ANN"
+execute: 
+  enabled: true
+jupyter: python3
+---
+
+
+## Exploring the Iris Dataset with an MLP
+
+The **Iris dataset** is a classic dataset in machine learning, widely used for classification problems. It consists of 150 samples from three species of Iris flowers: *Iris-setosa*, *Iris-versicolor*, and *Iris-virginica*. For each sample, four features are provided:
+
+- **Sepal Length (cm)**  
+- **Sepal Width (cm)**  
+- **Petal Length (cm)**  
+- **Petal Width (cm)**  
+
+The goal is to classify the species of a given flower based on its features. The dataset is simple and small, making it an excellent starting point for exploring machine learning algorithms such as the **Multilayer Perceptron (MLP)**.
+
+### Why Use MLP for Iris Dataset?
+
+An MLP is a feedforward artificial neural network that can learn complex patterns in data. Using an MLP for the Iris dataset provides an opportunity to:
+
+- Understand how neural networks can classify multi-class data.
+- Explore the strengths and limitations of MLPs in small datasets.
+- Experiment with performance measures, such as accuracy, precision, recall, and confusion matrices, in a classification problem.
+
+### Problem Setting
+
+In this task:
+1. **Input Features**: The four numerical features (sepal length, sepal width, petal length, petal width).
+
+2. **Output Labels**: The flower species, encoded as integers:
+
+   - *Iris-setosa* → 0  
+   - *Iris-versicolor* → 1  
+   - *Iris-virginica* → 2  
+
+3. **Objective**: Train an MLP to classify the flower species based on input features.
+
+### Outline of Exploration
+
+This exploration will include:
+
+- **Data Preprocessing**: Normalizing feature values and encoding labels.
+- **Model Building**: Designing an MLP using Keras for multi-class classification.
+- **Model Training and Evaluation**: Measuring the model's performance using metrics like accuracy and confusion matrices.
+- **Visualization**: Interpreting results through performance plots.
+
+This foundational task demonstrates the power of neural networks in multi-class classification while highlighting the practical workflow of MLP implementation.
+
+>**Solution:**
+
+Below is the step-by-step code to solve the Iris dataset classification problem using an MLP model:
+
+>*Step 1: Load and Explore the Iris Dataset*
+
+```{python}
+import numpy as np
+import pandas as pd
+from sklearn.datasets import load_iris
+
+# Load the Iris dataset
+iris = load_iris()
+X = iris.data  # Input features: Sepal Length, Sepal Width, Petal Length, Petal Width
+y = iris.target  # Target labels: 0 (Setosa), 1 (Versicolor), 2 (Virginica)
+
+# Dataset overview
+print(f"Features:\n{iris.feature_names}")
+print(f"Classes:\n{iris.target_names}")
+print(f"Shape of X: {X.shape}, Shape of y: {y.shape}")
+```
+
+
+```{python}
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# Convert dataset to a DataFrame
+iris_df = pd.DataFrame(data=np.column_stack((X, y)), columns=iris.feature_names + ["target"])
+iris_df['target'] = iris_df['target'].astype(int)
+iris_df['species'] = iris_df['target'].map({0: 'setosa', 1: 'versicolor', 2: 'virginica'})
+
+# Correlation matrix
+correlation_matrix = iris_df.iloc[:, :-2].corr()
+plt.figure(figsize=(8, 6))
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f", cbar=True)
+plt.title('Correlation Matrix of Features')
+plt.show()
+```
+
+
+```{python}
+# Pair plot to visualize distributions over classes
+sns.pairplot(iris_df, hue='species', diag_kind='kde', palette='Set2')
+plt.suptitle('Pair Plot of Features Colored by Target Class', y=1.02)
+plt.show()
+```
+
+```{python}
+# Group by target class and calculate statistics
+grouped_stats = iris_df.groupby('species').agg(['mean', 'std', 'min', 'max'])
+print("Summary Statistics of Features by Class:")
+print(grouped_stats)
+```
+
+```{python}
+# Boxplots for each feature by target class
+plt.figure(figsize=(12, 8))
+for i, feature in enumerate(iris.feature_names):
+    plt.subplot(2, 2, i+1)
+    sns.boxplot(x='species', y=feature, data=iris_df, palette='Set2')
+    plt.title(f'Distribution of {feature} by Target Class')
+    plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+```
+
+```{python}
+from scipy.stats import f_oneway
+
+# ANOVA for features with target class
+anova_results = {}
+for feature in iris.feature_names:
+    groups = [iris_df[iris_df['species'] == species][feature] for species in iris.target_names]
+    f_stat, p_val = f_oneway(*groups)
+    anova_results[feature] = {'F-statistic': f_stat, 'p-value': p_val}
+
+# Display results
+anova_results_df = pd.DataFrame(anova_results).T
+print("ANOVA Results:")
+print(anova_results_df)
+```
+
+ANOVA tests whether the mean of each feature significantly differs among the target classes. Features with low p-values (< 0.05) are strongly correlated with the target class.
+
+>*Step 2: Preprocess the Data*
+
+```{python}
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Standardize the input features
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+# One-hot encode the target labels
+encoder = OneHotEncoder(sparse_output=False)  
+y_train = encoder.fit_transform(y_train.reshape(-1, 1))
+y_test = encoder.transform(y_test.reshape(-1, 1))
+```
+
+>*Step 3: Build the MLP Model*
+
+```{python}
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+# Build the MLP model
+model = Sequential([
+    Dense(8, activation='relu', input_shape=(X_train.shape[1],)),  # Hidden layer 1
+    Dense(8, activation='relu'),  # Hidden layer 2
+    Dense(y_train.shape[1], activation='softmax')  # Output layer for multi-class classification
+])
+
+# Compile the model
+model.compile(optimizer='adam',
+              loss='categorical_crossentropy',
+              metrics=['accuracy'])
+
+# Summary of the model
+model.summary()
+```
+
+>*Step 4: Train the Model*
+
+```{python}
+# Train the model
+history = model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=100, verbose=0)
+
+# Evaluate the model
+loss, accuracy = model.evaluate(X_test, y_test, verbose=0)
+print(f"Test Accuracy: {accuracy:.2f}")
+```
+
+>*Step 5: Evaluate the Model*
+
+```{python}
+from sklearn.metrics import classification_report, confusion_matrix
+
+# Make predictions
+y_pred = model.predict(X_test)
+y_pred_classes = np.argmax(y_pred, axis=1)
+y_test_classes = np.argmax(y_test, axis=1)
+
+# Classification report
+print("Classification Report:")
+print(classification_report(y_test_classes, y_pred_classes, target_names=iris.target_names))
+
+# Confusion matrix
+print("Confusion Matrix:")
+print(confusion_matrix(y_test_classes, y_pred_classes))
+```
+
+>*Step 6: Visualize Training Progress*
+
+```{python}
+import matplotlib.pyplot as plt
+
+# Plot training and validation accuracy
+plt.figure(figsize=(12, 5))
+
+# Accuracy plot
+plt.subplot(1, 2, 1)
+plt.plot(history.history['accuracy'], label='Training Accuracy')
+plt.plot(history.history['val_accuracy'], label='Validation Accuracy')
+plt.title('Accuracy During Training')
+plt.xlabel('Epochs')
+plt.ylabel('Accuracy')
+plt.legend()
+
+# Loss plot
+plt.subplot(1, 2, 2)
+plt.plot(history.history['loss'], label='Training Loss')
+plt.plot(history.history['val_loss'], label='Validation Loss')
+plt.title('Loss During Training')
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.legend()
+
+plt.tight_layout()
+plt.show()
+```
+
+>*Step 7: Save and Reload the Model for Future Predictions*
+
+```{python}
+# Save the model
+model.save('iris_mlp_model.h5')
+
+# Reload the model
+loaded_model = tf.keras.models.load_model('iris_mlp_model.h5')
+
+# Predict on new data
+new_sample = np.array([[5.1, 3.5, 1.4, 0.2]])  # Example input
+new_sample = scaler.transform(new_sample)
+predicted_class = np.argmax(loaded_model.predict(new_sample), axis=1)
+print(f"Predicted Class: {iris.target_names[predicted_class[0]]}")
+```
+

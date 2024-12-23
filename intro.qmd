@@ -692,7 +692,7 @@ digraph NeuralNetwork {
 
 
 
-Following python code demonstrate the effective use of the sigmoid activation function in the simulation of  logic gates.
+Following python code demonstrate the effective use of the sigmoid activation function in the simulation of logic gates.
 
 ```{python}
 import numpy as np
@@ -783,12 +783,6 @@ def simulate_logic_gate(gate_type):
         input_data = X[i]  # Extract the i-th row as a 1D array
         prediction = perceptron.predict(input_data)  # Make prediction
         print(f"Input: {input_data}, Prediction: {prediction}")
-
-if __name__ == "__main__":
-    # Simulate AND, OR, NAND, NOR, and XOR gates
-    for gate in ['AND', 'OR', 'NAND', 'NOR', 'XOR']:
-        simulate_logic_gate(gate)
-
 ```
 
 Simulation code is here:
@@ -807,7 +801,7 @@ for gate in ['AND', 'OR', 'NAND', 'NOR', 'XOR']:
 
 ## Examples
 
-### Simple Example: Perceptron for AND Gate
+### Simple Example: Perceptron for AND Gate with native `Python` code
 ```{python}
 import numpy as np
 
@@ -863,7 +857,181 @@ To overcome the limitations of the perceptron, we need a more powerful model tha
 
 The addition of hidden layers and the use of non-linear activation functions (such as **sigmoid** or **ReLU**) enables the MLP to learn and model non-linear relationships. This makes MLPs capable of solving the XOR problem, as the network can form non-linear decision boundaries.
 
-### Why MLP Can Solve XOR
+## The Need for an Appropriate Learning Algorithm in Multi-Layer Networks
+
+In machine learning, training a multi-layer neural network (also known as a **deep neural network**) presents a significant challenge compared to simpler models like the Perceptron. This complexity arises from the structure of the network and the way information flows through multiple layers. The primary challenge is that the weight updates at each layer must be carefully adjusted to ensure the network learns effectively.
+
+### Challenge of Multi-Layer Networks
+
+A **multi-layer neural network** consists of several layers:
+
+- **Input Layer**: Receives the raw data.
+- **Hidden Layers**: Transform the input into meaningful representations.
+- **Output Layer**: Produces the final predictions or classifications.
+
+As we move deeper into the network, each layer influences the output indirectly through many intermediate transformations. This creates a situation where updating the weights at deeper layers is not straightforward because the error at the output layer is spread across multiple layers.
+
+### Why a Learning Algorithm is Needed?
+
+For multi-layer networks, we require a **learning algorithm** to adjust the weights effectively. In simpler models like the Perceptron, weights are updated based on the error between the predicted and actual outputs. However, for multi-layer networks, the error must be propagated back through the layers to determine how much each weight in each layer contributed to the final error.
+
+Without a structured learning approach, the network would fail to update its weights in a coherent way, preventing it from learning the underlying patterns in the data. This is where **Backpropagation** comes into play.
+
+### Backpropagation: The Core Learning Algorithm
+
+**Backpropagation** is the most widely used algorithm for training multi-layer networks. It is based on the principle of **gradient descent**, a method used to minimize the loss function by adjusting the weights. Here's how backpropagation works:
+
+- **Forward Pass**: The input data is passed through the network, and activations for each layer are computed.
+- **Loss Calculation**: The error between the predicted and actual output is computed using a loss function.
+- **Backward Pass**: The error is propagated back through the network, and gradients of the loss function with respect to each weight are computed.
+- **Weight Update**: The weights are updated using the computed gradients.
+
+#### Key Features of Backpropagation:
+
+- **Error Propagation**: Backpropagation calculates how much each weight in the network contributed to the error at the output, and this error is propagated backward through the layers.
+- **Gradient Calculation**: By using the chain rule of calculus, backpropagation calculates the gradients of the loss function with respect to each weight in the network.
+- **Weight Updates**: These gradients are then used in gradient descent to adjust the weights in such a way that the loss function is minimized.
+
+
+:::{.callout-note}
+### Gradient Descent: Not Enough by Itself
+
+While **gradient descent** is a general optimization algorithm, it cannot directly address the challenge of updating weights in deep neural networks. In shallow networks (with fewer layers), gradient descent can work directly on the loss function. However, in deep networks, the error needs to be distributed back through the multiple layers. **Backpropagation** is the algorithm that enables this efficient error propagation, making the use of gradient descent feasible for deep networks.
+:::
+
+## Mathematical Background of Backpropagation
+
+Backpropagation is the core learning algorithm for training multi-layer neural networks. It involves adjusting the weights of the network by computing the gradients of a loss function with respect to each weight. This process allows the network to learn how to minimize the loss and improve its predictions.
+
+### Loss Function
+
+The **loss function** quantifies the difference between the network's predictions and the true labels. For a simple regression task, the loss function is often the **mean squared error (MSE)**:
+
+$$
+L = \frac{1}{2} (y - \hat{y})^2
+$$
+
+where:
+- $y$ is the true label,
+- $\hat{y}$ is the predicted output of the network.
+
+The factor $\frac{1}{2}$ is included to simplify the calculation of the derivative later.
+
+### Forward Pass
+
+During the **forward pass**, the input $x$ is passed through each layer of the network. Each layer computes a weighted sum of its inputs followed by a non-linear activation function $\sigma$. The output of a neuron in layer $l$ is calculated as:
+
+$$
+a_i^l = \sigma \left( \sum_j w_{ij}^{l-1} a_j^{l-1} + b_i^l \right)
+$$
+
+where:
+- $w_{ij}^{l-1}$ is the weight connecting neuron $j$ in layer $l-1$ to neuron $i$ in layer $l$,
+- $a_j^{l-1}$ is the activation of neuron $j$ in the previous layer,
+- $b_i^l$ is the bias of neuron $i$ in layer $l$,
+- $\sigma$ is the activation function (e.g., sigmoid, ReLU, etc.).
+
+The output of the network is:
+
+$$
+\hat{y} = a^L
+$$
+
+where $L$ is the last layer.
+
+### Backward Pass: Computing Gradients
+
+The main objective of backpropagation is to compute the **gradients** of the loss function with respect to the weights and biases of the network. This is achieved through the **chain rule of calculus**, which allows the error to be propagated backward through the network.
+
+#### Gradient of the Loss with respect to Output Layer
+
+The first step is to calculate the gradient of the loss function with respect to the predicted output $\hat{y}$:
+
+$$
+\frac{\partial L}{\partial \hat{y}} = \hat{y} - y
+$$
+
+For the output layer $L$, the gradient of the loss with respect to the activation $a_i^L$ is:
+
+$$
+\delta_i^L = \frac{\partial L}{\partial a_i^L} = \frac{\partial L}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial a_i^L}
+$$
+
+For a typical activation function $\sigma$, we have:
+
+$$
+\frac{\partial \hat{y}}{\partial a_i^L} = \sigma'(a_i^L)
+$$
+
+where $\sigma'(a_i^L)$ is the derivative of the activation function at $a_i^L$.
+
+Thus, the error term for the output layer is:
+
+$$
+\delta_i^L = (\hat{y} - y) \cdot \sigma'(a_i^L)
+$$
+
+#### Gradient for Hidden Layers
+
+For each hidden layer $l$, the error term for neuron $i$ in layer $l$ is:
+
+$$
+\delta_i^l = \left( \sum_j w_{ij}^l \delta_j^{l+1} \right) \cdot \sigma'(a_i^l)
+$$
+
+where:
+
+- $\delta_j^{l+1}$ is the error term for neuron $j$ in the next layer $l+1$,
+- $w_{ij}^l$ is the weight connecting neuron $j$ in layer $l+1$ to neuron $i$ in layer $l$,
+- $\sigma'(a_i^l)$ is the derivative of the activation function for neuron $i$ in layer $l$.
+
+#### Gradients of the Weights and Biases
+
+After calculating the error terms, we compute the gradients of the weights and biases. The gradient of the loss with respect to the weight $w_{ij}^l$ is:
+
+$$
+\frac{\partial L}{\partial w_{ij}^l} = a_j^{l-1} \cdot \delta_i^l
+$$
+
+And the gradient of the loss with respect to the bias $b_i^l$ is:
+
+$$
+\frac{\partial L}{\partial b_i^l} = \delta_i^l
+$$
+
+### Weight Update Rule (Gradient Descent)
+
+Once the gradients are computed, we update the weights and biases using **gradient descent**. The update rule for the weights is:
+
+$$
+w_{ij}^l \leftarrow w_{ij}^l - \eta \cdot \frac{\partial L}{\partial w_{ij}^l}
+$$
+
+And for the biases:
+
+$$
+b_i^l \leftarrow b_i^l - \eta \cdot \frac{\partial L}{\partial b_i^l}
+$$
+
+where $\eta$ is the **learning rate**, controlling the step size for weight updates.
+
+:::{.callout-note}
+### Summary of Backpropagation
+
+The backpropagation algorithm involves the following steps:
+
+1. **Forward pass**: Compute the activations for each layer.
+2. **Compute loss**: Calculate the loss function based on the predicted and true values.
+3. **Backward pass**:
+
+   - Compute error terms for the output layer.
+   - Propagate error backward through the network using the chain rule.
+
+4. **Compute gradients**: Compute the gradients of the loss with respect to weights and biases.
+5. **Update weights**: Use gradient descent to adjust the weights and biases.
+:::
+
+### Why MLP Can Solve XOR?
 
 The MLP can learn the XOR function by introducing **hidden layers** that allow it to combine the inputs in non-linear ways. A network with just one hidden layer is sufficient to approximate the XOR gate. The hidden layer transforms the inputs into a higher-dimensional space where the problem becomes linearly separable, allowing the output layer to make correct predictions.
 
@@ -974,3 +1142,453 @@ def simulate_logic_gate(gate_type):
 simulate_logic_gate('XOR')
 ``` 
 
+Above `Python` code creates a successful MLP with two (fixed) hidden layers that simulate the `XOR` gate. There is no golden rule to fix number of hidden layers in an MLP to solve a specific problem. So we have to restructure the OOPs architecture of MLP to handle its structure in more robust way. In this approach, the user can 'add' as many layers as he wish to develop a required MLP architecture. Following code will do this job.
+
+```{python}
+import numpy as np
+
+class Layer:
+    def __init__(self, output_dim, activation="sigmoid"):
+        self.output_dim = output_dim
+        self.activation = activation
+        self.weights = None  # Will be initialized later
+        self.biases = None    # Will be initialized later
+        self.inputs = None   # Will store inputs for backpropagation
+
+    def forward(self, inputs):
+        self.inputs = inputs  # Store inputs for backpropagation
+        z = np.dot(inputs, self.weights) + self.biases
+        if self.activation == "sigmoid":
+            self.output = 1 / (1 + np.exp(-z))  # Store output for backpropagation
+            return self.output
+        elif self.activation == "relu":
+            self.output = np.maximum(0, z)
+            return self.output
+        else:  # Linear activation by default
+            self.output = z
+            return self.output
+
+    def backward(self, output_error, learning_rate):
+        if self.activation == "sigmoid":
+            activation_derivative = self.output * (1 - self.output)
+        elif self.activation == "relu":
+            activation_derivative = np.where(self.output > 0, 1, 0)
+        else:  # Linear activation
+            activation_derivative = 1
+
+        delta = output_error * activation_derivative
+        input_error = np.dot(delta, self.weights.T)
+
+        # Update weights and biases
+        self.weights += learning_rate * np.dot(self.inputs.T, delta)
+        self.biases += learning_rate * np.sum(delta, axis=0, keepdims=True)
+
+        return input_error
+
+class MLP:
+    def __init__(self, input_dim, learning_rate=0.1):
+        self.input_dim = input_dim
+        self.learning_rate = learning_rate
+        self.layers = []
+
+    def add(self, layer):
+        self.layers.append(layer)
+
+    def compile(self):
+        # Initialize weights and biases for each layer
+        prev_dim = self.input_dim
+        for layer in self.layers:
+            layer.weights = np.random.randn(prev_dim, layer.output_dim)
+            layer.biases = np.zeros((1, layer.output_dim))
+            prev_dim = layer.output_dim
+
+    def forward(self, X):
+        output = X
+        for layer in self.layers:
+            output = layer.forward(output)
+        return output
+
+    def train(self, X, y, epochs=10000):
+        for epoch in range(epochs):
+            # Forward pass
+            output = self.forward(X)
+
+            # Backward pass (backpropagation)
+            error = y - output
+            for layer in reversed(self.layers):
+                error = layer.backward(error, self.learning_rate)
+
+            if epoch % 1000 == 0:
+                loss = np.mean(np.square(y - self.forward(X)))
+                print(f'Epoch {epoch}, Loss: {loss}')
+
+    def predict(self, X):
+        return np.round(self.forward(X))
+
+def simulate_logic_gate(gate_type):
+    X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
+    gate_targets = {
+        'AND': np.array([[0], [0], [0], [1]]),
+        'OR': np.array([[0], [1], [1], [1]]),
+        'NAND': np.array([[1], [1], [1], [0]]),
+        'NOR': np.array([[1], [0], [0], [0]]),
+        'XOR': np.array([[0], [1], [1], [0]])
+    }
+
+    if gate_type not in gate_targets:
+        print(f"Unsupported gate type: {gate_type}")
+        return
+
+    y = gate_targets[gate_type]
+
+    mlp = MLP(input_dim=2, learning_rate=0.1)
+    mlp.add(Layer(output_dim=2, activation="relu"))  # Hidden layer with ReLU
+    mlp.add(Layer(output_dim=2, activation="sigmoid"))
+    mlp.add(Layer(output_dim=1, activation="sigmoid"))  # Output layer with sigmoid
+    mlp.compile()  # Initialize weights and biases
+    mlp.train(X, y, epochs=10000)
+
+    print(f"Simulating {gate_type} gate")
+    for input_data, prediction in zip(X, mlp.predict(X)):
+        print(f"Input: {input_data}, Prediction: {prediction}")
+
+simulate_logic_gate('XOR')
+```
+
+## Performance Metrics: A Critical Component of Prediction Problems
+
+In machine learning and predictive modeling, simply achieving a correct output is not sufficient to evaluate the effectiveness of a model. Various performance measures are essential for assessing the quality and reliability of predictions. These metrics provide a deeper understanding of how well the model performs across different aspects of a dataset. 
+
+### Confusion Matrix
+
+The confusion matrix summarizes the results of a binary classification task. It includes:
+
+- **True Positives (TP):** Correctly predicted positive cases.  
+- **True Negatives (TN):** Correctly predicted negative cases.  
+- **False Positives (FP):** Incorrectly predicted positive cases (Type I error).  
+- **False Negatives (FN):** Incorrectly predicted negative cases (Type II error).
+
+|                  | Predicted Positive | Predicted Negative |
+|------------------|--------------------|--------------------|
+| **Actual Positive** | TP                 | FN                 |
+| **Actual Negative** | FP                 | TN                 |
+
+### Accuracy
+
+Accuracy is the proportion of correctly classified cases out of the total number of cases:
+
+$$
+\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
+$$
+
+**Interpretation:** Accuracy is a straightforward measure but can be misleading for imbalanced datasets. For example, in fraud detection with a 99:1 class ratio, a model predicting all cases as non-fraud achieves 99% accuracy but fails to detect fraud.
+
+---
+
+### Precision
+
+Precision measures the proportion of true positive predictions out of all positive predictions:
+
+$$
+\text{Precision} = \frac{TP}{TP + FP}
+$$
+
+**Interpretation:** High precision indicates a low false positive rate, which is crucial in domains like medical diagnostics, where false alarms can lead to unnecessary procedures.
+
+---
+
+### Recall (Sensitivity)
+
+Recall (or sensitivity) is the proportion of actual positives correctly identified:
+
+$$
+\text{Recall} = \frac{TP}{TP + FN}
+$$
+
+**Interpretation:** Recall is critical when false negatives are costly, such as in cancer detection.
+
+---
+
+### Specificity
+
+Specificity measures the proportion of actual negatives correctly identified:
+
+$$
+\text{Specificity} = \frac{TN}{TN + FP}
+$$
+
+**Interpretation:** Specificity is important when the cost of false positives is high, such as in spam email detection.
+
+---
+
+### F1 Score
+
+The F1 score combines precision and recall into a single metric using their harmonic mean:
+
+$$
+F1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
+$$
+
+**Interpretation:** The F1 score is useful when there is a trade-off between precision and recall and provides a balanced view of model performance.
+
+---
+
+### Relation to Hypothesis Testing
+
+In statistical hypothesis testing:
+
+- **Type I Error:** Rejecting the null hypothesis when it is true (analogous to FP).  
+- **Type II Error:** Failing to reject the null hypothesis when it is false (analogous to FN).
+
+| Error Type       | Confusion Matrix Component | Hypothesis Testing Relation |
+|------------------|----------------------------|-----------------------------|
+| **Type I Error** | FP                         | Reject a true null hypothesis |
+| **Type II Error**| FN                         | Fail to reject a false null hypothesis |
+
+### Balancing Errors
+
+The trade-off between Type I and Type II errors in hypothesis testing corresponds to optimizing precision and recall in machine learning. For instance, increasing sensitivity (recall) often reduces specificity, analogous to increasing the power of a test at the cost of a higher false positive rate.
+
+---
+
+### Choosing Metrics
+
+- Use **precision** to minimize inconveniences caused by legitimate emails being flagged as spam.  
+- Use **recall** to ensure spam emails are effectively caught.  
+- Optimize the **F1 score** for a balanced performance.
+
+
+### Interpretation of Results: Simulating XOR Gate with MLP as a classification problem
+
+Now let's redesign the XOR gate problem as a classification problem.
+The Multilayer Perceptron (MLP) was tested on the XOR gate problem, producing the following predictions and performance metrics:
+
+---
+
+```{python}
+import numpy as np
+
+class Layer:
+    def __init__(self, output_dim, activation="sigmoid"):
+        self.output_dim = output_dim
+        self.activation = activation
+        self.weights = None  # Will be initialized later
+        self.biases = None    # Will be initialized later
+        self.inputs = None   # Will store inputs for backpropagation
+
+    def forward(self, inputs):
+        self.inputs = inputs  # Store inputs for backpropagation
+        z = np.dot(inputs, self.weights) + self.biases
+        if self.activation == "sigmoid":
+            self.output = 1 / (1 + np.exp(-z))  # Store output for backpropagation
+            return self.output
+        elif self.activation == "relu":
+            self.output = np.maximum(0, z)
+            return self.output
+        else:  # Linear activation by default
+            self.output = z
+            return self.output
+
+    def backward(self, output_error, learning_rate):
+        if self.activation == "sigmoid":
+            activation_derivative = self.output * (1 - self.output)
+        elif self.activation == "relu":
+            activation_derivative = np.where(self.output > 0, 1, 0)
+        else:  # Linear activation
+            activation_derivative = 1
+
+        delta = output_error * activation_derivative
+        input_error = np.dot(delta, self.weights.T)
+
+        # Update weights and biases
+        self.weights += learning_rate * np.dot(self.inputs.T, delta)
+        self.biases += learning_rate * np.sum(delta, axis=0, keepdims=True)
+
+        return input_error
+
+class MLP:
+    def __init__(self, input_dim, learning_rate=0.1):
+        self.input_dim = input_dim
+        self.learning_rate = learning_rate
+        self.layers = []
+
+    def add(self, layer):
+        self.layers.append(layer)
+
+    def compile(self):
+        # Initialize weights and biases for each layer
+        prev_dim = self.input_dim
+        for layer in self.layers:
+            layer.weights = np.random.randn(prev_dim, layer.output_dim)
+            layer.biases = np.zeros((1, layer.output_dim))
+            prev_dim = layer.output_dim
+
+    def forward(self, X):
+        output = X
+        for layer in self.layers:
+            output = layer.forward(output)
+        return output
+
+    def train(self, X, y, epochs=10000):
+        for epoch in range(epochs):
+            # Forward pass
+            output = self.forward(X)
+
+            # Backward pass (backpropagation)
+            error = y - output
+            for layer in reversed(self.layers):
+                error = layer.backward(error, self.learning_rate)
+
+            if epoch % 1000 == 0:
+                loss = np.mean(np.square(y - self.forward(X)))
+                print(f'Epoch {epoch}, Loss: {loss}')
+
+    def predict(self, X):
+        return np.round(self.forward(X))
+
+def calculate_performance_metrics(y_true, y_pred):
+    TP = np.sum((y_true == 1) & (y_pred == 1))
+    TN = np.sum((y_true == 0) & (y_pred == 0))
+    FP = np.sum((y_true == 0) & (y_pred == 1))
+    FN = np.sum((y_true == 1) & (y_pred == 0))
+
+    accuracy = (TP + TN) / (TP + TN + FP + FN)
+    precision = TP / (TP + FP) if (TP + FP) > 0 else 0
+    recall = TP / (TP + FN) if (TP + FN) > 0 else 0
+    sensitivity = recall
+    specificity = TN / (TN + FP) if (TN + FP) > 0 else 0
+    f1_score = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
+
+    print("Performance Metrics:")
+    print(f"Accuracy: {accuracy:.2f}")
+    print(f"Precision: {precision:.2f}")
+    print(f"Recall (Sensitivity): {sensitivity:.2f}")
+    print(f"Specificity: {specificity:.2f}")
+    print(f"F1 Score: {f1_score:.2f}")
+
+    # Display the confusion matrix
+    print("\nConfusion Matrix:")
+    print(f"                Predicted Positive    Predicted Negative")
+    print(f"Actual Positive          {TP}                    {FN}")
+    print(f"Actual Negative          {FP}                    {TN}")
+
+def simulate_logic_gate(gate_type):
+    X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
+    gate_targets = {
+        'AND': np.array([[0], [0], [0], [1]]),
+        'OR': np.array([[0], [1], [1], [1]]),
+        'NAND': np.array([[1], [1], [1], [0]]),
+        'NOR': np.array([[1], [0], [0], [0]]),
+        'XOR': np.array([[0], [1], [1], [0]])
+    }
+
+    if gate_type not in gate_targets:
+        print(f"Unsupported gate type: {gate_type}")
+        return
+
+    y = gate_targets[gate_type]
+
+    mlp = MLP(input_dim=2, learning_rate=0.1)
+    mlp.add(Layer(output_dim=2, activation="relu"))  # Hidden layer with ReLU
+    mlp.add(Layer(output_dim=2, activation="sigmoid"))
+    mlp.add(Layer(output_dim=1, activation="sigmoid"))  # Output layer with sigmoid
+    mlp.compile()  # Initialize weights and biases
+    mlp.train(X, y, epochs=10000)
+
+    print(f"Simulating {gate_type} gate")
+    y_pred = mlp.predict(X)
+
+    for input_data, prediction in zip(X, y_pred):
+        print(f"Input: {input_data}, Prediction: {prediction}")
+
+    # Calculate and print performance metrics
+    calculate_performance_metrics(y, y_pred)
+
+simulate_logic_gate('XOR')
+
+```
+
+
+
+#### Predictions
+The predictions for the XOR gate are as follows:
+
+- **Input [0, 0]: Prediction [0.]** (Correct)
+- **Input [0, 1]: Prediction [0.]** (Incorrect)
+- **Input [1, 0]: Prediction [1.]** (Correct)
+- **Input [1, 1]: Prediction [0.]** (Incorrect)
+
+The model correctly classified 3 out of 4 inputs, resulting in an **accuracy of 75%**.
+
+---
+
+#### Performance Metrics
+
+| Metric          | Value  |
+|------------------|--------|
+| **Accuracy**     | 0.75   |
+| **Precision**    | 1.00   |
+| **Recall**       | 0.50   |
+| **Specificity**  | 1.00   |
+| **F1 Score**     | 0.67   |
+
+
+- **Accuracy**: Indicates the proportion of correct predictions. The model correctly classified 3 out of 4 inputs.
+
+- **Precision**: Perfectly predicted the single positive case without any false positives.
+  
+  $$ \text{Precision} = \frac{\text{TP}}{\text{TP + FP}} = \frac{1}{1 + 0} = 1.0 $$
+
+- **Recall**: Captures the proportion of actual positives correctly identified. Out of 2 actual positives, only 1 was correctly predicted.
+  
+  $$ \text{Recall} = \frac{\text{TP}}{\text{TP + FN}} = \frac{1}{1 + 1} = 0.5 $$
+
+- **Specificity**: Perfectly identified all negative cases without any false positives.
+  
+  $$ \text{Specificity} = \frac{\text{TN}}{\text{TN + FP}} = \frac{2}{2 + 0} = 1.0 $$
+
+- **F1 Score**: Balances Precision and Recall, providing a comprehensive measure of model performance.
+  
+  $$ \text{F1 Score} = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}} = 2 \cdot \frac{1.0 \cdot 0.5}{1.0 + 0.5} = 0.67 $$
+
+---
+
+#### Confusion Matrix
+
+The confusion matrix provides a breakdown of the model's predictions:
+
+|                        | **Predicted Positive** | **Predicted Negative** |
+|------------------------|------------------------|------------------------|
+| **Actual Positive**    | 1 (True Positive)      | 1 (False Negative)     |
+| **Actual Negative**    | 0 (False Positive)     | 2 (True Negative)      |
+
+---
+
+#### Key Observations
+1. **Strengths**:
+   - The model demonstrates excellent precision and specificity, correctly predicting all negative cases without any false positives.
+   - It has an overall accuracy of 75%, showing its general capability to classify XOR gate outputs.
+
+2. **Limitations**:
+   - The model struggles with Recall, as it misclassifies 1 out of 2 actual positives (false negative).
+   - The F1 Score of 0.67 indicates a moderate balance between Precision and Recall, but it reflects room for improvement in handling positive cases.
+
+---
+
+#### Skill Assessment of the MLP
+The XOR gate problem is a classic non-linear function. While MLPs are theoretically capable of solving such problems, the performance here suggests potential limitations:
+
+- **Model Architecture**: The MLP may need more layers or neurons to fully capture XOR's non-linear behavior.
+- **Training Process**: Adjustments to hyperparameters like learning rate, epochs, or weight initialization might enhance performance.
+
+---
+
+#### Relation to Hypothesis Testing
+The results can be related to statistical hypothesis testing concepts:
+
+- **Type I Error (False Positive)**: No such errors occurred in this case.
+- **Type II Error (False Negative)**: The model failed to identify 1 actual positive case, corresponding to a Type II Error.
+
+---
+
+This MLP exhibits reasonable performance with an accuracy of 75% but requires further refinement to improve its ability to generalize the XOR gate's non-linear nature, particularly in predicting positive outputs. Improvements in architecture and training can likely address these limitations.
