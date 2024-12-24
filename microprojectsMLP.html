@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./summary.html" rel="next">
+<link href="./DLforvisualrecognition.html" rel="next">
 <link href="./benchmarkDL.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -169,8 +169,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./DLforvisualrecognition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Deep Learning for Visual Recognition</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -274,7 +280,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p><em>Step 1: Load and Explore the Iris Dataset</em></p>
 </blockquote>
-<div id="bc54b4ed" class="cell" data-execution_count="1">
+<div id="fcaa829e" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_iris</span>
@@ -296,7 +302,7 @@ Classes:
 Shape of X: (150, 4), Shape of y: (150,)</code></pre>
 </div>
 </div>
-<div id="f220a7e7" class="cell" data-execution_count="2">
+<div id="4e48d6e4" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -320,7 +326,7 @@ Shape of X: (150, 4), Shape of y: (150,)</code></pre>
 </div>
 </div>
 </div>
-<div id="e496a6cd" class="cell" data-execution_count="3">
+<div id="d1cece99" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pair plot to visualize distributions over classes</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sns.pairplot(iris_df, hue<span class="op">=</span><span class="st">'species'</span>, diag_kind<span class="op">=</span><span class="st">'kde'</span>, palette<span class="op">=</span><span class="st">'Set2'</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">'Pair Plot of Features Colored by Target Class'</span>, y<span class="op">=</span><span class="fl">1.02</span>)</span>
@@ -333,7 +339,7 @@ Shape of X: (150, 4), Shape of y: (150,)</code></pre>
 </div>
 </div>
 </div>
-<div id="22491eff" class="cell" data-execution_count="4">
+<div id="5f1b55e8" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by target class and calculate statistics</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>grouped_stats <span class="op">=</span> iris_df.groupby(<span class="st">'species'</span>).agg([<span class="st">'mean'</span>, <span class="st">'std'</span>, <span class="st">'min'</span>, <span class="st">'max'</span>])</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Summary Statistics of Features by Class:"</span>)</span>
@@ -362,7 +368,7 @@ versicolor  0.197753  1.0  1.8    1.0  0.0   1   1
 virginica   0.274650  1.4  2.5    2.0  0.0   2   2  </code></pre>
 </div>
 </div>
-<div id="318e27a6" class="cell" data-execution_count="5">
+<div id="39e64e5c" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplots for each feature by target class</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, feature <span class="kw">in</span> <span class="bu">enumerate</span>(iris.feature_names):</span>
@@ -373,22 +379,22 @@ virginica   0.274650  1.4  2.5    2.0  0.0   2   2  </code></pre>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>C:\Users\SIJUKSWAMY\AppData\Local\Temp\ipykernel_21016\451241665.py:5: FutureWarning: 
+<pre><code>C:\Users\SIJUKSWAMY\AppData\Local\Temp\ipykernel_13168\451241665.py:5: FutureWarning: 
 
 Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
 
   sns.boxplot(x='species', y=feature, data=iris_df, palette='Set2')
-C:\Users\SIJUKSWAMY\AppData\Local\Temp\ipykernel_21016\451241665.py:5: FutureWarning: 
+C:\Users\SIJUKSWAMY\AppData\Local\Temp\ipykernel_13168\451241665.py:5: FutureWarning: 
 
 Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
 
   sns.boxplot(x='species', y=feature, data=iris_df, palette='Set2')
-C:\Users\SIJUKSWAMY\AppData\Local\Temp\ipykernel_21016\451241665.py:5: FutureWarning: 
+C:\Users\SIJUKSWAMY\AppData\Local\Temp\ipykernel_13168\451241665.py:5: FutureWarning: 
 
 Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
 
   sns.boxplot(x='species', y=feature, data=iris_df, palette='Set2')
-C:\Users\SIJUKSWAMY\AppData\Local\Temp\ipykernel_21016\451241665.py:5: FutureWarning: 
+C:\Users\SIJUKSWAMY\AppData\Local\Temp\ipykernel_13168\451241665.py:5: FutureWarning: 
 
 Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
 
@@ -402,7 +408,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 </div>
 </div>
 </div>
-<div id="117a5540" class="cell" data-execution_count="6">
+<div id="47c054db" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> f_oneway</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA for features with target class</span></span>
@@ -429,7 +435,7 @@ petal width (cm)    960.007147  4.169446e-85</code></pre>
 <blockquote class="blockquote">
 <p><em>Step 2: Preprocess the Data</em></p>
 </blockquote>
-<div id="8ebe7474" class="cell" data-execution_count="7">
+<div id="6b03415e" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler, OneHotEncoder</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -449,7 +455,7 @@ petal width (cm)    960.007147  4.169446e-85</code></pre>
 <blockquote class="blockquote">
 <p><em>Step 3: Build the MLP Model</em></p>
 </blockquote>
-<div id="6d1a83d6" class="cell" data-execution_count="8">
+<div id="0f363f67" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.keras.models <span class="im">import</span> Sequential</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.keras.layers <span class="im">import</span> Dense</span>
@@ -504,7 +510,7 @@ petal width (cm)    960.007147  4.169446e-85</code></pre>
 <blockquote class="blockquote">
 <p><em>Step 4: Train the Model</em></p>
 </blockquote>
-<div id="6295ffa1" class="cell" data-execution_count="9">
+<div id="3c2ba745" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Train the model</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> model.fit(X_train, y_train, validation_data<span class="op">=</span>(X_test, y_test), epochs<span class="op">=</span><span class="dv">100</span>, verbose<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -512,13 +518,13 @@ petal width (cm)    960.007147  4.169446e-85</code></pre>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>loss, accuracy <span class="op">=</span> model.evaluate(X_test, y_test, verbose<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Test Accuracy: </span><span class="sc">{</span>accuracy<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Test Accuracy: 0.93</code></pre>
+<pre><code>Test Accuracy: 0.97</code></pre>
 </div>
 </div>
 <blockquote class="blockquote">
 <p><em>Step 5: Evaluate the Model</em></p>
 </blockquote>
-<div id="521eea2f" class="cell" data-execution_count="10">
+<div id="479e77c7" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report, confusion_matrix</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Make predictions</span></span>
@@ -534,28 +540,28 @@ petal width (cm)    960.007147  4.169446e-85</code></pre>
 <span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Confusion Matrix:"</span>)</span>
 <span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(confusion_matrix(y_test_classes, y_pred_classes))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 63ms/step1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 83ms/step
+<pre><code>1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 130ms/step1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 166ms/step
 Classification Report:
               precision    recall  f1-score   support
 
       setosa       1.00      1.00      1.00        10
-  versicolor       1.00      0.78      0.88         9
-   virginica       0.85      1.00      0.92        11
+  versicolor       1.00      0.89      0.94         9
+   virginica       0.92      1.00      0.96        11
 
-    accuracy                           0.93        30
-   macro avg       0.95      0.93      0.93        30
-weighted avg       0.94      0.93      0.93        30
+    accuracy                           0.97        30
+   macro avg       0.97      0.96      0.97        30
+weighted avg       0.97      0.97      0.97        30
 
 Confusion Matrix:
 [[10  0  0]
- [ 0  7  2]
+ [ 0  8  1]
  [ 0  0 11]]</code></pre>
 </div>
 </div>
 <blockquote class="blockquote">
 <p><em>Step 6: Visualize Training Progress</em></p>
 </blockquote>
-<div id="a9a04d49" class="cell" data-execution_count="11">
+<div id="f2d857d1" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot training and validation accuracy</span></span>
@@ -592,7 +598,7 @@ Confusion Matrix:
 <blockquote class="blockquote">
 <p><em>Step 7: Save and Reload the Model for Future Predictions</em></p>
 </blockquote>
-<div id="77cd3668" class="cell" data-execution_count="12">
+<div id="93bc8d5c" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the model</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>model.save(<span class="st">'iris_mlp_model.h5'</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -609,7 +615,7 @@ Confusion Matrix:
 WARNING:absl:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 80ms/step1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 97ms/step
+<pre><code>1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 85ms/step1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 116ms/step
 Predicted Class: setosa</code></pre>
 </div>
 </div>
@@ -1046,8 +1052,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./summary.html" class="pagination-link" aria-label="Summary">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./DLforvisualrecognition.html" class="pagination-link" aria-label="Deep Learning for Visual Recognition">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Deep Learning for Visual Recognition</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

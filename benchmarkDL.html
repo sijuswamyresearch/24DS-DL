@@ -169,8 +169,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./DLforvisualrecognition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Deep Learning for Visual Recognition</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -386,7 +392,7 @@ When to Use Keras vs TensorFlow
 <blockquote class="blockquote">
 <p><strong>Model definition</strong></p>
 </blockquote>
-<div id="196275a1" class="cell" data-execution_count="1">
+<div id="f23b0cdf" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> keras.models <span class="im">import</span> Sequential</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> keras.layers <span class="im">import</span> Dense</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -431,13 +437,13 @@ When to Use Keras vs TensorFlow
 <blockquote class="blockquote">
 <p><strong>Model compilation:</strong></p>
 </blockquote>
-<div id="ccd6d666" class="cell" data-execution_count="2">
+<div id="d31b8159" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">compile</span>(optimizer<span class="op">=</span><span class="st">'adam'</span>, loss<span class="op">=</span><span class="st">'binary_crossentropy'</span>, metrics<span class="op">=</span>[<span class="st">'accuracy'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <blockquote class="blockquote">
 <p><strong>Loading data:</strong></p>
 </blockquote>
-<div id="da9323c5" class="cell" data-execution_count="3">
+<div id="8888198a" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">1</span>, <span class="dv">1</span>]])</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>np.array([[<span class="dv">0</span>], [<span class="dv">1</span>], [<span class="dv">1</span>], [<span class="dv">0</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -445,20 +451,20 @@ When to Use Keras vs TensorFlow
 <blockquote class="blockquote">
 <p><strong>Model training:</strong></p>
 </blockquote>
-<div id="01cf5a21" class="cell" data-execution_count="4">
+<div id="363092f4" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>model.fit(X, y, epochs<span class="op">=</span><span class="dv">100</span>, batch_size<span class="op">=</span><span class="dv">2</span>,verbose<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>&lt;keras.src.callbacks.history.History at 0x2325edd29c0&gt;</code></pre>
+<pre><code>&lt;keras.src.callbacks.history.History at 0x24c3a72e810&gt;</code></pre>
 </div>
 </div>
 <blockquote class="blockquote">
 <p><strong>Model evaluation:</strong></p>
 </blockquote>
-<div id="0cc747dc" class="cell" data-execution_count="5">
+<div id="0dd991bc" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>loss, accuracy <span class="op">=</span> model.evaluate(X, y)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Accuracy: </span><span class="sc">{</span>accuracy<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 164ms/step - accuracy: 0.5000 - loss: 0.69371/1 ━━━━━━━━━━━━━━━━━━━━ 0s 185ms/step - accuracy: 0.5000 - loss: 0.6937
+<pre><code>1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 162ms/step - accuracy: 0.5000 - loss: 0.69431/1 ━━━━━━━━━━━━━━━━━━━━ 0s 171ms/step - accuracy: 0.5000 - loss: 0.6943
 Accuracy: 0.5</code></pre>
 </div>
 </div>
@@ -478,7 +484,7 @@ Note
 </section>
 <section id="performance-evaluation-of-the-keras-xor-gate-model" class="level3" data-number="2.4.2">
 <h3 data-number="2.4.2" class="anchored" data-anchor-id="performance-evaluation-of-the-keras-xor-gate-model"><span class="header-section-number">2.4.2</span> Performance evaluation of the <code>keras</code> XOR gate model</h3>
-<div id="a63bd75a" class="cell" data-execution_count="6">
+<div id="7cee21b8" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix, accuracy_score, precision_score, recall_score, f1_score</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict the outputs</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> (model.predict(X) <span class="op">&gt;</span> <span class="fl">0.5</span>).astype(<span class="bu">int</span>)</span>
@@ -504,26 +510,22 @@ Note
 <span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Confusion Matrix:"</span>)</span>
 <span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(conf_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 232ms/step1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 250ms/step
+<pre><code>1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 50ms/step1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 77ms/step
 Predictions:
-Input: [0 0], Prediction: [0]
-Input: [0 1], Prediction: [0]
-Input: [1 0], Prediction: [0]
-Input: [1 1], Prediction: [0]
+Input: [0 0], Prediction: [1]
+Input: [0 1], Prediction: [1]
+Input: [1 0], Prediction: [1]
+Input: [1 1], Prediction: [1]
 
 Performance Metrics:
 Accuracy: 0.50
-Precision: 0.00
-Recall (Sensitivity): 0.00
-F1 Score: 0.00
+Precision: 0.50
+Recall (Sensitivity): 1.00
+F1 Score: 0.67
 
 Confusion Matrix:
-[[2 0]
- [2 0]]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>C:\Users\SIJUKSWAMY\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\metrics\_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))</code></pre>
+[[0 2]
+ [0 2]]</code></pre>
 </div>
 </div>
 </section>
@@ -539,63 +541,63 @@ Confusion Matrix:
 <blockquote class="blockquote">
 <p><em>Loading libraries:</em></p>
 </blockquote>
-<div id="21045e84" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.keras.models <span class="im">import</span> Sequential</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.keras.layers <span class="im">import</span> Dense</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.keras.models <span class="im">import</span> load_model</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error,r2_score</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="5bcfa077" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.keras.models <span class="im">import</span> Sequential</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.keras.layers <span class="im">import</span> Dense</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.keras.models <span class="im">import</span> load_model</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error,r2_score</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>Creating synthetic data</em></p>
-<div id="2bc58347" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate synthetic data: radius (X) and price (y)</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>radii <span class="op">=</span> np.random.uniform(<span class="dv">5</span>, <span class="dv">20</span>, <span class="dv">25</span>)  <span class="co"># Random radii between 5 and 20 cm</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> radii <span class="op">*</span> <span class="dv">10</span> <span class="op">+</span> np.random.normal(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">25</span>)  <span class="co"># Price proportional to radius with some noise</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> radii.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)  <span class="co"># Feature: radius</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> prices.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)  <span class="co"># Target: price</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Split data into training and testing sets</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">24003</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b2161a77" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate synthetic data: radius (X) and price (y)</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>radii <span class="op">=</span> np.random.uniform(<span class="dv">5</span>, <span class="dv">20</span>, <span class="dv">25</span>)  <span class="co"># Random radii between 5 and 20 cm</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> radii <span class="op">*</span> <span class="dv">10</span> <span class="op">+</span> np.random.normal(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">25</span>)  <span class="co"># Price proportional to radius with some noise</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> radii.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)  <span class="co"># Feature: radius</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> prices.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)  <span class="co"># Target: price</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Split data into training and testing sets</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">24003</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>Creating a model</em></p>
-<div id="0aff0a27" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Build the MLP model</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> Sequential()</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>model.add(Dense(<span class="dv">16</span>, input_dim<span class="op">=</span><span class="dv">1</span>, activation<span class="op">=</span><span class="st">'relu'</span>)) <span class="co"># Hidden layer with 16 neurons</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>model.add(Dense(<span class="dv">8</span>, activation<span class="op">=</span><span class="st">'relu'</span>))<span class="co"># Hidden layer with 8 neurons</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>model.add(Dense(<span class="dv">1</span>)) <span class="co"># Output layer for regression</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="639c1322" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Build the MLP model</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> Sequential()</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>model.add(Dense(<span class="dv">16</span>, input_dim<span class="op">=</span><span class="dv">1</span>, activation<span class="op">=</span><span class="st">'relu'</span>)) <span class="co"># Hidden layer with 16 neurons</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>model.add(Dense(<span class="dv">8</span>, activation<span class="op">=</span><span class="st">'relu'</span>))<span class="co"># Hidden layer with 8 neurons</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>model.add(Dense(<span class="dv">1</span>)) <span class="co"># Output layer for regression</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>C:\Users\SIJUKSWAMY\AppData\Local\Programs\Python\Python312\Lib\site-packages\keras\src\layers\core\dense.py:87: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.
   super().__init__(activity_regularizer=activity_regularizer, **kwargs)</code></pre>
 </div>
 </div>
 <p><em>Compiling the model</em></p>
-<div id="507f2f21" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compile the model</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">compile</span>(optimizer<span class="op">=</span><span class="st">'adam'</span>, loss<span class="op">=</span><span class="st">'mean_squared_error'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="dc1f33e2" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compile the model</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">compile</span>(optimizer<span class="op">=</span><span class="st">'adam'</span>, loss<span class="op">=</span><span class="st">'mean_squared_error'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>Train the model</em></p>
-<div id="9933ee02" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Train the model and capture training history</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> model.fit(X_train, y_train, validation_data<span class="op">=</span>(X_test, y_test), epochs<span class="op">=</span><span class="dv">500</span>, verbose<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="3299aca3" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Train the model and capture training history</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> model.fit(X_train, y_train, validation_data<span class="op">=</span>(X_test, y_test), epochs<span class="op">=</span><span class="dv">500</span>, verbose<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>Plotting Model performance while training</em></p>
-<div id="18938a92" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot training and validation loss</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>plt.plot(history.history[<span class="st">'loss'</span>], label<span class="op">=</span><span class="st">'Training Loss'</span>)</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>plt.plot(history.history[<span class="st">'val_loss'</span>], label<span class="op">=</span><span class="st">'Validation Loss'</span>)</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Model Loss During Training'</span>)</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Epochs'</span>)</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Loss'</span>)</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b8fb0fe8" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot training and validation loss</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>plt.plot(history.history[<span class="st">'loss'</span>], label<span class="op">=</span><span class="st">'Training Loss'</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>plt.plot(history.history[<span class="st">'val_loss'</span>], label<span class="op">=</span><span class="st">'Validation Loss'</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Model Loss During Training'</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Epochs'</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Loss'</span>)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -605,59 +607,59 @@ Confusion Matrix:
 </div>
 </div>
 <p><em>Evaluate and save the model</em></p>
-<div id="ae58a221" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate the model</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>train_predictions <span class="op">=</span> model.predict(X_train)</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>test_predictions <span class="op">=</span> model.predict(X_test)</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute R-squared values</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>train_r2 <span class="op">=</span> r2_score(y_train, train_predictions)</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>test_r2 <span class="op">=</span> r2_score(y_test, test_predictions)</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(X_test)</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Training R-squared: </span><span class="sc">{</span>train_r2<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Testing R-squared: </span><span class="sc">{</span>test_r2<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>mse <span class="op">=</span> mean_squared_error(y_test, y_pred)</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean Squared Error on Test Data: </span><span class="sc">{</span>mse<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Training R-squared: </span><span class="sc">{</span>train_r2<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Testing R-squared: </span><span class="sc">{</span>test_r2<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the model</span></span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>model.save(<span class="st">"pizza_price_model.h5"</span>)</span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Model saved as 'pizza_price_model.h5'."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="23ec3951" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate the model</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>train_predictions <span class="op">=</span> model.predict(X_train)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>test_predictions <span class="op">=</span> model.predict(X_test)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute R-squared values</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>train_r2 <span class="op">=</span> r2_score(y_train, train_predictions)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>test_r2 <span class="op">=</span> r2_score(y_test, test_predictions)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(X_test)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Training R-squared: </span><span class="sc">{</span>train_r2<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Testing R-squared: </span><span class="sc">{</span>test_r2<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>mse <span class="op">=</span> mean_squared_error(y_test, y_pred)</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean Squared Error on Test Data: </span><span class="sc">{</span>mse<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Training R-squared: </span><span class="sc">{</span>train_r2<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Testing R-squared: </span><span class="sc">{</span>test_r2<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the model</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>model.save(<span class="st">"pizza_price_model.h5"</span>)</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Model saved as 'pizza_price_model.h5'."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 49ms/step1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 69ms/step
-1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 42ms/step1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 57ms/step
-1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 15ms/step1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 35ms/step</code></pre>
+<pre><code>1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 53ms/step1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 85ms/step
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 52ms/step1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 74ms/step
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 16ms/step1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 31ms/step</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>WARNING:absl:You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. </code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Training R-squared: -0.78
-Testing R-squared: -0.51
-Mean Squared Error on Test Data: 3837.22
-Training R-squared: -0.78
-Testing R-squared: -0.51
+<pre><code>Training R-squared: 0.98
+Testing R-squared: 0.98
+Mean Squared Error on Test Data: 47.82
+Training R-squared: 0.98
+Testing R-squared: 0.98
 Model saved as 'pizza_price_model.h5'.</code></pre>
 </div>
 </div>
 <p><em>Using the saved model for prediction</em></p>
-<div id="753637a7" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the saved model for future use</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>loaded_model <span class="op">=</span> load_model(<span class="st">"pizza_price_model.h5"</span>)</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Loaded the saved model and testing it..."</span>)</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>test_radius <span class="op">=</span> np.array([[<span class="dv">12</span>]])  <span class="co"># Example: predict price for a 12 cm pizza</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>predicted_price <span class="op">=</span> loaded_model.predict(test_radius)</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Predicted price for a pizza with radius </span><span class="sc">{</span>test_radius[<span class="dv">0</span>][<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> cm: $</span><span class="sc">{</span>predicted_price[<span class="dv">0</span>][<span class="dv">0</span>]<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="bb3bcdab" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the saved model for future use</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>loaded_model <span class="op">=</span> load_model(<span class="st">"pizza_price_model.h5"</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Loaded the saved model and testing it..."</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>test_radius <span class="op">=</span> np.array([[<span class="dv">12</span>]])  <span class="co"># Example: predict price for a 12 cm pizza</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>predicted_price <span class="op">=</span> loaded_model.predict(test_radius)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Predicted price for a pizza with radius </span><span class="sc">{</span>test_radius[<span class="dv">0</span>][<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> cm: $</span><span class="sc">{</span>predicted_price[<span class="dv">0</span>][<span class="dv">0</span>]<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>WARNING:absl:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Loaded the saved model and testing it...
-1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 56ms/step1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 76ms/step
-Predicted price for a pizza with radius 12 cm: $67.04</code></pre>
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 85ms/step1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 108ms/step
+Predicted price for a pizza with radius 12 cm: $120.76</code></pre>
 </div>
 </div>
 

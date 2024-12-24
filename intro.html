@@ -218,8 +218,14 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./DLforvisualrecognition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Deep Learning for Visual Recognition</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -536,7 +542,7 @@ Perceptron Convergence
 <li>Negative class (<span class="math inline">\(y_i = -1\)</span>): Points <span class="math inline">\((-3, -3), (-4, -4), (-5, -5)\)</span>.</li>
 </ul>
 <p>The data is linearly separable with a large margin (distance between closest points and the decision boundary).</p>
-<div id="f54bdabc" class="cell" data-execution_count="1">
+<div id="c428bd5d" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -707,7 +713,7 @@ Perceptron Convergence
 </div>
 </div>
 <p>The following python code will simulate the OR gate using the logic of perceptron.</p>
-<div id="db631331" class="cell" data-execution_count="2">
+<div id="f8f8a7d5" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Step function (activation function)</span></span>
@@ -915,7 +921,7 @@ Input: [1 1], Predicted Output: 1</code></pre>
 </div>
 </div>
 <p>The python code for simulating the <code>AND</code> gate using the perceptron is shown below.</p>
-<div id="473d5aa7" class="cell" data-execution_count="3">
+<div id="c49cef4b" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Step function (activation function)</span></span>
@@ -1002,7 +1008,7 @@ Input: [1 1], Predicted Output: 1</code></pre>
 <section id="simulating-all-logic-gates-using-the-perceptron" class="level3" data-number="1.2.10">
 <h3 data-number="1.2.10" class="anchored" data-anchor-id="simulating-all-logic-gates-using-the-perceptron"><span class="header-section-number">1.2.10</span> Simulating all logic gates using the Perceptron</h3>
 <p>Here is the Python code to simulate all logic gates.</p>
-<div id="0e218c82" class="cell" data-execution_count="4">
+<div id="ecd4f056" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Perceptron:</span>
@@ -1107,45 +1113,45 @@ Input: [1 1], Predicted Output: 1</code></pre>
 <span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Simulate AND, OR, NAND, NOR, and XOR gates</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The simulation program is executed below:</p>
-<div id="1cc3d2e7" class="cell" data-execution_count="5">
+<div id="b15ddec8" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> gate <span class="kw">in</span> [<span class="st">'AND'</span>, <span class="st">'OR'</span>, <span class="st">'NAND'</span>, <span class="st">'NOR'</span>, <span class="st">'XOR'</span>]:</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    simulate_logic_gate(gate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Simulating AND gate
-Trained weights: [0.19498255 0.10392607]
-Trained bias: -0.2882517529383646
+Trained weights: [0.19561177 0.09630481]
+Trained bias: -0.28193828564148604
 Input: [0 0], Prediction: [0]
 Input: [0 1], Prediction: [0]
 Input: [1 0], Prediction: [0]
 Input: [1 1], Prediction: [1]
 Simulating OR gate
-Trained weights: [0.1166473  0.09319517]
-Trained bias: -0.09265357721473033
+Trained weights: [0.0980955 0.0053586]
+Trained bias: -0.004539072707745562
 Input: [0 0], Prediction: [0]
 Input: [0 1], Prediction: [1]
 Input: [1 0], Prediction: [1]
 Input: [1 1], Prediction: [1]
 Simulating NAND gate
-Trained weights: [-0.19887624 -0.09682712]
-Trained bias: 0.20933520906978198
+Trained weights: [-0.11153695 -0.09484704]
+Trained bias: 0.2051623503143739
 Input: [0 0], Prediction: [1]
 Input: [0 1], Prediction: [1]
 Input: [1 0], Prediction: [1]
 Input: [1 1], Prediction: [0]
 Simulating NOR gate
-Trained weights: [-0.09794677 -0.11003972]
-Trained bias: 0.09665155437250492
+Trained weights: [-0.09125579 -0.08393223]
+Trained bias: 0.009912673836659794
 Input: [0 0], Prediction: [1]
 Input: [0 1], Prediction: [0]
 Input: [1 0], Prediction: [0]
 Input: [1 1], Prediction: [0]
 Simulating XOR gate
-Trained weights: [-0.08718506 -0.00030597]
-Trained bias: 0.012018877077856385
+Trained weights: [-0.09361491  0.01201216]
+Trained bias: 0.08631198871721363
 Input: [0 0], Prediction: [1]
 Input: [0 1], Prediction: [1]
 Input: [1 0], Prediction: [0]
-Input: [1 1], Prediction: [0]</code></pre>
+Input: [1 1], Prediction: [1]</code></pre>
 </div>
 </div>
 <p>whether the perceptron win on XOR gate? No, the perceptron cannot learn the XOR gate. This is a well-known limitation of the perceptron model, and it’s related to the fact that the XOR function is non-linearly separable.</p>
@@ -1363,7 +1369,7 @@ Perceptron neuron- the foundation of modern Machine Learning
 </div>
 </div>
 <p>Following python code demonstrate the effective use of the sigmoid activation function in the simulation of logic gates.</p>
-<div id="d7e10c25" class="cell" data-execution_count="6">
+<div id="afeb5153" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Perceptron:</span>
@@ -1454,41 +1460,41 @@ Perceptron neuron- the foundation of modern Machine Learning
 <span id="cb9-88"><a href="#cb9-88" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Input: </span><span class="sc">{</span>input_data<span class="sc">}</span><span class="ss">, Prediction: </span><span class="sc">{</span>prediction<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Simulation code is here:</p>
-<div id="684440fd" class="cell" data-execution_count="7">
+<div id="bc74c0bf" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> gate <span class="kw">in</span> [<span class="st">'AND'</span>, <span class="st">'OR'</span>, <span class="st">'NAND'</span>, <span class="st">'NOR'</span>, <span class="st">'XOR'</span>]:</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    simulate_logic_gate(gate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Simulating AND gate
-Trained weights: [2.62591605 2.62222932]
-Trained bias: -4.054951257335541
+Trained weights: [2.62424009 2.62051647]
+Trained bias: -4.052446724686569
 Input: [0 0], Prediction: [0]
 Input: [0 1], Prediction: [0]
 Input: [1 0], Prediction: [0]
 Input: [1 1], Prediction: [1]
 Simulating OR gate
-Trained weights: [3.3080444  3.30966025]
-Trained bias: -1.3436916260629446
+Trained weights: [3.30854614 3.31069751]
+Trained bias: -1.344113039594026
 Input: [0 0], Prediction: [0]
 Input: [0 1], Prediction: [1]
 Input: [1 0], Prediction: [1]
 Input: [1 1], Prediction: [1]
 Simulating NAND gate
-Trained weights: [-2.62329787 -2.61964744]
-Trained bias: 4.051108047248814
+Trained weights: [-2.62188285 -2.61819755]
+Trained bias: 4.048990786710632
 Input: [0 0], Prediction: [1]
 Input: [0 1], Prediction: [1]
 Input: [1 0], Prediction: [1]
 Input: [1 1], Prediction: [0]
 Simulating NOR gate
-Trained weights: [-3.30968679 -3.31152847]
-Trained bias: 1.3446534385164841
+Trained weights: [-3.31174444 -3.31402182]
+Trained bias: 1.3459000225573814
 Input: [0 0], Prediction: [1]
 Input: [0 1], Prediction: [0]
 Input: [1 0], Prediction: [0]
 Input: [1 1], Prediction: [0]
 Simulating XOR gate
-Trained weights: [-0.02476972 -0.01218682]
-Trained bias: 0.012113375259234867
+Trained weights: [-0.02460787 -0.01205831]
+Trained bias: 0.011939881589258936
 Input: [0 0], Prediction: [1]
 Input: [0 1], Prediction: [0]
 Input: [1 0], Prediction: [0]
@@ -1509,7 +1515,7 @@ Input: [1 1], Prediction: [0]</code></pre>
 <h2 data-number="1.4" class="anchored" data-anchor-id="examples"><span class="header-section-number">1.4</span> Examples</h2>
 <section id="simple-example-perceptron-for-and-gate-with-native-python-code" class="level3" data-number="1.4.1">
 <h3 data-number="1.4.1" class="anchored" data-anchor-id="simple-example-perceptron-for-and-gate-with-native-python-code"><span class="header-section-number">1.4.1</span> Simple Example: Perceptron for AND Gate with native <code>Python</code> code</h3>
-<div id="4bdad4b7" class="cell" data-execution_count="8">
+<div id="29c41a6c" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Inputs (x1, x2) and outputs (y)</span></span>
@@ -1536,7 +1542,7 @@ Input: [1 1], Prediction: [0]</code></pre>
 <span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Trained Weights: </span><span class="sc">{</span>weights<span class="sc">}</span><span class="ss">, Bias: </span><span class="sc">{</span>bias<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Trained Weights: [0.15624762 0.09191255], Bias: [-0.21553744]</code></pre>
+<pre><code>Trained Weights: [0.372404   0.08088743], Bias: [-0.41892032]</code></pre>
 </div>
 </div>
 </section>
@@ -1741,7 +1747,7 @@ Summary of Backpropagation
 </ul>
 <p>We will train the MLP on the four possible inputs for the XOR gate and use backpropagation to update the weights in the network, eventually enabling the MLP to predict the XOR output correctly.</p>
 <p>In the next code implementation, we will implement the XOR gate using an MLP, demonstrating how the network can learn the XOR function through training.</p>
-<div id="bde79100" class="cell" data-execution_count="9">
+<div id="83ec9011" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Perceptron:</span>
@@ -1835,16 +1841,16 @@ Summary of Backpropagation
 <span id="cb14-91"><a href="#cb14-91" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-92"><a href="#cb14-92" aria-hidden="true" tabindex="-1"></a>simulate_logic_gate(<span class="st">'XOR'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Epoch 0, Loss: 0.255295280231149
-Epoch 1000, Loss: 0.22686866220906776
-Epoch 2000, Loss: 0.12394747722959651
-Epoch 3000, Loss: 0.023914693380518173
-Epoch 4000, Loss: 0.010461269736354674
-Epoch 5000, Loss: 0.006385752812267632
-Epoch 6000, Loss: 0.004514959615043102
-Epoch 7000, Loss: 0.0034617110935167665
-Epoch 8000, Loss: 0.00279294282209194
-Epoch 9000, Loss: 0.0023333487860607554
+<pre><code>Epoch 0, Loss: 0.38238132836946637
+Epoch 1000, Loss: 0.23961742934586233
+Epoch 2000, Loss: 0.1569930608039164
+Epoch 3000, Loss: 0.03313675976289529
+Epoch 4000, Loss: 0.012577209359921649
+Epoch 5000, Loss: 0.007231993844723098
+Epoch 6000, Loss: 0.004957437915534363
+Epoch 7000, Loss: 0.003730636777507581
+Epoch 8000, Loss: 0.002972718132335196
+Epoch 9000, Loss: 0.0024616457672617205
 Simulating XOR gate
 Input: [0 0], Prediction: [0.]
 Input: [0 1], Prediction: [1.]
@@ -1853,7 +1859,7 @@ Input: [1 1], Prediction: [0.]</code></pre>
 </div>
 </div>
 <p>Above <code>Python</code> code creates a successful MLP with two (fixed) hidden layers that simulate the <code>XOR</code> gate. There is no golden rule to fix number of hidden layers in an MLP to solve a specific problem. So we have to restructure the OOPs architecture of MLP to handle its structure in more robust way. In this approach, the user can ‘add’ as many layers as he wish to develop a required MLP architecture. Following code will do this job.</p>
-<div id="646227ad" class="cell" data-execution_count="10">
+<div id="da1ffada" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Layer:</span>
@@ -1963,20 +1969,20 @@ Input: [1 1], Prediction: [0.]</code></pre>
 <span id="cb16-107"><a href="#cb16-107" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-108"><a href="#cb16-108" aria-hidden="true" tabindex="-1"></a>simulate_logic_gate(<span class="st">'XOR'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Epoch 0, Loss: 0.26675111093118614
-Epoch 1000, Loss: 0.17207706006267234
-Epoch 2000, Loss: 0.16779137618476658
-Epoch 3000, Loss: 0.16724944687955118
-Epoch 4000, Loss: 0.16704977869177204
-Epoch 5000, Loss: 0.1669495367953534
-Epoch 6000, Loss: 0.1668898844069387
-Epoch 7000, Loss: 0.16684954673672653
-Epoch 8000, Loss: 0.1668241650269377
-Epoch 9000, Loss: 0.16680207123082322
+<pre><code>Epoch 0, Loss: 0.2578807534305903
+Epoch 1000, Loss: 0.008262143703924217
+Epoch 2000, Loss: 0.0023400513860285825
+Epoch 3000, Loss: 0.0013080393896698075
+Epoch 4000, Loss: 0.000897457988116881
+Epoch 5000, Loss: 0.0006794834437013365
+Epoch 6000, Loss: 0.0005452698655486564
+Epoch 7000, Loss: 0.0004545396500849852
+Epoch 8000, Loss: 0.0003892759966146175
+Epoch 9000, Loss: 0.0003401267506645646
 Simulating XOR gate
 Input: [0 0], Prediction: [0.]
 Input: [0 1], Prediction: [1.]
-Input: [1 0], Prediction: [0.]
+Input: [1 0], Prediction: [1.]
 Input: [1 1], Prediction: [0.]</code></pre>
 </div>
 </div>
@@ -2117,7 +2123,7 @@ F1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \tex
 <h3 data-number="1.10.10" class="anchored" data-anchor-id="interpretation-of-results-simulating-xor-gate-with-mlp-as-a-classification-problem"><span class="header-section-number">1.10.10</span> Interpretation of Results: Simulating XOR Gate with MLP as a classification problem</h3>
 <p>Now let’s redesign the XOR gate problem as a classification problem. The Multilayer Perceptron (MLP) was tested on the XOR gate problem, producing the following predictions and performance metrics:</p>
 <hr>
-<div id="4467ae37" class="cell" data-execution_count="11">
+<div id="d1bf289b" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Layer:</span>
@@ -2258,31 +2264,31 @@ F1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \tex
 <span id="cb18-138"><a href="#cb18-138" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-139"><a href="#cb18-139" aria-hidden="true" tabindex="-1"></a>simulate_logic_gate(<span class="st">'XOR'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Epoch 0, Loss: 0.28381504754791204
-Epoch 1000, Loss: 0.07725535343862173
-Epoch 2000, Loss: 0.010525085847779664
-Epoch 3000, Loss: 0.004882839386145349
-Epoch 4000, Loss: 0.00306872487547098
-Epoch 5000, Loss: 0.002205583460570259
-Epoch 6000, Loss: 0.001709204884404058
-Epoch 7000, Loss: 0.00138957106702216
-Epoch 8000, Loss: 0.0011676523600389656
-Epoch 9000, Loss: 0.0010051402046983272
+<pre><code>Epoch 0, Loss: 0.2855645651572066
+Epoch 1000, Loss: 0.25
+Epoch 2000, Loss: 0.25
+Epoch 3000, Loss: 0.25
+Epoch 4000, Loss: 0.25
+Epoch 5000, Loss: 0.25
+Epoch 6000, Loss: 0.25
+Epoch 7000, Loss: 0.25
+Epoch 8000, Loss: 0.25
+Epoch 9000, Loss: 0.25
 Simulating XOR gate
 Input: [0 0], Prediction: [0.]
-Input: [0 1], Prediction: [1.]
-Input: [1 0], Prediction: [1.]
+Input: [0 1], Prediction: [0.]
+Input: [1 0], Prediction: [0.]
 Input: [1 1], Prediction: [0.]
 Performance Metrics:
-Accuracy: 1.00
-Precision: 1.00
-Recall (Sensitivity): 1.00
+Accuracy: 0.50
+Precision: 0.00
+Recall (Sensitivity): 0.00
 Specificity: 1.00
-F1 Score: 1.00
+F1 Score: 0.00
 
 Confusion Matrix:
                 Predicted Positive    Predicted Negative
-Actual Positive          2                    0
+Actual Positive          0                    2
 Actual Negative          0                    2</code></pre>
 </div>
 </div>
